@@ -5,31 +5,31 @@ const values = [
     icon: BookOpen,
     title: "Education First",
     description:
-      "We believe the best Bitcoin advocates are well-informed ones. Every meetup includes a focused educational segment, from Bitcoin basics to advanced technical topics.",
+      "We are passionate about teaching people about what Bitcoin is and how it works.",
   },
   {
     icon: Users,
     title: "Open Community",
     description:
-      "No shilling, no tribalism, no gatekeeping. Whether you bought your first sat yesterday or have been running a node for years, you belong here.",
+      "Whether you've just heard about Bitcoin and want to learn more or you have been around since before the Blocksize Wars, you belong here.",
   },
   {
     icon: Shield,
     title: "Self-Sovereignty",
     description:
-      "We champion financial autonomy — not your keys, not your coins. We teach self-custody, privacy best practices, and responsible use of the protocol.",
+      "We believe Bitcoin is a peer-to-peer digital cash that does not rely on trusting a third party. Bitcoin is not an investment or a get-rich-quick scheme. Bitcoin is MONEY that is permissionless, censorship-resistant, and seizure-resistant. We believe strongly in the phrase \"not your keys, not your coins\". We teach self-custody, privacy and security best practices, and using Bitcoin as money.",
   },
   {
     icon: Globe,
     title: "Local Roots",
     description:
-      "Columbia, SC has a growing community of builders, thinkers, and entrepreneurs. We're bringing the Bitcoin conversation home, one meetup at a time.",
+      "This meetup was started in 2024 out of a passion for Bitcoin and a desire to meet other Bitcoiners in person. We hope to continue building relationships with like-minded individuals and growing the Columbia, SC Bitcoin community.",
   },
 ];
 
 const stats = [
-  { value: "2+", label: "Years Running" },
-  { value: "200+", label: "Members" },
+  { value: "Aug 2024", label: "Est." },
+  { value: "All", label: "Are Welcome" },
   { value: "Monthly", label: "Gatherings" },
   { value: "Free", label: "Always" },
 ];
@@ -44,13 +44,12 @@ export default function AboutSection() {
             About Us
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Bitcoin in the Midlands
+            Bitcoin in Columbia, SC
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Columbia Bitcoin is a grassroots meetup group for anyone curious
-            about the world&apos;s first decentralized, censorship-resistant money.
-            We gather monthly to learn, debate, and build relationships around
-            Bitcoin&apos;s technology, economics, and philosophy.
+            Columbia, SC Bitcoin Meetup is a grassroots meetup group for anyone
+            interested in Bitcoin as a tool for individual freedom and protection
+            against monetary debasement.
           </p>
         </div>
 
@@ -101,18 +100,17 @@ export default function AboutSection() {
               Our Story
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Columbia Bitcoin started in 2023 as a small gathering of friends
-              who wanted to talk about more than just price charts. We were tired
-              of mainstream financial media&apos;s surface-level coverage and wanted
-              to dig into what makes Bitcoin uniquely powerful: its
-              decentralization, its fixed supply, and its role as a tool for
-              individual sovereignty.
+              Columbia, SC Bitcoin Meetup was started in 2024 out of a desire to
+              discuss Bitcoin and freedom tech with people in person. Although
+              there are ample communities and platforms online to discuss
+              Bitcoin, there was not an active in-person Bitcoin meetup within
+              2 hours of Columbia.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              What began as six people at a coffee shop has grown into a vibrant
-              monthly gathering. We&apos;ve hosted developers, economists, retirees,
-              students, and small business owners — united by curiosity and a
-              belief that sound money matters. Come see what we&apos;re building.
+              We feel strongly about the importance of meeting like-minded
+              individuals in person and learning more about a technology that
+              takes some power back from the state and returns it to the
+              individual: Bitcoin.
             </p>
           </div>
         </div>

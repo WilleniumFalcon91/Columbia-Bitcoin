@@ -32,8 +32,8 @@ import { useTheme } from "./ThemeProvider";
 const navLinks = [
   { label: "Event", href: "#event" },
   { label: "About", href: "#about" },
+  { label: "Resources", href: "#resources" },
   { label: "Contact", href: "#contact" },
-  { label: "Donate", href: "#donate" },
 ];
 
 export default function Navbar() {
@@ -72,7 +72,7 @@ export default function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
             <Bitcoin className="w-5 h-5 text-white" />
           </div>
-          <span className="font-sans tracking-tight">Columbia Bitcoin</span>
+          <span className="font-sans tracking-tight">Columbia, SC Bitcoin</span>
         </button>
 
         {/* Desktop nav */}

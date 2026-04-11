@@ -15,7 +15,19 @@ export default function Hero({ event }: { event: LumaEvent }) {
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-accent/40 blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
+
       </div>
+
+      {/* SC flag background */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.06]"
+        style={{
+          backgroundImage: `url("https://www.wbtw.com/wp-content/uploads/sites/22/2020/06/sc-flag.jpg?strip=1")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
 
       {/* Bitcoin hex grid pattern */}
       <div
@@ -34,7 +46,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
 
         {/* Heading */}
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight leading-none">
-          Columbia{" "}
+          Columbia, SC{" "}
           <span className="text-primary relative">
             Bitcoin
             <svg
@@ -55,9 +67,9 @@ export default function Hero({ event }: { event: LumaEvent }) {
         </h1>
 
         <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-          A casual monthly meetup for Bitcoin enthusiasts, curious minds, and
-          freedom advocates. Come learn, discuss, and connect with your
-          community.
+          A casual monthly meetup for Bitcoiners and anyone interested in
+          learning about Bitcoin as a hedge against monetary debasement and tool
+          for individual freedom.
         </p>
 
         {/* Event card */}

@@ -10,8 +10,8 @@ export type LumaEvent = {
 
 // Real event details — used as fallback when API key is absent or fetch fails
 export const FALLBACK_EVENT: LumaEvent = {
-  title: "Columbia Bitcoin Meetup",
-  date: "Saturday, April 26, 2026",
+  title: "Columbia, SC Bitcoin Meetup",
+  date: "Saturday, April 25, 2026",
   time: "3:00 PM – 5:00 PM EDT",
   locationName: "Savage Craft Ale Works",
   address: "430 Center St, West Columbia, SC 29169",

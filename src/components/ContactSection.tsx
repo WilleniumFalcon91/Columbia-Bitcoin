@@ -1,28 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MessageCircle, Send, CheckCircle, ExternalLink } from "lucide-react";
+import { Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
+import type { ComponentType } from "react";
 
-const contactChannels = [
+const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
+
+type Channel = {
+  icon?: ComponentType<{ className?: string }>;
+  imgSrc?: string;
+  label: string;
+  value: string;
+  href: string;
+  description: string;
+};
+
+const contactChannels: Channel[] = [
   {
-    icon: ExternalLink,
-    label: "Twitter / X",
-    value: "@ColumbiaBitcoin",
-    href: "https://twitter.com/ColumbiaBitcoin",
-    description: "Follow us for event announcements and Bitcoin content",
-  },
-  {
-    icon: MessageCircle,
-    label: "Telegram",
-    value: "t.me/ColumbiaBitcoin",
-    href: "https://t.me/ColumbiaBitcoin",
-    description: "Join our community chat for ongoing discussions",
+    imgSrc: "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png",
+    label: "Nostr",
+    value: NOSTR_NPUB.slice(0, 20) + "…",
+    href: `https://primal.net/p/${NOSTR_NPUB}`,
+    description: "Find us on Nostr — decentralized and censorship-resistant",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "hello@columbiabitcoin.org",
-    href: "mailto:hello@columbiabitcoin.org",
+    value: "btcwrestle2001@protonmail.com",
+    href: "mailto:btcwrestle2001@protonmail.com",
     description: "For press inquiries, partnerships, or speaking proposals",
   },
 ];
@@ -75,13 +80,20 @@ export default function ContactSection() {
                   className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-card hover:shadow-card-hover hover:border-primary/30 transition-all duration-200 group"
                 >
                   <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="w-5 h-5 text-primary" />
+                    {ch.imgSrc ? (
+                      <img src={ch.imgSrc} alt={ch.label} className="w-7 h-7 object-contain" />
+                    ) : Icon ? (
+                      <Icon className="w-5 h-5 text-primary" />
+                    ) : null}
                   </div>
                   <div>
                     <p className="font-semibold text-foreground text-sm">
                       {ch.label}
                     </p>
-                    <p className="text-primary text-sm font-mono">
+                    <p
+                      className={`text-sm font-mono ${ch.imgSrc ? "" : "text-primary"}`}
+                      style={ch.imgSrc ? { color: "#8b5cf6" } : undefined}
+                    >
                       {ch.value}
                     </p>
                     <p className="text-muted-foreground text-xs mt-1">
@@ -92,15 +104,26 @@ export default function ContactSection() {
               );
             })}
 
-            <div className="bg-card border border-border rounded-xl p-6 mt-6 shadow-card">
+            <div className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-card">
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <MessageCircle className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="font-semibold text-foreground text-sm">Signal</p>
+                <p className="text-muted-foreground text-xs mt-1">
+                  Attend our meetup in person to join our community Signal chat!
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-card border border-border rounded-xl p-6 shadow-card">
               <h4 className="font-semibold text-foreground mb-2">
-                Want to speak at a meetup?
+                Ideas for a technical workshop or presentation?
               </h4>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                We welcome presentations on any Bitcoin-related topic — from
-                technical deep-dives to personal stories of adoption. Sessions
-                run 20–30 minutes with Q&amp;A. Send us an email with your topic
-                idea.
+                We welcome presentations on any Bitcoin or freedom tech related
+                topic. Send us an email with your topic idea or mention it at a
+                meetup!
               </p>
             </div>
           </div>

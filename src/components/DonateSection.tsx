@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Zap, Copy, CheckCheck, ExternalLink, Heart } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 
-// Replace with your actual Lightning Address or LNURL
-const LIGHTNING_ADDRESS = "columbiabitcoin@getalby.com";
+const LIGHTNING_ADDRESS = "Blissfulinspiration519440@getalby.com";
 const LIGHTNING_URI = `lightning:${LIGHTNING_ADDRESS}`;
+const BIP47_CODE = "PM8TJhQi6gQs9xxqhs4LqrVH2StMX9M2sjck8Z5kndoKuocbncWstWn3xdGLega3W6EaW44sVXS5HxTuA4knepbKtbc2K1Uz1LBmDkUScjjpf7SNMVyX";
 
 const donationAmounts = [
   { sats: 1000, label: "1,000 sats", desc: "Buy us a coffee ☕" },
@@ -15,21 +15,22 @@ const donationAmounts = [
   { sats: null, label: "Custom", desc: "Any amount helps" },
 ];
 
-const uses = [
-  "Venue rental and logistics",
-  "Educational materials and printing",
-  "Speaker travel and honorariums",
-  "Recording and livestreaming equipment",
-  "Community outreach and marketing",
-];
 
 export default function DonateSection() {
   const [copied, setCopied] = useState(false);
+  const [copiedBip47, setCopiedBip47] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(LIGHTNING_ADDRESS).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  const handleCopyBip47 = () => {
+    navigator.clipboard.writeText(BIP47_CODE).then(() => {
+      setCopiedBip47(true);
+      setTimeout(() => setCopiedBip47(false), 2000);
     });
   };
 
@@ -45,7 +46,7 @@ export default function DonateSection() {
             Donate via Lightning ⚡
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Columbia Bitcoin is community-funded. Your sats keep the meetups
+            Columbia, SC Bitcoin is community-funded. Your sats keep the meetups
             running, the coffee flowing, and the conversations going.
           </p>
         </div>
@@ -159,27 +160,10 @@ export default function DonateSection() {
                 </h3>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                Columbia Bitcoin is 100% volunteer-run and community-funded. We
-                never charge admission, never sell sponsorships to companies we
-                don&apos;t believe in, and never compromise our educational mission.
-                Your donations directly fund every meetup.
+                Your donations directly fund the potential for us to rent event
+                space for future workshops, events, and educational
+                presentations. Also, beers at the meetup :)
               </p>
-            </div>
-
-            <div className="bg-card border border-border rounded-xl p-6 shadow-card">
-              <h4 className="font-semibold text-foreground mb-4">
-                Your sats go toward:
-              </h4>
-              <ul className="space-y-3">
-                {uses.map((use, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Zap className="w-3 h-3 text-primary" />
-                    </div>
-                    <span className="text-muted-foreground text-sm">{use}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div className="bg-accent/30 border border-accent rounded-xl p-6">
@@ -189,19 +173,45 @@ export default function DonateSection() {
               <p className="text-muted-foreground text-sm leading-relaxed">
                 We accept on-chain Bitcoin too. Email us at{" "}
                 <a
-                  href="mailto:hello@columbiabitcoin.org"
+                  href="mailto:btcwrestle2001@protonmail.com"
                   className="text-primary hover:text-primary/80 font-medium"
                 >
-                  hello@columbiabitcoin.org
+                  btcwrestle2001@protonmail.com
                 </a>{" "}
                 and we&apos;ll send you a fresh address. Lightning is preferred for
                 small amounts due to fees.
               </p>
+              <div className="mt-4 pt-4 border-t border-accent">
+                <p className="text-foreground font-semibold mb-2 text-sm">
+                  BIP47 Reusable Payment Code
+                </p>
+                <div className="bg-card border border-border rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+                  <span className="font-mono text-xs text-foreground truncate">
+                    {BIP47_CODE.slice(0, 24)}…
+                  </span>
+                  <button
+                    onClick={handleCopyBip47}
+                    className="flex-shrink-0 p-1.5 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+                    aria-label="Copy BIP47 payment code"
+                  >
+                    {copiedBip47 ? (
+                      <CheckCheck className="w-4 h-4 text-primary" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+                {copiedBip47 && (
+                  <p className="text-xs text-primary font-medium mt-2 animate-pulse">
+                    Copied to clipboard!
+                  </p>
+                )}
+              </div>
             </div>
 
             <div className="border-t border-border pt-6">
               <p className="text-xs text-muted-foreground italic">
-                Columbia Bitcoin is not a registered nonprofit. Donations are
+                Columbia, SC Bitcoin is not a registered nonprofit. Donations are
                 not tax-deductible. All contributions go directly to event costs
                 and community activities.
               </p>

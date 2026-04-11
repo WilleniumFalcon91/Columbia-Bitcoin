@@ -3,11 +3,11 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Columbia Bitcoin",
+  title: "Columbia, SC Bitcoin",
   description:
     "A local community gathering for Bitcoin enthusiasts in Columbia. Join us for education, discussion, and connection.",
   openGraph: {
-    title: "Columbia Bitcoin",
+    title: "Columbia, SC Bitcoin",
     description:
       "A local community gathering for Bitcoin enthusiasts in Columbia.",
     type: "website",

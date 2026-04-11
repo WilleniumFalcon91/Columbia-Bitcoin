@@ -1,33 +1,30 @@
-import { Calendar, Clock, MapPin, Users, Coffee, MessageSquare, Zap } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Beer, MessageSquare, Zap } from "lucide-react";
 import type { LumaEvent } from "@/lib/luma";
 
 const agenda = [
   {
-    time: "3:00 PM",
-    title: "Doors Open & Networking",
-    icon: Coffee,
-    description: "Grab a drink, head to the rooftop, meet new faces, and catch up with regulars.",
+    title: "Hang Out & Network",
+    icon: Beer,
+    description:
+      "Grab a drink, meet new faces, and catch up with regulars. Discuss current events in the Bitcoin space and make peer-to-peer trades.",
   },
   {
-    time: "3:30 PM",
-    title: "Bitcoin Discussion",
+    title: "Q&A and Intro to Bitcoin",
+    icon: Users,
+    description:
+      "Newcomers can get set up with their first wallet, receive their first Bitcoin transaction, and ask any questions they may have — no question is too basic.",
+  },
+  {
+    title: "Discuss Bitcoin",
     icon: MessageSquare,
     description:
       "Open conversation on Bitcoin as a store of value, medium of exchange, and the separation of money and state.",
   },
   {
-    time: "4:00 PM",
-    title: "Open Forum",
-    icon: Users,
-    description:
-      "Q&A, debate, and peer-to-peer trades. All experience levels welcome — no question is too basic.",
-  },
-  {
-    time: "4:30 PM",
-    title: "Lightning Round",
+    title: "Technical Discussion",
     icon: Zap,
     description:
-      "Quick demos, project showcases, and community announcements. Stack sats, build a circular economy.",
+      "Share and discuss tools and projects that you are interested in and find useful in the Bitcoin and freedom tech space.",
   },
 ];
 
@@ -151,9 +148,6 @@ export default function EventSection({ event }: { event: LumaEvent }) {
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-1">
-                      <span className="font-mono text-xs text-primary font-semibold">
-                        {item.time}
-                      </span>
                       <h4 className="font-semibold text-foreground text-sm">
                         {item.title}
                       </h4>

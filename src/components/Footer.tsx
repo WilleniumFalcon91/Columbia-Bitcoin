@@ -1,10 +1,11 @@
 "use client";
 
-import { Bitcoin } from "lucide-react";
+import { Bitcoin, Zap } from "lucide-react";
 
 const footerLinks = [
   { label: "Event", href: "#event" },
   { label: "About", href: "#about" },
+  { label: "Resources", href: "#resources" },
   { label: "Contact", href: "#contact" },
   { label: "Donate", href: "#donate" },
 ];
@@ -23,7 +24,7 @@ export default function Footer() {
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
               <Bitcoin className="w-5 h-5 text-white" />
             </div>
-            <span>Columbia Bitcoin</span>
+            <span>Columbia, SC Bitcoin</span>
           </div>
 
           {/* Nav links */}
@@ -42,11 +43,11 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} Columbia Bitcoin. All rights
+            &copy; {new Date().getFullYear()} Columbia, SC Bitcoin. All rights
             reserved.
           </p>
-          <p className="font-mono">
-            Stacking sats in the Midlands since 2023 ⚡
+          <p className="font-mono flex items-center gap-1">
+            Est. 857221 <Zap className="w-3 h-3 text-primary fill-primary" />
           </p>
         </div>
       </div>
