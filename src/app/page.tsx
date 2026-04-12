@@ -15,8 +15,41 @@ export const revalidate = 3600;
 export default async function Home() {
   const event = await fetchLumaEvent();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.title,
+    description: event.description,
+    url: event.url,
+    startDate: event.date,
+    location: {
+      "@type": "Place",
+      name: event.locationName,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "430 Center St",
+        addressLocality: "West Columbia",
+        addressRegion: "SC",
+        postalCode: "29169",
+        addressCountry: "US",
+      },
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "Columbia, SC Bitcoin",
+      url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org",
+    },
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    isAccessibleForFree: true,
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <Hero event={event} />
       <EventSection event={event} />

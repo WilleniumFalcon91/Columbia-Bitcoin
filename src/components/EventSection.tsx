@@ -1,4 +1,4 @@
-import { Calendar, Clock, MapPin, Users, Beer, MessageSquare, Zap } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Beer, MessageSquare, Bot } from "lucide-react";
 import type { LumaEvent } from "@/lib/luma";
 
 const agenda = [
@@ -22,7 +22,7 @@ const agenda = [
   },
   {
     title: "Technical Discussion",
-    icon: Zap,
+    icon: Bot,
     description:
       "Share and discuss tools and projects that you are interested in and find useful in the Bitcoin and freedom tech space.",
   },

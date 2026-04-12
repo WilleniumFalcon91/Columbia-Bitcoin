@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
+import Image from "next/image";
 import type { ComponentType } from "react";
 
 const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
@@ -81,7 +82,7 @@ export default function ContactSection() {
                 >
                   <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                     {ch.imgSrc ? (
-                      <img src={ch.imgSrc} alt={ch.label} className="w-7 h-7 object-contain" />
+                      <Image src={ch.imgSrc} alt={ch.label} width={28} height={28} className="object-contain" />
                     ) : Icon ? (
                       <Icon className="w-5 h-5 text-primary" />
                     ) : null}

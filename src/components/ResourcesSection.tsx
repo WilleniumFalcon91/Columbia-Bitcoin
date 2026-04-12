@@ -10,6 +10,8 @@ const educationResources = [
   { icon: null, imgSrc: "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png", label: "nostr", site: "nostr.com", href: "https://nostr.com/" },
 ];
 
+import Image from "next/image";
+
 export default function ResourcesSection() {
   return (
     <section id="resources" className="py-24 bg-background">
@@ -41,7 +43,7 @@ export default function ResourcesSection() {
                 className="flex items-center gap-4 bg-card border border-border rounded-xl p-4 shadow-card hover:shadow-card-hover hover:border-primary/30 transition-all duration-150 group"
               >
                 {r.imgSrc ? (
-                  <img src={r.imgSrc} alt={r.label} className="w-8 h-8 flex-shrink-0 object-contain" />
+                  <Image src={r.imgSrc} alt={r.label} width={32} height={32} className="flex-shrink-0 object-contain" />
                 ) : (
                   <span className="text-2xl flex-shrink-0">{r.icon}</span>
                 )}
