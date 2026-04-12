@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: "Columbia, SC Bitcoin",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
   },
   twitter: {
     card: "summary_large_image",
