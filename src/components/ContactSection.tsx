@@ -37,14 +37,21 @@ export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    // Simulate form submission — wire up to your email service (Formspree, Resend, etc.)
-    await new Promise((r) => setTimeout(r, 1000));
-    setSent(true);
-    setSending(false);
+    setError(null);
+    try {
+      // Simulate form submission — wire up to your email service (Formspree, Resend, etc.)
+      await new Promise((r) => setTimeout(r, 1000));
+      setSent(true);
+    } catch {
+      setError("Something went wrong. Please try again or reach out directly via email.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -203,6 +210,11 @@ export default function ContactSection() {
                       className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all resize-none"
                     />
                   </div>
+                  {error && (
+                    <p className="text-sm text-red-500 rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 px-4 py-2">
+                      {error}
+                    </p>
+                  )}
                   <button
                     type="submit"
                     disabled={sending}

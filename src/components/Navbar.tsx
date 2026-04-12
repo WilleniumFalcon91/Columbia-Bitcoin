@@ -1,7 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Menu, X, Bitcoin, Sun, Moon, TrendingUp, TrendingDown } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
+
+const COINGECKO_URL =
+  "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true";
 
 function useBitcoinPrice() {
   const [price, setPrice] = useState<number | null>(null);
@@ -10,9 +14,7 @@ function useBitcoinPrice() {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const res = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
-        );
+        const res = await fetch(COINGECKO_URL);
         const data = await res.json();
         setPrice(data.bitcoin.usd);
         setChange24h(data.bitcoin.usd_24h_change);
@@ -27,7 +29,6 @@ function useBitcoinPrice() {
 
   return { price, change24h };
 }
-import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
   { label: "Event", href: "#event" },
@@ -43,11 +44,12 @@ export default function Navbar() {
   const { price, change24h } = useBitcoinPrice();
   const isPositive = change24h !== null && change24h >= 0;
 
+  const onScroll = useCallback(() => setScrolled(window.scrollY > 20), []);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [onScroll]);
 
   const handleNav = (href: string) => {
     setMenuOpen(false);
@@ -78,7 +80,11 @@ export default function Navbar() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-1">
           {price !== null && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-xs font-semibold mr-2">
+            <div
+              aria-live="polite"
+              aria-label="Bitcoin price"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-xs font-semibold mr-2"
+            >
               <span className="text-primary">BTC</span>
               <span className="text-foreground">
                 ${price.toLocaleString("en-US", { maximumFractionDigits: 0 })}

@@ -66,8 +66,25 @@ export async function fetchLumaEvent(): Promise<LumaEvent> {
       return FALLBACK_EVENT;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const json = await res.json() as any;
+    type LumaGeoAddress = {
+      address?: string;
+      city?: string;
+      region?: string;
+      postal_code?: string;
+      place_id?: string;
+      name?: string;
+    };
+    type LumaApiEvent = {
+      name?: string;
+      start_at?: string;
+      end_at?: string;
+      description?: string;
+      url?: string;
+      geo_address_json?: LumaGeoAddress;
+    };
+    type LumaApiResponse = { event?: LumaApiEvent };
+
+    const json = await res.json() as LumaApiResponse;
     const ev = json?.event;
 
     if (!ev) return FALLBACK_EVENT;
