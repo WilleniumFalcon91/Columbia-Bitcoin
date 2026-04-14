@@ -86,6 +86,13 @@ body {
   }
 }
 
+/* ---------- YouTube IFrame API player sizing ---------- */
+/* The YT API injects width/height as HTML attributes; override to fill container */
+#vibes-player iframe {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 /* ---------- Scrollbar hide utility ---------- */
 .scrollbar-hide {
   -ms-overflow-style: none;

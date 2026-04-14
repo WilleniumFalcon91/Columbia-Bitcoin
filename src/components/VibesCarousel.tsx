@@ -30,6 +30,12 @@ const FADE_MS = 300;
 const AUTO_MS = 8000;
 const PAUSE_AFTER_NAV_MS = 12000;
 
+// Minimal type shim — avoids installing @types/youtube
+interface YTPlayer {
+  cueVideoById(id: string): void;
+  destroy(): void;
+}
+
 export default function VibesCarousel() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -38,14 +44,71 @@ export default function VibesCarousel() {
   const touchStartXRef = useRef<number | null>(null);
   const thumbRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const stripRef = useRef<HTMLDivElement>(null);
+  // True while video is playing (1) or buffering (3) — blocks auto-advance
+  const isPlayingRef = useRef(false);
+  const playerRef = useRef<YTPlayer | null>(null);
+  const playerReadyRef = useRef(false);
 
-  // Core navigation — fades out, swaps video, fades in
+  // Load the YouTube IFrame API once and create a player in the #vibes-player div.
+  // The API fires onStateChange reliably — raw iframes with enablejsapi=1 do not.
+  useEffect(() => {
+    let cancelled = false;
+
+    const createPlayer = () => {
+      if (cancelled) return;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      playerRef.current = new (window as any).YT.Player("vibes-player", {
+        videoId: VIDEOS[0],
+        width: "100%",
+        height: "100%",
+        playerVars: { rel: 0, modestbranding: 1 },
+        events: {
+          onReady: () => { playerReadyRef.current = true; },
+          onStateChange: ({ data }: { data: number }) => {
+            // 1 = playing, 3 = buffering — treat both as actively watching
+            isPlayingRef.current = data === 1 || data === 3;
+          },
+        },
+      });
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((window as any).YT?.Player) {
+      createPlayer();
+    } else {
+      if (!document.getElementById("yt-api-script")) {
+        const s = document.createElement("script");
+        s.id = "yt-api-script";
+        s.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(s);
+      }
+      // Preserve any pre-existing callback before overwriting
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const prev = (window as any).onYouTubeIframeAPIReady as (() => void) | undefined;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).onYouTubeIframeAPIReady = () => {
+        prev?.();
+        createPlayer();
+      };
+    }
+
+    return () => {
+      cancelled = true;
+      try { playerRef.current?.destroy(); } catch { /* ignore */ }
+      playerRef.current = null;
+      playerReadyRef.current = false;
+    };
+  }, []);
+
+  // Core navigation — fades out, cues next video (no autoplay), fades in
   const navigate = useCallback((next: number) => {
+    isPlayingRef.current = false; // new video hasn't started yet
     lastNavRef.current = Date.now();
     if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
     setVisible(false);
     fadeTimerRef.current = setTimeout(() => {
       setIndex(next);
+      if (playerReadyRef.current) playerRef.current?.cueVideoById(VIDEOS[next]);
       setVisible(true);
     }, FADE_MS);
   }, []);
@@ -58,14 +121,21 @@ export default function VibesCarousel() {
     navigate((index + 1) % VIDEOS.length);
   }, [index, navigate]);
 
-  // Auto-advance every AUTO_MS; pauses for PAUSE_AFTER_NAV_MS after any manual nav
+  // Auto-advance every AUTO_MS.
+  // Skips entirely if a video is actively playing or buffering.
+  // Also pauses for PAUSE_AFTER_NAV_MS after any manual navigation.
   useEffect(() => {
     const timer = setInterval(() => {
+      if (isPlayingRef.current) return;
       if (Date.now() - lastNavRef.current < PAUSE_AFTER_NAV_MS) return;
       if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
       setVisible(false);
       fadeTimerRef.current = setTimeout(() => {
-        setIndex((i) => (i + 1) % VIDEOS.length);
+        setIndex((i) => {
+          const next = (i + 1) % VIDEOS.length;
+          if (playerReadyRef.current) playerRef.current?.cueVideoById(VIDEOS[next]);
+          return next;
+        });
         setVisible(true);
       }, FADE_MS);
     }, AUTO_MS);
@@ -76,8 +146,7 @@ export default function VibesCarousel() {
     };
   }, []);
 
-  // Scroll active thumbnail to the center of the strip — operates only on the
-  // strip's own scrollLeft, never touches page scroll position.
+  // Scroll active thumbnail to center of strip — never touches page scroll
   useEffect(() => {
     const strip = stripRef.current;
     const thumb = thumbRefs.current[index];
@@ -109,14 +178,8 @@ export default function VibesCarousel() {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <iframe
-            key={index}
-            src={`https://www.youtube.com/embed/${VIDEOS[index]}?rel=0&modestbranding=1`}
-            title={`Vibes — video ${index + 1} of ${VIDEOS.length}`}
-            className="w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
+          {/* YT IFrame API mounts its iframe here; sized via #vibes-player iframe in globals.css */}
+          <div id="vibes-player" className="w-full h-full" />
         </div>
 
         {/* Counter badge */}
@@ -147,9 +210,8 @@ export default function VibesCarousel() {
         </button>
       </div>
 
-      {/* Thumbnail strip — relative wrapper enables the right-edge scroll hint */}
+      {/* Thumbnail strip — relative wrapper enables right-edge scroll hint */}
       <div className="relative">
-        {/* Right-edge fade signals more content on mobile */}
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-muted to-transparent z-10 rounded-r-lg" />
         <div ref={stripRef} className="flex gap-2 overflow-x-auto scrollbar-hide px-0.5 py-1">
           {VIDEOS.map((id, i) => (
@@ -171,7 +233,6 @@ export default function VibesCarousel() {
                 sizes="128px"
                 className="object-cover"
               />
-              {/* Playing indicator overlay on active thumbnail */}
               {i === index && (
                 <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
                   <div className="w-7 h-7 rounded-full bg-primary/90 flex items-center justify-center shadow-card">
