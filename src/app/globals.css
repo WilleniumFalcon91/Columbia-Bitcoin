@@ -85,3 +85,38 @@ body {
     font-family: var(--font-serif);
   }
 }
+
+/* ---------- Scrollbar hide utility ---------- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Vibes section animated title ---------- */
+.vibes-title {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 1.15;
+  font-family: var(--font-groovy), sans-serif;
+}
+
+.vibes-letter {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #39ff14 0%,
+    #f7931a 20%,
+    #9b00ff 40%,
+    #0080ff 60%,
+    #00cfff 80%,
+    #39ff14 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

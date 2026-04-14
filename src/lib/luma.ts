@@ -1,7 +1,8 @@
 export type LumaEvent = {
   title: string;
-  date: string;       // e.g. "Saturday, April 26, 2026"
-  time: string;       // e.g. "3:00 PM – 5:00 PM EDT"
+  date: string;           // e.g. "Saturday, April 26, 2026" — human-readable display
+  startDateISO: string;   // ISO 8601 — used in JSON-LD for Google Event rich results
+  time: string;           // e.g. "3:00 PM – 5:00 PM EDT"
   locationName: string;
   address: string;
   description: string;
@@ -12,6 +13,7 @@ export type LumaEvent = {
 export const FALLBACK_EVENT: LumaEvent = {
   title: "Columbia, SC Bitcoin Meetup",
   date: "Saturday, April 25, 2026",
+  startDateISO: "2026-04-25T15:00:00-04:00",
   time: "3:00 PM – 5:00 PM EDT",
   locationName: "Savage Craft Ale Works",
   address: "430 Center St, West Columbia, SC 29169",
@@ -100,6 +102,7 @@ export async function fetchLumaEvent(): Promise<LumaEvent> {
     return {
       title: ev.name ?? FALLBACK_EVENT.title,
       date: ev.start_at ? formatLumaDate(ev.start_at) : FALLBACK_EVENT.date,
+      startDateISO: ev.start_at ?? FALLBACK_EVENT.startDateISO,
       time:
         ev.start_at && ev.end_at
           ? formatLumaTime(ev.start_at, ev.end_at)
