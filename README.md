@@ -18,7 +18,7 @@ Columbia Bitcoin is a grassroots community meetup held monthly at Savage Craft A
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Icons**: [Lucide React](https://lucide.dev)
 - **QR Codes**: [qrcode.react](https://github.com/zpao/qrcode.react)
-- **Analytics**: [Vercel Analytics](https://vercel.com/analytics) + [Google Analytics 4](https://analytics.google.com) (G-QMS4S6LNFL)
+- **Analytics**: [Vercel Analytics](https://vercel.com/analytics) + [Google Analytics 4](https://analytics.google.com)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Event Data**: [Luma API](https://lu.ma) (with static fallback)
 
@@ -27,12 +27,15 @@ Columbia Bitcoin is a grassroots community meetup held monthly at Savage Craft A
 ## Features
 
 - Live Bitcoin price ticker in the navbar (CoinGecko API)
+- Matrix rain hero animation on the home page
 - Event details pulled from Luma API, refreshed hourly
 - Lightning Network donation via Alby (QR code + copyable address)
 - BIP47 reusable payment code for on-chain donations
-- Dark/light mode toggle
+- Bitcoin-accepting businesses map powered by BTCMap
 - Education resources and past meetup slide archive
+- Dark mode only
 - SEO: JSON-LD Event schema, sitemap, robots.txt, Open Graph image
+- Back to top button in footer
 - Fully responsive
 
 ---
@@ -62,22 +65,42 @@ Open [http://localhost:3000](http://localhost:3000).
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # Root layout, metadata, GA4, Vercel Analytics
-│   ├── page.tsx            # Home page, JSON-LD structured data
-│   ├── opengraph-image.tsx # Auto-generated OG image (1200×630)
-│   ├── sitemap.ts          # /sitemap.xml
-│   └── robots.ts           # /robots.txt
+│   ├── layout.tsx                    # Root layout, metadata, GA4, Vercel Analytics
+│   ├── page.tsx                      # Home page, JSON-LD structured data
+│   ├── opengraph-image.png           # OG image (1200×630)
+│   ├── sitemap.ts                    # /sitemap.xml
+│   ├── robots.ts                     # /robots.txt
+│   ├── about/page.tsx                # About sub-page
+│   ├── contact/page.tsx              # Contact sub-page
+│   ├── donate/page.tsx               # Donate sub-page
+│   ├── event/page.tsx                # Event sub-page
+│   ├── resources/
+│   │   ├── page.tsx                  # Resources hub
+│   │   ├── debt-clock/page.tsx       # US debt clock embed
+│   │   ├── education/page.tsx        # Bitcoin education links
+│   │   ├── map/page.tsx              # BTCMap — Bitcoin-accepting businesses
+│   │   ├── mempool/page.tsx          # Mempool explorer embed
+│   │   ├── timechain/page.tsx        # Block explorer embed
+│   │   └── vibes/page.tsx            # Community vibes carousel
+│   └── api/
+│       └── btcmap/route.ts           # Proxy for BTCMap API
 ├── components/
-│   ├── Navbar.tsx          # Nav with BTC price ticker and theme toggle
-│   ├── Hero.tsx            # Hero section with SC flag background
-│   ├── EventSection.tsx    # Next meetup details + what to expect
-│   ├── AboutSection.tsx    # Mission, values, and origin story
-│   ├── ResourcesSection.tsx# Bitcoin education links + past meetup slides
-│   ├── ContactSection.tsx  # Nostr, Signal, Email contact cards
-│   ├── DonateSection.tsx   # Lightning QR, address copy, BIP47 code
-│   └── Footer.tsx
+│   ├── Navbar.tsx                    # Nav with BTC price ticker
+│   ├── Hero.tsx                      # Hero section with Matrix rain background
+│   ├── MatrixRain.tsx                # Canvas-based Matrix rain animation
+│   ├── EventSection.tsx              # Next meetup details + what to expect
+│   ├── AboutSection.tsx              # Mission, values, and origin story
+│   ├── HomeResourcesSection.tsx      # Resources preview cards on home page
+│   ├── ResourcesSection.tsx          # Full resources list
+│   ├── ResourcesBreadcrumb.tsx       # Breadcrumb nav for resources sub-pages
+│   ├── RelatedPages.tsx              # Related page links component
+│   ├── BitcoinMap.tsx                # BTCMap interactive map component
+│   ├── VibesCarousel.tsx             # Community vibes image carousel
+│   ├── ContactSection.tsx            # Nostr, Signal, Email contact cards
+│   ├── DonateSection.tsx             # Lightning QR, address copy, BIP47 code
+│   └── Footer.tsx                    # Footer with nav links and back to top
 └── lib/
-    └── luma.ts             # Luma API fetch with fallback event data
+    └── luma.ts                       # Luma API fetch with fallback event data
 ```
 
 ---

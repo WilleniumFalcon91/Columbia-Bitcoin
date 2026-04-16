@@ -3,7 +3,7 @@
 import { useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bitcoin, Zap } from "lucide-react";
+import { Bitcoin, Zap, ChevronUp } from "lucide-react";
 
 const footerLinks = [
   { label: "Event",     href: "/event",     sectionId: "event"     },
@@ -19,6 +19,10 @@ export default function Footer() {
 
   const scrollTo = useCallback((sectionId: string) => {
     document.querySelector(`#${sectionId}`)?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
@@ -74,6 +78,14 @@ export default function Footer() {
           <p className="font-mono flex items-center gap-1">
             Est. 857221 <Zap className="w-3 h-3 text-primary fill-primary" />
           </p>
+          <button
+            onClick={scrollToTop}
+            aria-label="Back to top"
+            className="flex items-center gap-1 hover:text-foreground transition-colors"
+          >
+            <ChevronUp className="w-4 h-4" />
+            Back to top
+          </button>
         </div>
       </div>
     </footer>
