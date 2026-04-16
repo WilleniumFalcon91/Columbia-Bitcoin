@@ -1,5 +1,6 @@
 import { Calendar, Clock, MapPin, Users, Beer, MessageSquare, Bot } from "lucide-react";
 import type { LumaEvent } from "@/lib/luma";
+import RevealOnScroll from "./RevealOnScroll";
 
 const agenda = [
   {
@@ -37,7 +38,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
     <section id="event" className="py-24 bg-muted">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
+        <RevealOnScroll className="text-center mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             Upcoming Event
           </p>
@@ -49,10 +50,11 @@ export default function EventSection({ event }: { event: LumaEvent }) {
             you are — whether you&apos;ve never heard of Bitcoin or you&apos;re running a
             full node.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left: event info card */}
+          <RevealOnScroll delay={100}>
           <div className="bg-card border border-border rounded-2xl shadow-card overflow-hidden">
             <div className="bg-primary px-6 py-5">
               <h3 className="text-primary-foreground font-bold text-xl">
@@ -123,13 +125,14 @@ export default function EventSection({ event }: { event: LumaEvent }) {
                   href={event.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-orange text-sm font-semibold"
                 >
                   RSVP on Luma →
                 </a>
               </div>
             </div>
           </div>
+          </RevealOnScroll>
 
           {/* Right: agenda */}
           <div className="space-y-4">
@@ -139,24 +142,23 @@ export default function EventSection({ event }: { event: LumaEvent }) {
             {agenda.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div
-                  key={i}
-                  className="flex gap-4 bg-card border border-border rounded-xl p-5 shadow-card hover:shadow-card-hover transition-shadow duration-200"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <h4 className="font-semibold text-foreground text-sm">
-                        {item.title}
-                      </h4>
+                <RevealOnScroll key={i} delay={i * 100}>
+                  <div className="flex gap-4 bg-card border border-border rounded-xl p-5 shadow-card hover:shadow-card-hover hover:border-primary/20 transition-all duration-200">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Icon className="w-5 h-5 text-primary" />
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {item.description}
-                    </p>
+                    <div>
+                      <div className="flex items-center gap-3 mb-1">
+                        <h4 className="font-semibold text-foreground text-sm">
+                          {item.title}
+                        </h4>
+                      </div>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </RevealOnScroll>
               );
             })}
           </div>

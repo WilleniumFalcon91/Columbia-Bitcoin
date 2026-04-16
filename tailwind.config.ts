@@ -50,8 +50,17 @@ const config: Config = {
         serif: ["Source Serif 4", "serif"],
       },
       boxShadow: {
-        card: "0px 1px 3px rgba(0,0,0,0.1)",
-        "card-hover": "0px 4px 16px rgba(0,0,0,0.12)",
+        card: "inset 0 1px 0 rgba(255,255,255,0.07), 0px 1px 3px rgba(0,0,0,0.10)",
+        "card-hover": "inset 0 1px 0 rgba(255,255,255,0.07), 0px 4px 16px rgba(0,0,0,0.18)",
+      },
+      keyframes: {
+        breathe: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.18)" },
+        },
+      },
+      animation: {
+        breathe: "breathe 7s ease-in-out infinite",
       },
     },
   },

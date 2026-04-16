@@ -15,8 +15,9 @@ export default function Hero({ event }: { event: LumaEvent }) {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-accent/40 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
-
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl animate-breathe" />
+        </div>
       </div>
 
       {/* SC flag background */}
@@ -35,13 +36,19 @@ export default function Hero({ event }: { event: LumaEvent }) {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8">
+        <div
+          className="animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8"
+          style={{ animationDelay: "0ms" }}
+        >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           Monthly Bitcoin meetup · Columbia, SC
         </div>
 
         {/* Heading */}
-        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight leading-none">
+        <h1
+          className="animate-fade-up text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight leading-none"
+          style={{ animationDelay: "100ms" }}
+        >
           Columbia, SC{" "}
           <span className="text-primary relative">
             Bitcoin
@@ -52,24 +59,30 @@ export default function Hero({ event }: { event: LumaEvent }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
+                className="path-draw"
                 d="M2 9C50 3 150 1 298 9"
                 stroke="#f7931a"
                 strokeWidth="3"
                 strokeLinecap="round"
-                opacity="0.4"
               />
             </svg>
           </span>
         </h1>
 
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p
+          className="animate-fade-up text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
+          style={{ animationDelay: "200ms" }}
+        >
           A casual monthly meetup for Bitcoiners and anyone interested in
           learning about Bitcoin as a hedge against monetary debasement and tool
           for individual freedom.
         </p>
 
         {/* Event card */}
-        <div className="max-w-lg mx-auto bg-card border border-border rounded-2xl shadow-card p-6 mb-10 text-left">
+        <div
+          className="animate-fade-up max-w-lg mx-auto bg-card border border-border rounded-2xl shadow-card p-6 mb-10 text-left"
+          style={{ animationDelay: "300ms" }}
+        >
           <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">
             Next Meetup
           </p>
@@ -99,12 +112,15 @@ export default function Hero({ event }: { event: LumaEvent }) {
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div
+          className="animate-fade-up flex flex-col sm:flex-row gap-3 justify-center"
+          style={{ animationDelay: "400ms" }}
+        >
           <a
             href={event.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-150 shadow-card"
+            className="px-8 py-3.5 rounded-xl btn-orange font-semibold text-sm"
           >
             RSVP on Luma →
           </a>

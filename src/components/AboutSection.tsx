@@ -1,4 +1,5 @@
 import { Shield, Globe, BookOpen, Users } from "lucide-react";
+import RevealOnScroll from "./RevealOnScroll";
 
 const values = [
   {
@@ -39,7 +40,7 @@ export default function AboutSection() {
     <section id="about" className="py-24 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
+        <RevealOnScroll className="text-center mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             About Us
           </p>
@@ -51,10 +52,10 @@ export default function AboutSection() {
             interested in Bitcoin as a tool for individual freedom and protection
             against monetary debasement.
           </p>
-        </div>
+        </RevealOnScroll>
 
         {/* Stats row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
+        <RevealOnScroll className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16" delay={100}>
           {stats.map((stat, i) => (
             <div
               key={i}
@@ -68,52 +69,53 @@ export default function AboutSection() {
               </p>
             </div>
           ))}
-        </div>
+        </RevealOnScroll>
 
         {/* Values grid */}
         <div className="grid sm:grid-cols-2 gap-6 mb-16">
           {values.map((v, i) => {
             const Icon = v.icon;
             return (
-              <div
-                key={i}
-                className="bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover transition-shadow duration-200 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Icon className="w-6 h-6 text-primary" />
+              <RevealOnScroll key={i} delay={i * 120}>
+                <div className="bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/20 transition-all duration-200 group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-foreground text-lg mb-2">
+                    {v.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    {v.description}
+                  </p>
                 </div>
-                <h3 className="font-bold text-foreground text-lg mb-2">
-                  {v.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  {v.description}
-                </p>
-              </div>
+              </RevealOnScroll>
             );
           })}
         </div>
 
         {/* Origin story */}
-        <div className="bg-accent/30 border border-accent rounded-2xl p-8 lg:p-12">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
-              Our Story
-            </h3>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Columbia, SC Bitcoin Meetup was started in 2024 out of a desire to
-              discuss Bitcoin and freedom tech with people in person. Although
-              there are ample communities and platforms online to discuss
-              Bitcoin, there was not an active in-person Bitcoin meetup within
-              2 hours of Columbia.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              We feel strongly about the importance of meeting like-minded
-              individuals in person and learning more about a technology that
-              takes some power back from the state and returns it to the
-              individual: Bitcoin.
-            </p>
+        <RevealOnScroll>
+          <div className="bg-accent/30 border border-accent rounded-2xl p-8 lg:p-12">
+            <div className="max-w-3xl mx-auto">
+              <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
+                Our Story
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Columbia, SC Bitcoin Meetup was started in 2024 out of a desire to
+                discuss Bitcoin and freedom tech with people in person. Although
+                there are ample communities and platforms online to discuss
+                Bitcoin, there was not an active in-person Bitcoin meetup within
+                2 hours of Columbia.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                We feel strongly about the importance of meeting like-minded
+                individuals in person and learning more about a technology that
+                takes some power back from the state and returns it to the
+                individual: Bitcoin.
+              </p>
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

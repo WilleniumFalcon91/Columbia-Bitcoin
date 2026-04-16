@@ -88,7 +88,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-card/90 backdrop-blur-md border-b border-border shadow-card"
+          ? "bg-card/90 backdrop-blur-md border-b border-primary/20 shadow-card"
           : "bg-transparent"
       }`}
     >
@@ -213,14 +213,14 @@ export default function Navbar() {
           {isHome ? (
             <button
               onClick={() => handleScroll("donate")}
-              className="ml-2 px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-150 shadow-card"
+              className="ml-2 px-4 py-2 rounded-lg text-sm font-semibold btn-orange"
             >
               Donate ⚡
             </button>
           ) : (
             <Link
               href="/donate"
-              className="ml-2 px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-150 shadow-card"
+              className="ml-2 px-4 py-2 rounded-lg text-sm font-semibold btn-orange"
             >
               Donate ⚡
             </Link>
