@@ -211,7 +211,7 @@ export default function ContactSection() {
                     />
                   </div>
                   {error && (
-                    <p className="text-sm text-red-500 rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 px-4 py-2">
+                    <p className="text-sm text-red-500 rounded-lg bg-red-950/30 border border-red-800 px-4 py-2">
                       {error}
                     </p>
                   )}

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, JetBrains_Mono, Source_Serif_4, Monoton } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
@@ -88,17 +87,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${sourceSerif4.variable} ${monoton.variable}`}>
-      <head>
-        {/* Blocking script: applies saved theme before React hydrates to prevent flash */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(s===null&&d)){document.documentElement.classList.add('dark');}})();`,
-          }}
-        />
-      </head>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${sourceSerif4.variable} ${monoton.variable}`}>
       <body className="font-sans antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        {children}
         <Analytics />
         {/* Google Analytics */}
         <Script

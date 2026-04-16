@@ -3,51 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --card: #ffffff;
-  --ring: #f7931a;
-  --input: #f4f5f7;
-  --muted: #f9fafb;
-  --accent: #d6e4f0;
-  --border: #dcdfe2;
-  --radius: 0.75rem;
-  --popover: #ffffff;
-  --primary: #f7931a;
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-sans: 'Inter', sans-serif;
-  --secondary: #f3f4f6;
-  --background: #e8ebed;
-  --font-serif: 'Source Serif 4', serif;
-  --foreground: #333333;
-  --destructive: #ef4444;
-  --shadow-blur: 3px;
-  --shadow-color: hsl(0 0% 0%);
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.1;
-  --card-foreground: #333333;
-  --shadow-offset-x: 0px;
-  --shadow-offset-y: 1px;
-  --muted-foreground: #6b7280;
-  --accent-foreground: #1e3a8a;
-  --popover-foreground: #333333;
-  --primary-foreground: #ffffff;
-  --secondary-foreground: #4b5563;
-  --destructive-foreground: #ffffff;
-}
-
-.dark {
   --card: #2a3040;
   --ring: #f7931a;
   --input: #3d4354;
   --muted: #2a303e;
   --accent: #2a3656;
   --border: #3d4354;
+  --radius: 0.75rem;
   --popover: #262b38;
   --primary: #f7931a;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
   --secondary: #2a303e;
   --background: #1c2433;
+  --font-serif: 'Source Serif 4', serif;
   --foreground: #e5e5e5;
   --destructive: #ef4444;
+  --shadow-blur: 3px;
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
   --card-foreground: #e5e5e5;
+  --shadow-offset-x: 0px;
+  --shadow-offset-y: 1px;
   --muted-foreground: #a3a3a3;
   --accent-foreground: #bfdbfe;
   --popover-foreground: #e5e5e5;
@@ -91,6 +69,80 @@ body {
 #vibes-player iframe {
   width: 100% !important;
   height: 100% !important;
+}
+
+/* ---------- Leaflet map — popup theme ---------- */
+/* Override Leaflet defaults to use our design tokens */
+.leaflet-popup-content-wrapper {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12) !important;
+  color: var(--foreground) !important;
+  padding: 0 !important;
+}
+.leaflet-popup-content {
+  margin: 0 !important;
+  width: auto !important;
+}
+.leaflet-popup-tip {
+  background: var(--card) !important;
+}
+.leaflet-popup-close-button {
+  color: var(--muted-foreground) !important;
+  top: 8px !important;
+  right: 8px !important;
+  font-size: 1.1rem !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+.leaflet-popup-close-button:hover {
+  color: var(--primary) !important;
+  background: none !important;
+}
+
+/* Popup content classes used by BitcoinMap.tsx */
+.btcmap-popup {
+  padding: 14px 16px 16px;
+  max-width: 240px;
+  font-family: var(--font-sans);
+}
+.btcmap-popup-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.btcmap-popup-category {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #000;
+  background: var(--primary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.btcmap-popup-detail {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  margin-bottom: 3px;
+  line-height: 1.45;
+}
+.btcmap-popup-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.btcmap-popup-link:hover {
+  opacity: 0.75;
 }
 
 /* ---------- Scrollbar hide utility ---------- */

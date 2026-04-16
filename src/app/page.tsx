@@ -6,7 +6,7 @@ import EventSection from "@/components/EventSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import DonateSection from "@/components/DonateSection";
-import ResourcesSection from "@/components/ResourcesSection";
+import HomeResourcesSection from "@/components/HomeResourcesSection";
 import Footer from "@/components/Footer";
 import { fetchLumaEvent } from "@/lib/luma";
 
@@ -76,7 +76,7 @@ export default async function Home() {
       <SectionPermalink href="/event" bg="bg-muted" label="Go to event page" />
       <AboutSection />
       <SectionPermalink href="/about" bg="bg-background" label="Go to about page" />
-      <ResourcesSection />
+      <HomeResourcesSection />
       <SectionPermalink href="/resources" bg="bg-background" label="Go to resources page" />
       <ContactSection />
       <SectionPermalink href="/contact" bg="bg-muted" label="Go to contact page" />
