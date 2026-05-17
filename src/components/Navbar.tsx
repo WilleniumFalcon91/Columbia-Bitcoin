@@ -48,8 +48,9 @@ const RESOURCES_SUBNAV = [
   { label: "Debt Clock", href: "/resources/debt-clock" },
   { label: "Timechain",  href: "/resources/timechain"  },
   { label: "Mempool",    href: "/resources/mempool"    },
-  { label: "Map",        href: "/resources/map"        },
-  { label: "Vibes",      href: "/resources/vibes"      },
+  { label: "BTC Map",      href: "/resources/map"      },
+  { label: "Meetup Finder", href: "/resources/meetupfinder" },
+  { label: "Vibes",       href: "/resources/vibes"    },
 ];
 
 export default function Navbar() {

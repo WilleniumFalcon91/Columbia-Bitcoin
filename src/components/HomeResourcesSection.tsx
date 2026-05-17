@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, ArrowUpRight } from "lucide-react";
+import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight } from "lucide-react";
 
 const sections = [
   {
@@ -46,6 +46,15 @@ const sections = [
       "Find local businesses near Columbia, SC that accept Bitcoin — community-sourced merchant data.",
     tag: "Local",
     tagColor: "bg-emerald-500/10 text-emerald-600",
+  },
+  {
+    href: "/resources/meetupfinder",
+    icon: Users,
+    label: "Meetup Finder",
+    description:
+      "Discover Bitcoin meetup communities around the world — 600+ groups mapped from BTCMap.org.",
+    tag: "Global",
+    tagColor: "bg-primary/10 text-primary",
   },
   {
     href: "/resources/vibes",

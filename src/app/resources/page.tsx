@@ -3,7 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RelatedPages from "@/components/RelatedPages";
-import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, ArrowUpRight } from "lucide-react";
+import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Bitcoin Resources",
@@ -65,6 +65,15 @@ const sections = [
       "Find local businesses near Columbia, SC that accept Bitcoin — community-sourced merchant data from BTCMap.org.",
     tag: "Local",
     tagColor: "bg-emerald-500/10 text-emerald-600",
+  },
+  {
+    href: "/resources/meetupfinder",
+    icon: Users,
+    label: "Meetup Finder",
+    description:
+      "Discover Bitcoin meetup communities around the world. Find your people — 600+ communities mapped from BTCMap.org.",
+    tag: "Global",
+    tagColor: "bg-indigo-500/10 text-indigo-500",
   },
   {
     href: "/resources/vibes",
