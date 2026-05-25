@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight } from "lucide-react";
+import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight, Network } from "lucide-react";
 
 const sections = [
   {
@@ -64,6 +64,15 @@ const sections = [
       "Music handpicked by the Columbia, SC Bitcoin community. Sit back and enjoy.",
     tag: "Community",
     tagColor: "bg-purple-500/10 text-purple-500",
+  },
+  {
+    href: "/resources/regional",
+    icon: Network,
+    label: "Carolinas Communities",
+    description:
+      "Bitcoin meetup groups across South Carolina and North Carolina — Charlotte, Charleston, Greenville, Raleigh, Asheville, and more.",
+    tag: "Regional",
+    tagColor: "bg-amber-500/10 text-amber-600",
   },
 ];
 
