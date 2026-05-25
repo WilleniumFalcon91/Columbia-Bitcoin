@@ -11,6 +11,7 @@ const SUBNAV = [
   { label: "Mempool",    href: "/resources/mempool"    },
   { label: "BTC Map",        href: "/resources/map"           },
   { label: "Meetup Finder", href: "/resources/meetupfinder"  },
+  { label: "Privacy",       href: "/resources/privacy"       },
   { label: "Carolinas",     href: "/resources/regional"      },
   { label: "Vibes",         href: "/resources/vibes"         },
 ];

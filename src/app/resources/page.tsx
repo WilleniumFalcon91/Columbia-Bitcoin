@@ -3,7 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RelatedPages from "@/components/RelatedPages";
-import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight, Network } from "lucide-react";
+import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight, Network, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Bitcoin Resources",
@@ -83,6 +83,15 @@ const sections = [
       "Music handpicked by the Columbia, SC Bitcoin community. You've done the research — now sit back and enjoy.",
     tag: "Community",
     tagColor: "bg-purple-500/10 text-purple-500",
+  },
+  {
+    href: "/resources/privacy",
+    icon: ShieldCheck,
+    label: "Privacy",
+    description:
+      "Bitcoin and web privacy tools and guides — wallets with coin control, no-KYC exchanges, VPNs, encrypted messaging, and more.",
+    tag: "Security",
+    tagColor: "bg-rose-500/10 text-rose-500",
   },
   {
     href: "/resources/regional",
