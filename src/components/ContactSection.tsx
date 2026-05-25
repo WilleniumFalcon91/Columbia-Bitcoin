@@ -5,6 +5,11 @@ import { Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
 import Image from "next/image";
 import type { ComponentType } from "react";
 
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+const FORMSPREE_ENDPOINT = FORMSPREE_ID
+  ? `https://formspree.io/f/${FORMSPREE_ID}`
+  : null;
+
 const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
 
 type Channel = {
@@ -41,12 +46,24 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!FORMSPREE_ENDPOINT) {
+      setError("Contact form is not configured yet. Please email us directly.");
+      return;
+    }
     setSending(true);
     setError(null);
     try {
-      // Simulate form submission — wire up to your email service (Formspree, Resend, etc.)
-      await new Promise((r) => setTimeout(r, 1000));
-      setSent(true);
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        const data = await res.json().catch(() => ({})) as { error?: string };
+        setError(data.error ?? "Submission failed. Please try again or email us directly.");
+      }
     } catch {
       setError("Something went wrong. Please try again or reach out directly via email.");
     } finally {
