@@ -24,7 +24,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.06]"
         style={{
-          backgroundImage: `url("https://www.wbtw.com/wp-content/uploads/sites/22/2020/06/sc-flag.jpg?strip=1")`,
+          backgroundImage: `url("/sc-flag.jpg")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

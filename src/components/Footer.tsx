@@ -2,8 +2,12 @@
 
 import { useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Bitcoin, Zap, ChevronUp } from "lucide-react";
+import { Bitcoin, Zap, ChevronUp, Mail } from "lucide-react";
+
+const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
+const NOSTR_LOGO = "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png";
 
 const footerLinks = [
   { label: "Event",     href: "/event",     sectionId: "event"     },
@@ -45,6 +49,26 @@ export default function Footer() {
               <span>Columbia, SC Bitcoin</span>
             </Link>
           )}
+
+          {/* Social links */}
+          <div className="flex items-center gap-3">
+            <a
+              href={`https://primal.net/p/${NOSTR_NPUB}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Find us on Nostr"
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+            >
+              <Image src={NOSTR_LOGO} alt="Nostr" width={18} height={18} className="opacity-70 hover:opacity-100 transition-opacity" />
+            </a>
+            <a
+              href="mailto:btcwrestle2001@protonmail.com"
+              aria-label="Email us"
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+            >
+              <Mail className="w-4 h-4" />
+            </a>
+          </div>
 
           {/* Nav links */}
           <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-1">

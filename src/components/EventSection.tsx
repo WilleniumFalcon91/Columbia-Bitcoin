@@ -136,9 +136,11 @@ export default function EventSection({ event }: { event: LumaEvent }) {
 
           {/* Right: agenda */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground mb-6">
-              What to Expect
-            </h3>
+            <RevealOnScroll>
+              <h3 className="text-lg font-bold text-foreground mb-6">
+                What to Expect
+              </h3>
+            </RevealOnScroll>
             {agenda.map((item, i) => {
               const Icon = item.icon;
               return (

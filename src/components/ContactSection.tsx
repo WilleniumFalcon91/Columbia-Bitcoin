@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
 import Image from "next/image";
 import type { ComponentType } from "react";
+import RevealOnScroll from "./RevealOnScroll";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 const FORMSPREE_ENDPOINT = FORMSPREE_ID
@@ -25,7 +26,7 @@ const contactChannels: Channel[] = [
   {
     imgSrc: "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png",
     label: "Nostr",
-    value: NOSTR_NPUB.slice(0, 20) + "…",
+    value: "View on Primal",
     href: `https://primal.net/p/${NOSTR_NPUB}`,
     description: "Find us on Nostr — decentralized and censorship-resistant",
   },
@@ -75,7 +76,7 @@ export default function ContactSection() {
     <section id="contact" className="py-24 bg-muted">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <RevealOnScroll className="text-center mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             Get in Touch
           </p>
@@ -86,11 +87,11 @@ export default function ContactSection() {
             Have a question, want to propose a talk, or just want to say hello?
             We&apos;d love to hear from you.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left: contact channels */}
-          <div className="space-y-4">
+          <RevealOnScroll delay={100} className="space-y-4">
             <h3 className="text-lg font-bold text-foreground mb-6">
               Find Us Online
             </h3>
@@ -151,10 +152,10 @@ export default function ContactSection() {
                 meetup!
               </p>
             </div>
-          </div>
+          </RevealOnScroll>
 
           {/* Right: contact form */}
-          <div className="bg-card border border-border rounded-2xl shadow-card p-6 sm:p-8">
+          <RevealOnScroll delay={200} className="bg-card border border-border rounded-2xl shadow-card p-6 sm:p-8">
             {sent ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
@@ -247,7 +248,7 @@ export default function ContactSection() {
                 </form>
               </>
             )}
-          </div>
+          </RevealOnScroll>
         </div>
       </div>
     </section>

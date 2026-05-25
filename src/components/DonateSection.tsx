@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import RevealOnScroll from "./RevealOnScroll";
 import { Zap, Copy, CheckCheck, ExternalLink, Heart } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 
@@ -38,7 +39,7 @@ export default function DonateSection() {
     <section id="donate" className="py-24 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <RevealOnScroll className="text-center mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             Support Us
           </p>
@@ -49,7 +50,7 @@ export default function DonateSection() {
             Columbia, SC Bitcoin is community-funded. Your sats keep the meetups
             running, the coffee flowing, and the conversations going.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Left: QR + address */}
@@ -104,7 +105,7 @@ export default function DonateSection() {
               </div>
 
               {copied && (
-                <p className="text-xs text-primary font-medium mb-4 animate-pulse">
+                <p className="text-xs text-green-400 font-medium mb-4">
                   Copied to clipboard!
                 </p>
               )}
@@ -146,6 +147,9 @@ export default function DonateSection() {
                 </a>
               ))}
             </div>
+            <p className="text-xs text-muted-foreground text-center mt-3 w-full max-w-sm mx-auto">
+              Opens your Lightning wallet app on mobile.
+            </p>
           </div>
 
           {/* Right: why donate */}
@@ -202,7 +206,7 @@ export default function DonateSection() {
                   </button>
                 </div>
                 {copiedBip47 && (
-                  <p className="text-xs text-primary font-medium mt-2 animate-pulse">
+                  <p className="text-xs text-green-400 font-medium mt-2">
                     Copied to clipboard!
                   </p>
                 )}

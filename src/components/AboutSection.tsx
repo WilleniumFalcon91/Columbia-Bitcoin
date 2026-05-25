@@ -18,7 +18,7 @@ const values = [
     icon: Shield,
     title: "Self-Sovereignty",
     description:
-      "We believe Bitcoin is a peer-to-peer digital cash that does not rely on trusting a third party. Bitcoin is not an investment or a get-rich-quick scheme. Bitcoin is MONEY that is permissionless, censorship-resistant, and seizure-resistant. We believe strongly in the phrase \"not your keys, not your coins\". We teach self-custody, privacy and security best practices, and using Bitcoin as money.",
+      "Bitcoin is permissionless, censorship-resistant, and seizure-resistant money — not an investment. \"Not your keys, not your coins.\" We teach self-custody, privacy best practices, and using Bitcoin as money.",
   },
   {
     icon: Globe,
