@@ -7,6 +7,29 @@ export type SearchEntry = {
 };
 
 export const SEARCH_INDEX: SearchEntry[] = [
+  // Group hub pages
+  {
+    title: "Learn Bitcoin",
+    description: "Guides on Bitcoin fundamentals, self-custody, DCA, mining, running a node, privacy, and Bitcoin for businesses.",
+    href: "/resources/learn",
+    category: "Learn",
+    keywords: "learn education guide fundamentals overview all topics",
+  },
+  {
+    title: "Bitcoin Data & Tools",
+    description: "Live block explorers, fee estimators, price charts, Bitcoin maps, and meetup finders.",
+    href: "/resources/data-tools",
+    category: "Data & Tools",
+    keywords: "data tools charts maps explorers live network overview all",
+  },
+  {
+    title: "Bitcoin Community",
+    description: "Connect with Bitcoiners across the Carolinas — regional meetup directories and community playlist.",
+    href: "/resources/community",
+    category: "Community",
+    keywords: "community carolinas meetup regional vibes overview",
+  },
+
   // Learn
   {
     title: "Start Here — New to Bitcoin?",

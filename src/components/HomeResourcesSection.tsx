@@ -1,260 +1,68 @@
 import Link from "next/link";
-import {
-  BookOpen, BookMarked, TrendingDown, TrendingUp, CalendarDays, Activity, MapPin,
-  Music, Users, ArrowUpRight, Network, ShieldCheck, Cpu, Server, Store,
-  Lightbulb, Coins, Lock, RefreshCw, Wrench, Crown, KeyRound,
-  type LucideIcon,
-} from "lucide-react";
+import { BookOpen, Activity, Users, Lightbulb, ArrowUpRight, type LucideIcon } from "lucide-react";
 
-type Section = {
-  href: string;
-  icon: LucideIcon;
+type GroupCard = {
   label: string;
   description: string;
-  tag: string;
-  tagColor: string;
-};
-
-type Group = {
-  label: string;
   icon: LucideIcon;
-  items: Section[];
-  gridCols: string;
+  iconClass: string;
+  chipClass: string;
+  borderHover: string;
+  ctaClass: string;
+  topics: string[];
+  moreCount?: number;
+  href: string;
 };
 
-const groups: Group[] = [
+const GROUP_CARDS: GroupCard[] = [
   {
     label: "Learn",
+    description: "From first principles to self-custody — guides on Bitcoin fundamentals, security, privacy, mining, and how the network works.",
     icon: BookOpen,
-    gridCols: "sm:grid-cols-2 lg:grid-cols-3",
-    items: [
-      {
-        href: "/resources/glossary",
-        icon: BookMarked,
-        label: "Bitcoin Glossary",
-        description: "New to Bitcoin? Start here. What Bitcoin is, why it matters, and every term you'll hear defined in plain English.",
-        tag: "Start Here",
-        tagColor: "bg-primary/10 text-primary",
-      },
-      {
-        href: "/resources/education",
-        icon: BookOpen,
-        label: "Bitcoin Education",
-        description: "Curated books, podcasts, articles, videos, and tools for every level.",
-        tag: "Curated",
-        tagColor: "bg-primary/10 text-primary",
-      },
-      {
-        href: "/resources/self-custody",
-        icon: ShieldCheck,
-        label: "Self-Custody",
-        description: "Not your keys, not your coins. Hot vs. cold storage, hardware wallet picks, and a step-by-step setup guide.",
-        tag: "Sovereignty",
-        tagColor: "bg-cyan-500/10 text-cyan-600",
-      },
-      {
-        href: "/resources/dca",
-        icon: TrendingUp,
-        label: "Dollar Cost Averaging",
-        description: "Why DCA beats timing the market — the psychology, the data, and the best services to stack sats automatically.",
-        tag: "Strategy",
-        tagColor: "bg-emerald-500/10 text-emerald-600",
-      },
-      {
-        href: "/resources/mining",
-        icon: Cpu,
-        label: "Bitcoin Mining",
-        description: "Proof of work, hashrate, difficulty adjustment, halvings, solo vs pool mining, and home mining options.",
-        tag: "Technical",
-        tagColor: "bg-amber-500/10 text-amber-600",
-      },
-      {
-        href: "/resources/node",
-        icon: Server,
-        label: "Run a Node",
-        description: "The cypherpunk case for running your own node, plus software and hardware options to get started.",
-        tag: "Sovereignty",
-        tagColor: "bg-cyan-500/10 text-cyan-600",
-      },
-      {
-        href: "/resources/privacy",
-        icon: ShieldCheck,
-        label: "Privacy",
-        description: "Bitcoin and web privacy tools — coin control wallets, no-KYC exchanges, VPNs, encrypted messaging, and more.",
-        tag: "Security",
-        tagColor: "bg-rose-500/10 text-rose-500",
-      },
-      {
-        href: "/resources/business",
-        icon: Store,
-        label: "Bitcoin for Businesses",
-        description: "Help local businesses accept Bitcoin — payment processors, implementation steps, and success stories.",
-        tag: "Commerce",
-        tagColor: "bg-violet-500/10 text-violet-600",
-      },
-    ],
+    iconClass: "bg-primary/10 text-primary group-hover:bg-primary/20",
+    chipClass: "bg-primary/10 text-primary",
+    borderHover: "hover:border-primary/40",
+    ctaClass: "text-primary",
+    topics: ["Glossary", "Self-Custody", "DCA"],
+    moreCount: 5,
+    href: "/resources/learn",
   },
   {
     label: "Data & Tools",
+    description: "Live block explorers, fee estimators, Bitcoin price charts, merchant maps, and global meetup finders.",
     icon: Activity,
-    gridCols: "sm:grid-cols-2 lg:grid-cols-3",
-    items: [
-      {
-        href: "/resources/debt-clock",
-        icon: TrendingDown,
-        label: "U.S. Debt Clock",
-        description: "Live federal debt ticking upward — a ledger of a monetary system with no hard cap.",
-        tag: "Live",
-        tagColor: "bg-blue-500/10 text-blue-500",
-      },
-      {
-        href: "/resources/timechain",
-        icon: CalendarDays,
-        label: "Timechain",
-        description: "Every Bitcoin block ever mined, laid out as a calendar from genesis to today.",
-        tag: "Live",
-        tagColor: "bg-blue-500/10 text-blue-500",
-      },
-      {
-        href: "/resources/mempool",
-        icon: Activity,
-        label: "Mempool Explorer",
-        description: "Real-time fee rates, block activity, and network congestion via mempool.space.",
-        tag: "Live",
-        tagColor: "bg-blue-500/10 text-blue-500",
-      },
-      {
-        href: "/resources/bitbo",
-        icon: TrendingUp,
-        label: "Bitcoin Data & Charts",
-        description: "Price history, purchasing power, and long-term appreciation — curated charts from bitbo.io.",
-        tag: "Live",
-        tagColor: "bg-blue-500/10 text-blue-500",
-      },
-      {
-        href: "/resources/map",
-        icon: MapPin,
-        label: "Bitcoin Map",
-        description: "Find local businesses near Columbia, SC that accept Bitcoin — community-sourced merchant data.",
-        tag: "Local",
-        tagColor: "bg-emerald-500/10 text-emerald-600",
-      },
-      {
-        href: "/resources/meetupfinder",
-        icon: Users,
-        label: "Meetup Finder",
-        description: "Discover Bitcoin meetup communities around the world — 600+ groups mapped from BTCMap.org.",
-        tag: "Global",
-        tagColor: "bg-indigo-500/10 text-indigo-500",
-      },
-    ],
+    iconClass: "bg-blue-500/10 text-blue-500 group-hover:bg-blue-500/20",
+    chipClass: "bg-blue-500/10 text-blue-500",
+    borderHover: "hover:border-blue-500/30",
+    ctaClass: "text-blue-500",
+    topics: ["Debt Clock", "Mempool", "BTC Charts"],
+    moreCount: 3,
+    href: "/resources/data-tools",
   },
   {
     label: "Community",
+    description: "Connect with Bitcoiners near you — Carolinas regional meetup directories and the Columbia Bitcoin community playlist.",
     icon: Users,
-    gridCols: "sm:grid-cols-2",
-    items: [
-      {
-        href: "/resources/regional",
-        icon: Network,
-        label: "Carolinas Communities",
-        description: "Bitcoin meetup groups across South Carolina and North Carolina — Charlotte, Charleston, Greenville, Raleigh, Asheville, and more.",
-        tag: "Regional",
-        tagColor: "bg-amber-500/10 text-amber-600",
-      },
-      {
-        href: "/resources/vibes",
-        icon: Music,
-        label: "Vibes",
-        description: "Music handpicked by the Columbia, SC Bitcoin community. Sit back and enjoy.",
-        tag: "Community",
-        tagColor: "bg-purple-500/10 text-purple-500",
-      },
-    ],
+    iconClass: "bg-amber-500/10 text-amber-600 group-hover:bg-amber-500/20",
+    chipClass: "bg-amber-500/10 text-amber-600",
+    borderHover: "hover:border-amber-500/30",
+    ctaClass: "text-amber-600",
+    topics: ["Carolinas Communities", "Vibes"],
+    href: "/resources/community",
   },
   {
     label: "Philosophy",
+    description: "The intellectual foundations of Bitcoin — hard money theory, the cypherpunk lineage, and the ideas that explain why it matters beyond the price.",
     icon: Lightbulb,
-    gridCols: "sm:grid-cols-2 lg:grid-cols-3",
-    items: [
-      {
-        href: "/resources/philosophy/hard-money",
-        icon: Coins,
-        label: "Hard Money",
-        description: "Why Bitcoin's 21 million cap is the most important property in monetary history — Austrian economics, stock-to-flow, and the case for sound money.",
-        tag: "Economics",
-        tagColor: "bg-amber-500/10 text-amber-600",
-      },
-      {
-        href: "/resources/philosophy/freedom-tech",
-        icon: Lock,
-        label: "Freedom Tech",
-        description: "From the Cypherpunk Manifesto to Bitcoin — the philosophical case for censorship-resistant money and why privacy is a human right, not a privilege.",
-        tag: "Cypherpunk",
-        tagColor: "bg-cyan-500/10 text-cyan-600",
-      },
-      {
-        href: "/resources/philosophy/circular-economy",
-        icon: RefreshCw,
-        label: "Circular Economy",
-        description: "How to close the fiat loop — earning, spending, and saving in Bitcoin to build a self-sustaining Bitcoin-native economy.",
-        tag: "Commerce",
-        tagColor: "bg-emerald-500/10 text-emerald-600",
-      },
-      {
-        href: "/resources/philosophy/bitcoin-fixes-this",
-        icon: Wrench,
-        label: "Bitcoin Fixes This",
-        description: "The Cantillon effect, debt monetization, and surveillance finance — what's broken about the current system and how Bitcoin addresses each problem.",
-        tag: "Thesis",
-        tagColor: "bg-rose-500/10 text-rose-500",
-      },
-      {
-        href: "/resources/philosophy/sovereign-individual",
-        icon: Crown,
-        label: "The Sovereign Individual",
-        description: "Davidson & Rees-Mogg's 1997 prophecy — digital cash, the decline of nation-states, and how Bitcoin fulfills the sovereign individual thesis.",
-        tag: "Political",
-        tagColor: "bg-violet-500/10 text-violet-600",
-      },
-      {
-        href: "/resources/philosophy/cryptosovereignty",
-        icon: KeyRound,
-        label: "Cryptosovereignty",
-        description: "Erik Cason's framework for sovereignty through cryptography — why holding your own keys is a political act, not just a security practice.",
-        tag: "Philosophy",
-        tagColor: "bg-primary/10 text-primary",
-      },
-    ],
+    iconClass: "bg-violet-500/10 text-violet-500 group-hover:bg-violet-500/20",
+    chipClass: "bg-violet-500/10 text-violet-500",
+    borderHover: "hover:border-violet-500/30",
+    ctaClass: "text-violet-500",
+    topics: ["Hard Money", "Freedom Tech", "Bitcoin Fixes This"],
+    moreCount: 3,
+    href: "/resources/philosophy",
   },
 ];
-
-function ResourceCard({ s }: { s: Section }) {
-  const Icon = s.icon;
-  return (
-    <Link
-      href={s.href}
-      className="group relative flex flex-col bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/40 transition-all duration-200"
-    >
-      <span className={`absolute top-5 right-5 text-xs font-semibold px-2.5 py-1 rounded-full ${s.tagColor}`}>
-        {s.tag}
-      </span>
-      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-        <Icon className="w-5 h-5 text-primary" />
-      </div>
-      <p className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-150 pr-16">
-        {s.label}
-      </p>
-      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-        {s.description}
-      </p>
-      <div className="flex items-center gap-1 mt-5 text-xs font-semibold text-primary">
-        Explore
-        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
-      </div>
-    </Link>
-  );
-}
 
 export default function HomeResourcesSection() {
   return (
@@ -293,30 +101,46 @@ export default function HomeResourcesSection() {
           </Link>
         </div>
 
-        <div className="space-y-14">
-          {groups.map((group) => {
-            const GroupIcon = group.icon;
+        {/* 2×2 group cards */}
+        <div className="grid sm:grid-cols-2 gap-6">
+          {GROUP_CARDS.map((card) => {
+            const Icon = card.icon;
             return (
-              <div key={group.label}>
-                {/* Group header */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <GroupIcon className="w-4 h-4 text-primary" />
-                  </div>
-                  <h3 className="font-bold text-foreground">{group.label}</h3>
-                  <div className="flex-1 h-px bg-border" />
-                  <span className="text-xs text-muted-foreground flex-shrink-0">
-                    {group.items.length} {group.items.length === 1 ? "section" : "sections"}
-                  </span>
+              <Link
+                key={card.label}
+                href={card.href}
+                className={`group flex flex-col bg-card border border-border rounded-2xl p-7 shadow-card hover:shadow-card-hover ${card.borderHover} transition-all duration-200`}
+              >
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-colors ${card.iconClass}`}>
+                  <Icon className="w-5 h-5" />
                 </div>
 
-                {/* Cards */}
-                <div className={`grid gap-4 ${group.gridCols}`}>
-                  {group.items.map((s) => (
-                    <ResourceCard key={s.href} s={s} />
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {card.label}
+                </h3>
+
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                  {card.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {card.topics.map((t) => (
+                    <span key={t} className={`text-xs font-medium px-2.5 py-1 rounded-full ${card.chipClass}`}>
+                      {t}
+                    </span>
                   ))}
+                  {card.moreCount && (
+                    <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-muted text-muted-foreground">
+                      +{card.moreCount} more
+                    </span>
+                  )}
                 </div>
-              </div>
+
+                <div className={`flex items-center gap-1.5 text-sm font-semibold ${card.ctaClass}`}>
+                  Explore {card.label}
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
+                </div>
+              </Link>
             );
           })}
         </div>

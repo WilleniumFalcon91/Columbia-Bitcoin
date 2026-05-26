@@ -122,6 +122,21 @@ const resourceRelated: Record<string, ResourceLink[]> = {
     { label: "Self-Custody", href: "/resources/self-custody", description: "How to hold your own keys and remove counterparty risk." },
     { label: "Next Meetup", href: "/event", description: "Come meet the community in person." },
   ],
+  "/resources/learn": [
+    { label: "Data & Tools", href: "/resources/data-tools", description: "Live block explorers, charts, Bitcoin maps, and meetup finders." },
+    { label: "Philosophy", href: "/resources/philosophy", description: "The intellectual foundations of Bitcoin — hard money, freedom tech, and sovereignty." },
+    { label: "Start Here", href: "/resources/start-here", description: "Follow the guided path from first principles to self-custody." },
+  ],
+  "/resources/data-tools": [
+    { label: "Learn", href: "/resources/learn", description: "Bitcoin fundamentals, security, privacy, and how the network works." },
+    { label: "Community", href: "/resources/community", description: "Carolinas meetup directories and the Columbia Bitcoin community playlist." },
+    { label: "Philosophy", href: "/resources/philosophy", description: "The intellectual foundations of Bitcoin — hard money, freedom tech, and sovereignty." },
+  ],
+  "/resources/community": [
+    { label: "Next Meetup", href: "/event", description: "See when and where we're meeting next in Columbia." },
+    { label: "Learn", href: "/resources/learn", description: "Bitcoin fundamentals, security, and self-custody guides." },
+    { label: "Data & Tools", href: "/resources/data-tools", description: "Bitcoin maps, meetup finders, and live network data." },
+  ],
   "/resources/philosophy": [
     { label: "Hard Money", href: "/resources/philosophy/hard-money", description: "The 21M cap, Austrian economics, and why Bitcoin is the hardest money ever created." },
     { label: "Freedom Tech", href: "/resources/philosophy/freedom-tech", description: "From the Cypherpunk Manifesto to Bitcoin — privacy as a right, not a privilege." },

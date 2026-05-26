@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import Footer from "@/components/Footer";
 import RelatedPages from "@/components/RelatedPages";
 import {
@@ -81,8 +82,8 @@ export default function PhilosophyIndexPage() {
   return (
     <main>
       <Navbar />
-      <div className="pt-16">
-        <section className="py-24 bg-background">
+      <ResourcesBreadcrumb />
+      <section className="py-24 bg-background">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div className="text-center mb-16">
@@ -129,7 +130,6 @@ export default function PhilosophyIndexPage() {
 
           </div>
         </section>
-      </div>
 
       <RelatedPages current="/resources/philosophy" />
       <Footer />
