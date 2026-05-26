@@ -79,7 +79,7 @@ const groups: Group[] = [
     state: "SC",
     status: "Active",
     description:
-      "Bitcoin-only meetup meeting every other Tuesday at 7 PM at Grateful Brew. Covers self-custody, running a node, Nostr, and Bitcoin fundamentals. Altcoin promotion is explicitly not welcome.",
+      "Bitcoin-only meetup community for education, conversation, and networking. We generally meet once a month at Steak n Shake where you can spend bitcoin on your meal!",
     links: [
       { label: "Meetup", href: "https://www.meetup.com/gvl-bitcoin-meetup/" },
       { label: "X", href: "https://x.com/GVLBitcoin" },
