@@ -22,6 +22,7 @@ const SUBNAV_GROUPS = [
       { label: "Debt Clock",    href: "/resources/debt-clock"   },
       { label: "Timechain",     href: "/resources/timechain"    },
       { label: "Mempool",       href: "/resources/mempool"      },
+      { label: "BTC Charts",    href: "/resources/bitbo"        },
       { label: "BTC Map",       href: "/resources/map"          },
       { label: "Meetup Finder", href: "/resources/meetupfinder" },
     ],

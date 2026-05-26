@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {
-  BookOpen, TrendingDown, CalendarDays, Activity, MapPin,
+  BookOpen, TrendingDown, TrendingUp, CalendarDays, Activity, MapPin,
   Music, Users, ArrowUpRight, Network, ShieldCheck, Cpu, Server, Store,
   type LucideIcon,
 } from "lucide-react";
@@ -95,6 +95,14 @@ const groups: Group[] = [
         icon: Activity,
         label: "Mempool Explorer",
         description: "Real-time fee rates, block activity, and network congestion via mempool.space.",
+        tag: "Live",
+        tagColor: "bg-blue-500/10 text-blue-500",
+      },
+      {
+        href: "/resources/bitbo",
+        icon: TrendingUp,
+        label: "Bitcoin Data & Charts",
+        description: "Price history, purchasing power, and long-term appreciation — curated charts from bitbo.io.",
         tag: "Live",
         tagColor: "bg-blue-500/10 text-blue-500",
       },
