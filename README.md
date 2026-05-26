@@ -37,6 +37,8 @@ Columbia Bitcoin is a grassroots community meetup held monthly at Savage Craft A
 - Carolinas regional Bitcoin community directory
 - Curated education resources (books, podcasts, articles, tools)
 - Bitcoin data and charts page (bitbo.io) — live TradingView price chart + curated charts for price history, purchasing power, and long-term appreciation
+- Self-custody guide — exchange failure case studies, hot vs. cold storage comparison, hardware wallet recommendations (Coldcard, Passport, Trezor, Jade), and step-by-step setup
+- Dollar cost averaging (DCA) guide — investment psychology, DCA vs. market timing data, real Bitcoin return examples, and recommended services (Swan, River, Strike, Cash App)
 - Bitcoin privacy and web privacy resources
 - Bitcoin mining and node-running resource guides
 - Business Bitcoin onboarding resources
@@ -101,6 +103,7 @@ src/
 │   │   ├── page.tsx                       # Resources hub (grouped: Learn / Data & Tools / Community)
 │   │   ├── bitbo/page.tsx                 # Bitcoin data & charts — live price chart + bitbo.io curated charts
 │   │   ├── business/page.tsx              # Business Bitcoin onboarding
+│   │   ├── dca/page.tsx                   # Dollar cost averaging guide — psychology, data, services
 │   │   ├── debt-clock/page.tsx            # US debt clock embed
 │   │   ├── education/page.tsx             # Curated Bitcoin education links
 │   │   ├── map/page.tsx                   # BTCMap — Bitcoin-accepting businesses
@@ -110,6 +113,7 @@ src/
 │   │   ├── node/page.tsx                  # Run a node resources
 │   │   ├── privacy/page.tsx               # Bitcoin & web privacy resources
 │   │   ├── regional/page.tsx              # Carolinas Bitcoin community directory
+│   │   ├── self-custody/page.tsx          # Self-custody guide — hardware wallets, hot vs. cold, best practices
 │   │   ├── timechain/page.tsx             # Block explorer / timechain calendar embed
 │   │   └── vibes/page.tsx                 # Community YouTube playlist carousel
 │   └── api/

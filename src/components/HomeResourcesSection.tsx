@@ -36,6 +36,22 @@ const groups: Group[] = [
         tagColor: "bg-primary/10 text-primary",
       },
       {
+        href: "/resources/self-custody",
+        icon: ShieldCheck,
+        label: "Self-Custody",
+        description: "Not your keys, not your coins. Hot vs. cold storage, hardware wallet picks, and a step-by-step setup guide.",
+        tag: "Sovereignty",
+        tagColor: "bg-cyan-500/10 text-cyan-600",
+      },
+      {
+        href: "/resources/dca",
+        icon: TrendingUp,
+        label: "Dollar Cost Averaging",
+        description: "Why DCA beats timing the market — the psychology, the data, and the best services to stack sats automatically.",
+        tag: "Strategy",
+        tagColor: "bg-emerald-500/10 text-emerald-600",
+      },
+      {
         href: "/resources/mining",
         icon: Cpu,
         label: "Bitcoin Mining",

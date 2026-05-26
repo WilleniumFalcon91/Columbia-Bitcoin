@@ -47,8 +47,10 @@ const RESOURCES_GROUPS = [
   {
     label: "Learn",
     items: [
-      { label: "Education",  href: "/resources/education" },
-      { label: "Mining",     href: "/resources/mining"    },
+      { label: "Education",    href: "/resources/education"    },
+      { label: "Self-Custody", href: "/resources/self-custody" },
+      { label: "DCA",          href: "/resources/dca"          },
+      { label: "Mining",       href: "/resources/mining"       },
       { label: "Run a Node", href: "/resources/node"      },
       { label: "Privacy",    href: "/resources/privacy"   },
       { label: "Businesses", href: "/resources/business"  },
