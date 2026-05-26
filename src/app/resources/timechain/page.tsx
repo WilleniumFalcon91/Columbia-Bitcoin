@@ -48,7 +48,7 @@ export default function TimechainPage() {
                 title="Timechain Calendar — Bitcoin block history"
                 className="w-full h-[500px] sm:h-[650px] lg:h-[760px]"
                 loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
               />
             </div>
 

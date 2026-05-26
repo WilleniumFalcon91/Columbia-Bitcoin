@@ -50,7 +50,7 @@ export default function DebtClockPage() {
                 title="U.S. National Debt Clock — live federal debt and deficit data"
                 className="w-full h-[500px] sm:h-[650px] lg:h-[800px]"
                 loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
               />
             </div>
 
