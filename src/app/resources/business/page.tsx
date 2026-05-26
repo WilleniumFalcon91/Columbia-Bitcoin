@@ -65,8 +65,8 @@ const successStories = [
     name: "Steak 'n Shake",
     type: "National Fast Food Chain",
     icon: "🍔",
-    story: "Became one of the first major American fast-food chains to accept Bitcoin via Lightning at select locations. Partnered with Square's POS Lightning integration, allowing customers to pay with any Lightning wallet at the register. A landmark moment for Bitcoin at the physical point of sale.",
-    takeaway: "Existing POS hardware (Square) enabled Lightning with minimal infrastructure change.",
+    story: "Became one of the first major American fast-food chains to accept Bitcoin via Lightning at select locations. Partnered with Speed (tryspeed.com) to process Lightning payments at the register, allowing customers to pay with any Lightning wallet. A landmark moment for Bitcoin at the physical point of sale.",
+    takeaway: "Speed's Lightning integration enabled Bitcoin acceptance at the point of sale with minimal infrastructure change.",
   },
   {
     name: "Shopify Merchants",
@@ -186,7 +186,7 @@ const implementationSteps = [
   },
   {
     title: "Promote it",
-    desc: "Add a 'Bitcoin Accepted Here' sign (print a BTCMap sign or order stickers from bitcoinacceptedhere.io). Submit the business to BTCMap.org so it shows up on Bitcoin Maps globally. Announce it on social media.",
+    desc: "Add a 'Bitcoin Accepted Here' sign (print a BTCMap sign or search for Bitcoin merchant stickers online). Submit the business to BTCMap.org so it shows up on Bitcoin Maps globally. Announce it on social media.",
   },
   {
     title: "Handle accounting",
@@ -208,8 +208,7 @@ const resources = [
   { label: "Strike for Business", href: "https://strike.me/business", desc: "Free Lightning merchant account with USD settlement." },
   { label: "OpenNode", href: "https://opennode.com", desc: "Hosted Bitcoin/Lightning payment processor." },
   { label: "BTCMap — Add Your Business", href: "https://btcmap.org/add-location", desc: "Get listed on the global Bitcoin merchant map." },
-  { label: "Bitcoin Accepted Here Stickers", href: "https://bitcoinacceptedhere.io", desc: "Physical signage for your storefront." },
-  { label: "Lopp.net — Bitcoin Merchant Guide", href: "https://lopp.net/bitcoin/commerce.html", desc: "Jameson Lopp's curated list of merchant tools and resources." },
+  { label: "Lopp.net — Bitcoin Merchant Guide", href: "https://www.lopp.net/bitcoin-information/merchant-adoption.html", desc: "Jameson Lopp's curated list of merchant tools and resources." },
 ];
 
 export default function BusinessPage() {
