@@ -116,6 +116,50 @@ export const SEARCH_INDEX: SearchEntry[] = [
     keywords: "meetup groups community worldwide BTCMap global find",
   },
 
+  // Philosophy
+  {
+    title: "Hard Money",
+    description: "Bitcoin's 21M cap and Austrian economics — why sound money matters and how Bitcoin became the hardest money in history.",
+    href: "/resources/philosophy/hard-money",
+    category: "Philosophy",
+    keywords: "sound money Austrian economics Mises Hayek Saifedean Ammous Bitcoin Standard inflation stock to flow 21 million",
+  },
+  {
+    title: "Freedom Tech",
+    description: "From the Cypherpunk Manifesto to Bitcoin — censorship resistance, privacy as a right, and technology as liberation.",
+    href: "/resources/philosophy/freedom-tech",
+    category: "Philosophy",
+    keywords: "cypherpunk manifesto Eric Hughes privacy censorship resistant Erik Cason freedom technology PGP Tor permissionless",
+  },
+  {
+    title: "Circular Economy",
+    description: "How to earn, spend, and save in Bitcoin — closing the fiat loop and building a self-sustaining Bitcoin economy.",
+    href: "/resources/philosophy/circular-economy",
+    category: "Philosophy",
+    keywords: "circular economy earn spend bitcoin lightning fiat loop merchants Lyn Alden Alex Gladstein Bitcoin Ekasi",
+  },
+  {
+    title: "Bitcoin Fixes This",
+    description: "The Cantillon effect, debt monetization, and surveillance capitalism — what's broken and why Bitcoin is the fix.",
+    href: "/resources/philosophy/bitcoin-fixes-this",
+    category: "Philosophy",
+    keywords: "Cantillon effect inflation debt Parker Lewis gradually then suddenly Allen Farrington Bitcoin is Venice hyperbitcoinization Jeff Booth",
+  },
+  {
+    title: "The Sovereign Individual",
+    description: "Davidson & Rees-Mogg's 1997 prophecy about digital cash and individual sovereignty — and how Bitcoin fulfills it.",
+    href: "/resources/philosophy/sovereign-individual",
+    category: "Philosophy",
+    keywords: "sovereign individual Davidson Rees-Mogg Knut Svanholm sovereignty mathematics digital cash nation state 1997",
+  },
+  {
+    title: "Cryptosovereignty",
+    description: "Erik Cason's framework — why holding your own Bitcoin keys is a political act and a new form of sovereignty.",
+    href: "/resources/philosophy/cryptosovereignty",
+    category: "Philosophy",
+    keywords: "cryptosovereignty Erik Cason keys sovereignty cryptographic truth Nick Szabo self custody political philosophy",
+  },
+
   // Community
   {
     title: "Carolinas Bitcoin Communities",

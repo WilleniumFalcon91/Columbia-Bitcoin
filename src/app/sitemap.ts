@@ -186,5 +186,49 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+
+    // Philosophy group
+    {
+      url: `${siteUrl}/resources/philosophy`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/resources/philosophy/hard-money`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/resources/philosophy/freedom-tech`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/resources/philosophy/circular-economy`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/resources/philosophy/bitcoin-fixes-this`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/resources/philosophy/sovereign-individual`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/resources/philosophy/cryptosovereignty`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
   ];
 }

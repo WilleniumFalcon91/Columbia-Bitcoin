@@ -76,6 +76,17 @@ const RESOURCES_GROUPS = [
       { label: "Vibes",     href: "/resources/vibes"    },
     ],
   },
+  {
+    label: "Philosophy",
+    items: [
+      { label: "Hard Money",            href: "/resources/philosophy/hard-money"         },
+      { label: "Freedom Tech",          href: "/resources/philosophy/freedom-tech"       },
+      { label: "Circular Economy",      href: "/resources/philosophy/circular-economy"   },
+      { label: "Bitcoin Fixes This",    href: "/resources/philosophy/bitcoin-fixes-this" },
+      { label: "The Sovereign Individual", href: "/resources/philosophy/sovereign-individual" },
+      { label: "Cryptosovereignty",     href: "/resources/philosophy/cryptosovereignty"  },
+    ],
+  },
 ];
 
 export default function Navbar() {
@@ -234,9 +245,9 @@ export default function Navbar() {
                             New? Start Here →
                           </Link>
                         </div>
-                        {/* Three-column grouped layout */}
+                        {/* Three-column grouped layout — Community + Philosophy share column 3 */}
                         <div className="grid grid-cols-3 gap-0 p-3">
-                          {RESOURCES_GROUPS.map((group) => (
+                          {RESOURCES_GROUPS.slice(0, 2).map((group) => (
                             <div key={group.label} className="px-1">
                               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 pt-1 pb-2">
                                 {group.label}
@@ -256,6 +267,28 @@ export default function Navbar() {
                               ))}
                             </div>
                           ))}
+                          <div className="px-1">
+                            {RESOURCES_GROUPS.slice(2).map((group, i) => (
+                              <div key={group.label} className={i > 0 ? "mt-2 pt-2 border-t border-border" : ""}>
+                                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 pt-1 pb-2">
+                                  {group.label}
+                                </p>
+                                {group.items.map((item) => (
+                                  <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    className={`flex items-center px-3 py-1.5 rounded-lg text-sm transition-colors duration-100 ${
+                                      pathname === item.href
+                                        ? "text-primary bg-primary/5 font-medium"
+                                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                                    }`}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>

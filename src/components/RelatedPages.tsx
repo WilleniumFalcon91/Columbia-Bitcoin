@@ -122,6 +122,41 @@ const resourceRelated: Record<string, ResourceLink[]> = {
     { label: "Self-Custody", href: "/resources/self-custody", description: "How to hold your own keys and remove counterparty risk." },
     { label: "Next Meetup", href: "/event", description: "Come meet the community in person." },
   ],
+  "/resources/philosophy": [
+    { label: "Hard Money", href: "/resources/philosophy/hard-money", description: "The 21M cap, Austrian economics, and why Bitcoin is the hardest money ever created." },
+    { label: "Freedom Tech", href: "/resources/philosophy/freedom-tech", description: "From the Cypherpunk Manifesto to Bitcoin — privacy as a right, not a privilege." },
+    { label: "Bitcoin Fixes This", href: "/resources/philosophy/bitcoin-fixes-this", description: "The Cantillon effect, debt monetization, and why Bitcoin is the fix." },
+  ],
+  "/resources/philosophy/hard-money": [
+    { label: "Bitcoin Fixes This", href: "/resources/philosophy/bitcoin-fixes-this", description: "The problems hard money solves — inflation, debt, and the Cantillon effect." },
+    { label: "The Sovereign Individual", href: "/resources/philosophy/sovereign-individual", description: "How sound money enables individual sovereignty in the information age." },
+    { label: "Self-Custody", href: "/resources/self-custody", description: "Hard money in your own hands — why self-custody is the final step." },
+  ],
+  "/resources/philosophy/freedom-tech": [
+    { label: "Cryptosovereignty", href: "/resources/philosophy/cryptosovereignty", description: "Erik Cason's framework for sovereignty through cryptographic keys." },
+    { label: "Privacy", href: "/resources/privacy", description: "Bitcoin and web privacy tools recommended by the community." },
+    { label: "Run a Node", href: "/resources/node", description: "Verify your own transactions — the cypherpunk ideal in practice." },
+  ],
+  "/resources/philosophy/circular-economy": [
+    { label: "Bitcoin for Businesses", href: "/resources/business", description: "Help local businesses join the Bitcoin circular economy." },
+    { label: "Bitcoin Fixes This", href: "/resources/philosophy/bitcoin-fixes-this", description: "Why exiting the fiat system matters — the case for circular Bitcoin commerce." },
+    { label: "Bitcoin Map", href: "/resources/map", description: "Find businesses near Columbia, SC where you can spend Bitcoin today." },
+  ],
+  "/resources/philosophy/bitcoin-fixes-this": [
+    { label: "Hard Money", href: "/resources/philosophy/hard-money", description: "The monetary theory behind why Bitcoin is the fix — sound money and the 21M cap." },
+    { label: "Circular Economy", href: "/resources/philosophy/circular-economy", description: "Put the thesis into practice — live and transact in a Bitcoin circular economy." },
+    { label: "Bitcoin Data & Charts", href: "/resources/bitbo", description: "Long-run Bitcoin performance data that illustrates the hyperbitcoinization arc." },
+  ],
+  "/resources/philosophy/sovereign-individual": [
+    { label: "Cryptosovereignty", href: "/resources/philosophy/cryptosovereignty", description: "Sovereignty through cryptographic keys — the practical expression of the sovereign individual thesis." },
+    { label: "Self-Custody", href: "/resources/self-custody", description: "Take custody of your keys — the first step to becoming a sovereign individual." },
+    { label: "Hard Money", href: "/resources/philosophy/hard-money", description: "Why hard money is the monetary foundation of individual sovereignty." },
+  ],
+  "/resources/philosophy/cryptosovereignty": [
+    { label: "Freedom Tech", href: "/resources/philosophy/freedom-tech", description: "The cypherpunk lineage from which cryptosovereignty emerges." },
+    { label: "The Sovereign Individual", href: "/resources/philosophy/sovereign-individual", description: "The political philosophy that predicted the cryptosovereign archetype." },
+    { label: "Self-Custody", href: "/resources/self-custody", description: "Holding your own keys is cryptosovereignty in practice." },
+  ],
 };
 
 export default function RelatedPages({ current }: { current: string }) {

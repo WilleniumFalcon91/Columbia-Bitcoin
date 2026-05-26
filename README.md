@@ -42,6 +42,7 @@ Columbia Bitcoin is a grassroots community meetup held monthly at Savage Craft A
 - Bitcoin privacy and web privacy resources
 - Bitcoin mining and node-running resource guides
 - Business Bitcoin onboarding resources
+- **Philosophy section** — six topic pages covering the intellectual foundations of Bitcoin: Hard Money (Austrian economics, 21M cap), Freedom Tech (cypherpunk lineage, Erik Cason), Circular Economy (closing the fiat loop), Bitcoin Fixes This (Cantillon effect, Parker Lewis, Allen Farrington), The Sovereign Individual (Davidson & Rees-Mogg, Knut Svanholm), and Cryptosovereignty (Erik Cason, Nick Szabo)
 - Meetup presentations archive (Bitcoin 101, Lightning Network, Sparrow Wallet, BlueWallet)
 - Community vibes playlist (YouTube IFrame player with thumbnail carousel)
 - Contact form wired to Formspree (Nostr, Signal, and email channels also listed)
@@ -100,7 +101,7 @@ src/
 │   │   ├── sparrow-wallet/page.tsx        # Sparrow Wallet slide deck
 │   │   └── blue-wallet/page.tsx           # BlueWallet slide deck
 │   ├── resources/
-│   │   ├── page.tsx                       # Resources hub (grouped: Learn / Data & Tools / Community)
+│   │   ├── page.tsx                       # Resources hub (grouped: Learn / Data & Tools / Community / Philosophy)
 │   │   ├── bitbo/page.tsx                 # Bitcoin data & charts — live price chart + bitbo.io curated charts
 │   │   ├── business/page.tsx              # Business Bitcoin onboarding
 │   │   ├── dca/page.tsx                   # Dollar cost averaging guide — psychology, data, services
@@ -115,7 +116,15 @@ src/
 │   │   ├── regional/page.tsx              # Carolinas Bitcoin community directory
 │   │   ├── self-custody/page.tsx          # Self-custody guide — hardware wallets, hot vs. cold, best practices
 │   │   ├── timechain/page.tsx             # Block explorer / timechain calendar embed
-│   │   └── vibes/page.tsx                 # Community YouTube playlist carousel
+│   │   ├── vibes/page.tsx                 # Community YouTube playlist carousel
+│   │   └── philosophy/
+│   │       ├── page.tsx                   # Philosophy section index
+│   │       ├── hard-money/page.tsx        # Hard money theory — Austrian economics, 21M cap, stock-to-flow
+│   │       ├── freedom-tech/page.tsx      # Cypherpunk lineage — PGP → Tor → Bitcoin, Erik Cason
+│   │       ├── circular-economy/page.tsx  # Bitcoin circular economy — closing the fiat loop
+│   │       ├── bitcoin-fixes-this/page.tsx # Cantillon effect, Parker Lewis, Allen Farrington
+│   │       ├── sovereign-individual/page.tsx # Davidson & Rees-Mogg prophecy, Knut Svanholm
+│   │       └── cryptosovereignty/page.tsx # Erik Cason's cryptosovereignty framework, Nick Szabo
 │   └── api/
 │       ├── btcmap/route.ts                # Proxy for BTCMap API (Bitcoin-accepting businesses)
 │       └── meetup-map/route.ts            # Proxy for meetup finder map data
@@ -138,7 +147,8 @@ src/
 │   ├── DonateSection.tsx                  # Lightning QR, address copy, BIP47 code
 │   └── Footer.tsx                         # Footer with nav links and back to top
 ├── lib/
-│   └── luma.ts                            # Luma API fetch with fallback event data
+│   ├── luma.ts                            # Luma API fetch with fallback event data
+│   └── searchIndex.ts                     # Site-wide search index (Fuse.js)
 └── declarations.d.ts                      # Module type declarations
 ```
 

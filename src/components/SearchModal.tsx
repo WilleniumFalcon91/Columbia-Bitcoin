@@ -94,7 +94,7 @@ export default function SearchModal({ open, onClose }: Props) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search resources, presentations, pages…"
+            placeholder="Search…"
             className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground text-base md:text-sm outline-none"
             autoComplete="off"
             spellCheck={false}
