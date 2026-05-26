@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Search, X, ArrowUpRight } from "lucide-react";
 import Fuse from "fuse.js";
 import { SEARCH_INDEX, type SearchEntry } from "@/lib/searchIndex";
@@ -17,15 +18,18 @@ const fuse = new Fuse(SEARCH_INDEX, {
 });
 
 const CATEGORY_COLORS: Record<string, string> = {
-  "Learn":       "bg-primary/10 text-primary",
-  "Data & Tools":"bg-blue-500/10 text-blue-500",
-  "Community":   "bg-amber-500/10 text-amber-600",
+  "Learn":        "bg-primary/10 text-primary",
+  "Data & Tools": "bg-blue-500/10 text-blue-500",
+  "Community":    "bg-amber-500/10 text-amber-600",
+  "Philosophy":   "bg-violet-500/10 text-violet-500",
   "Presentations":"bg-emerald-500/10 text-emerald-600",
-  "Event":       "bg-violet-500/10 text-violet-500",
-  "About":       "bg-slate-500/10 text-slate-400",
-  "Contact":     "bg-slate-500/10 text-slate-400",
-  "Donate":      "bg-primary/10 text-primary",
+  "Event":        "bg-violet-500/10 text-violet-500",
+  "About":        "bg-slate-500/10 text-slate-400",
+  "Contact":      "bg-slate-500/10 text-slate-400",
+  "Donate":       "bg-primary/10 text-primary",
 };
+
+const SUGGESTED = ["Self-Custody", "Next Meetup", "Hard Money", "DCA", "Lightning Network"];
 
 type Props = {
   open: boolean;
@@ -34,7 +38,9 @@ type Props = {
 
 export default function SearchModal({ open, onClose }: Props) {
   const [query, setQuery] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const results: SearchEntry[] = query.trim().length > 0
     ? fuse.search(query).slice(0, 8).map((r) => r.item)
@@ -42,8 +48,14 @@ export default function SearchModal({ open, onClose }: Props) {
 
   const handleClose = useCallback(() => {
     setQuery("");
+    setSelectedIndex(-1);
     onClose();
   }, [onClose]);
+
+  // Reset selection when query changes
+  useEffect(() => {
+    setSelectedIndex(-1);
+  }, [query]);
 
   // Focus input when opened
   useEffect(() => {
@@ -71,6 +83,20 @@ export default function SearchModal({ open, onClose }: Props) {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((i) => results.length > 0 ? Math.min(i + 1, results.length - 1) : i);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((i) => Math.max(i - 1, 0));
+    } else if (e.key === "Enter" && selectedIndex >= 0 && results[selectedIndex]) {
+      e.preventDefault();
+      router.push(results[selectedIndex].href);
+      handleClose();
+    }
+  };
+
   if (!open) return null;
 
   return (
@@ -94,6 +120,7 @@ export default function SearchModal({ open, onClose }: Props) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleInputKeyDown}
             placeholder="Search…"
             className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground text-base md:text-sm outline-none"
             autoComplete="off"
@@ -111,8 +138,19 @@ export default function SearchModal({ open, onClose }: Props) {
         {/* Results */}
         <div className="max-h-[60vh] overflow-y-auto">
           {query.trim().length === 0 ? (
-            <div className="px-4 py-8 text-center">
-              <p className="text-sm text-muted-foreground">Start typing to search all resources and pages.</p>
+            <div className="px-4 py-6 text-center">
+              <p className="text-sm text-muted-foreground mb-4">Start typing to search all resources and pages.</p>
+              <div className="flex flex-wrap justify-center gap-2">
+                {SUGGESTED.map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => setQuery(s)}
+                    className="px-3 py-1.5 rounded-full bg-secondary border border-border text-xs font-medium text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
             </div>
           ) : results.length === 0 ? (
             <div className="px-4 py-8 text-center">
@@ -120,12 +158,14 @@ export default function SearchModal({ open, onClose }: Props) {
             </div>
           ) : (
             <ul className="py-2">
-              {results.map((entry) => (
+              {results.map((entry, idx) => (
                 <li key={entry.href}>
                   <Link
                     href={entry.href}
                     onClick={handleClose}
-                    className="flex items-start gap-3 px-4 py-3 hover:bg-secondary transition-colors group"
+                    className={`flex items-start gap-3 px-4 py-3 transition-colors group ${
+                      idx === selectedIndex ? "bg-secondary" : "hover:bg-secondary"
+                    }`}
                   >
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
@@ -149,8 +189,17 @@ export default function SearchModal({ open, onClose }: Props) {
         </div>
 
         {/* Footer hint */}
-        <div className="px-4 py-2.5 border-t border-border bg-muted/30">
-          <p className="text-xs text-muted-foreground">Press <kbd className="px-1.5 py-0.5 rounded bg-secondary border border-border font-mono text-xs">Esc</kbd> to close</p>
+        <div className="px-4 py-2.5 border-t border-border bg-muted/30 flex items-center gap-3">
+          <p className="text-xs text-muted-foreground">
+            Press <kbd className="px-1.5 py-0.5 rounded bg-secondary border border-border font-mono text-xs">Esc</kbd> to close
+          </p>
+          {results.length > 0 && (
+            <p className="text-xs text-muted-foreground">
+              <kbd className="px-1.5 py-0.5 rounded bg-secondary border border-border font-mono text-xs">↑↓</kbd> navigate
+              {" · "}
+              <kbd className="px-1.5 py-0.5 rounded bg-secondary border border-border font-mono text-xs">↵</kbd> open
+            </p>
+          )}
         </div>
       </div>
     </div>

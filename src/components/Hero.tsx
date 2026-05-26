@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Clock, MapPin, ArrowDown } from "lucide-react";
+import { Calendar, Clock, MapPin, ArrowDown, ArrowUpRight } from "lucide-react";
 import type { LumaEvent } from "@/lib/luma";
 import MatrixRain from "./MatrixRain";
 
@@ -122,7 +122,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
             rel="noopener noreferrer"
             className="px-8 py-3.5 rounded-xl btn-orange font-semibold text-sm"
           >
-            RSVP on Luma →
+            RSVP on Luma <ArrowUpRight className="w-4 h-4 inline-block" />
           </a>
           <a
             href="#about"

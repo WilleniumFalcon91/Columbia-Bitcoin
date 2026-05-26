@@ -144,7 +144,7 @@ export default function ContactSection() {
 
             <div className="bg-card border border-border rounded-xl p-6 shadow-card">
               <h4 className="font-semibold text-foreground mb-2">
-                Ideas for a technical workshop or presentation?
+                Propose a topic for a future meetup.
               </h4>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 We welcome presentations on any Bitcoin or freedom tech related
@@ -191,11 +191,12 @@ export default function ContactSection() {
                       type="text"
                       required
                       value={form.name}
+                      disabled={sending}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, name: e.target.value }))
                       }
                       placeholder="Satoshi Nakamoto"
-                      className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all disabled:opacity-60"
                     />
                   </div>
                   <div>
@@ -206,11 +207,12 @@ export default function ContactSection() {
                       type="email"
                       required
                       value={form.email}
+                      disabled={sending}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, email: e.target.value }))
                       }
                       placeholder="satoshi@bitcoin.org"
-                      className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all disabled:opacity-60"
                     />
                   </div>
                   <div>
@@ -221,15 +223,16 @@ export default function ContactSection() {
                       required
                       rows={5}
                       value={form.message}
+                      disabled={sending}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, message: e.target.value }))
                       }
                       placeholder="I'd love to give a talk on Lightning..."
-                      className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all resize-none disabled:opacity-60"
                     />
                   </div>
                   {error && (
-                    <p className="text-sm text-red-500 rounded-lg bg-red-950/30 border border-red-800 px-4 py-2">
+                    <p role="alert" className="text-sm text-red-500 rounded-lg bg-red-950/30 border border-red-800 px-4 py-2">
                       {error}
                     </p>
                   )}

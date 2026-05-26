@@ -3,7 +3,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import RelatedPages from "@/components/RelatedPages";
-import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Hard Money — Bitcoin Philosophy",
@@ -109,6 +110,14 @@ export default function HardMoneyPage() {
 
       <section className="py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+          <Link
+            href="/resources/philosophy"
+            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            <ChevronLeft className="w-3.5 h-3.5" />
+            All Philosophy Topics
+          </Link>
 
           {/* Hero */}
           <div>

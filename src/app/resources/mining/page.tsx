@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { ExternalLink, ChevronLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
@@ -103,6 +104,14 @@ export default function MiningPage() {
 
         <section className="py-24 bg-background">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <Link
+              href="/resources/learn"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors mb-6"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+              All Learn Topics
+            </Link>
 
             <div className="mb-14">
               <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 mb-4">

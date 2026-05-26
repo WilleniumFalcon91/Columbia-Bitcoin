@@ -12,7 +12,7 @@ const values = [
     icon: Users,
     title: "Open Community",
     description:
-      "Whether you've just heard about Bitcoin and want to learn more or you have been around since before the Blocksize Wars, you belong here.",
+      "Whether you've just heard of Bitcoin and want to learn more, or you've been in the space for years — you belong here.",
   },
   {
     icon: Shield,

@@ -1,6 +1,19 @@
-import { Calendar, Clock, MapPin, Users, Beer, MessageSquare, Bot } from "lucide-react";
+import { Calendar, CalendarPlus, Clock, MapPin, Users, Beer, MessageSquare, Bot, ArrowUpRight } from "lucide-react";
 import type { LumaEvent } from "@/lib/luma";
 import RevealOnScroll from "./RevealOnScroll";
+
+function buildGCalUrl(event: LumaEvent): string {
+  const start = new Date(event.startDateISO);
+  const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+  const fmt = (d: Date) => d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+  return (
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    `&text=${encodeURIComponent(event.title)}` +
+    `&dates=${fmt(start)}/${fmt(end)}` +
+    `&location=${encodeURIComponent(`${event.locationName}, ${event.address}`)}` +
+    `&details=${encodeURIComponent("Columbia, SC Bitcoin monthly meetup. Free to attend.")}`
+  );
+}
 
 const agenda = [
   {
@@ -33,6 +46,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
   const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(
     `${event.locationName}, ${event.address}`
   )}`;
+  const gcalUrl = buildGCalUrl(event);
 
   return (
     <section id="event" className="py-24 bg-muted">
@@ -109,7 +123,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
                   >
-                    Open in Maps →
+                    Open in Maps <ArrowUpRight className="w-3.5 h-3.5 inline-block ml-0.5" />
                   </a>
                 </div>
               </div>
@@ -121,14 +135,25 @@ export default function EventSection({ event }: { event: LumaEvent }) {
                   </span>{" "}
                   {event.description}
                 </p>
-                <a
-                  href={event.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-orange text-sm font-semibold"
-                >
-                  RSVP on Luma →
-                </a>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href={event.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-orange text-sm font-semibold"
+                  >
+                    RSVP on Luma <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href={gcalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary border border-border text-sm font-medium text-foreground hover:border-primary/40 transition-all"
+                  >
+                    <CalendarPlus className="w-4 h-4" />
+                    Add to Calendar
+                  </a>
+                </div>
               </div>
             </div>
           </div>

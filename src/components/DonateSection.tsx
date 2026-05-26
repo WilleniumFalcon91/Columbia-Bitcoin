@@ -61,7 +61,7 @@ export default function DonateSection() {
                 <div className="p-4 bg-white rounded-xl shadow-inner border border-border">
                   <QRCodeSVG
                     value={LIGHTNING_URI}
-                    size={200}
+                    size={160}
                     level="M"
                     includeMargin={false}
                     fgColor="#f7931a"
@@ -120,7 +120,11 @@ export default function DonateSection() {
                 <ExternalLink className="w-3.5 h-3.5 opacity-70" />
               </a>
 
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-xs text-muted-foreground mt-3 font-medium">
+                Payment is instant — no confirmation needed.
+              </p>
+
+              <p className="text-xs text-muted-foreground mt-2">
                 Works with any Lightning wallet — Wallet of Satoshi, Phoenix,
                 Muun, Alby, and more.
               </p>
@@ -164,9 +168,7 @@ export default function DonateSection() {
                 </h3>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                Your donations directly fund the potential for us to rent event
-                space for future workshops, events, and educational
-                presentations. Also, beers at the meetup :)
+                Your donations cover event space, supplies, and keep the coffee flowing.
               </p>
             </div>
 

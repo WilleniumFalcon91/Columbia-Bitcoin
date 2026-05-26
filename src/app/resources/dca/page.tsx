@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import RelatedPages from "@/components/RelatedPages";
+import { ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Bitcoin Dollar Cost Averaging (DCA)",
@@ -233,6 +235,14 @@ export default function DCAPage() {
 
         <section className="py-24 bg-background">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+            <Link
+              href="/resources/learn"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+              All Learn Topics
+            </Link>
 
             {/* Header */}
             <div className="text-center">

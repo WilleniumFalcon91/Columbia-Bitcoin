@@ -42,6 +42,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }
 
 body {
@@ -218,6 +219,10 @@ body {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* ---------- Gradient primary button ---------- */

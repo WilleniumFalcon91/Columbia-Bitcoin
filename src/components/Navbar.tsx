@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Menu, X, Bitcoin,
-  TrendingUp, TrendingDown, ChevronDown, Search,
+  TrendingUp, TrendingDown, ChevronDown, Search, ArrowUpRight,
 } from "lucide-react";
 import SearchModal from "@/components/SearchModal";
 
@@ -170,24 +170,28 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-1">
-          {price !== null && (
-            <div
-              aria-live="polite"
-              aria-label="Bitcoin price"
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-xs font-semibold mr-2"
-            >
-              <span className="text-primary">BTC</span>
-              <span className="text-foreground">
-                ${price.toLocaleString("en-US", { maximumFractionDigits: 0 })}
-              </span>
-              {change24h !== null && (
-                <span className={`flex items-center gap-0.5 ${isPositive ? "text-green-500" : "text-red-500"}`}>
-                  {isPositive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-                  {isPositive ? "+" : ""}{change24h.toFixed(2)}%
+          <div
+            aria-live="polite"
+            aria-label="Bitcoin price"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-xs font-semibold mr-2"
+          >
+            <span className="text-primary">BTC</span>
+            {price === null ? (
+              <div className="w-16 h-3.5 rounded bg-muted/60 animate-pulse" />
+            ) : (
+              <>
+                <span className="text-foreground">
+                  ${price.toLocaleString("en-US", { maximumFractionDigits: 0 })}
                 </span>
-              )}
-            </div>
-          )}
+                {change24h !== null && (
+                  <span className={`flex items-center gap-0.5 ${isPositive ? "text-green-500" : "text-red-500"}`}>
+                    {isPositive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+                    {isPositive ? "+" : ""}{change24h.toFixed(2)}%
+                  </span>
+                )}
+              </>
+            )}
+          </div>
 
           {navLinks.map((link) => {
             const active = link.href === "/resources"
@@ -242,7 +246,7 @@ export default function Navbar() {
                             href="/resources/start-here"
                             className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
                           >
-                            New? Start Here →
+                            New? Start Here <ArrowUpRight className="w-3 h-3 inline-block" />
                           </Link>
                         </div>
                         {/* Three-column grouped layout — Community + Philosophy share column 3 */}
@@ -314,10 +318,11 @@ export default function Navbar() {
 
           <button
             onClick={() => setSearchOpen(true)}
-            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+            className="flex items-center gap-1.5 px-2 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
+            <kbd className="hidden lg:flex items-center px-1.5 py-0.5 rounded bg-secondary border border-border font-mono text-[10px] leading-none">⌘K</kbd>
           </button>
 
           {isHome ? (
@@ -339,7 +344,9 @@ export default function Navbar() {
 
         {/* Mobile controls */}
         <div className="flex md:hidden items-center gap-2">
-          {price !== null && (
+          {price === null ? (
+            <div className="w-14 h-3 rounded bg-primary/20 animate-pulse" />
+          ) : (
             <span className="text-xs font-semibold text-primary">
               ${price.toLocaleString("en-US", { maximumFractionDigits: 0 })}
             </span>

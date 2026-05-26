@@ -106,8 +106,9 @@ export default function MatrixRain() {
       animId = requestAnimationFrame(draw);
     };
 
-    // Respect OS-level reduced-motion preference
+    // Respect OS-level reduced-motion preference and skip on low-end/mobile devices
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.innerWidth < 768 || navigator.hardwareConcurrency < 4) return;
 
     init();
     animId = requestAnimationFrame(draw);
