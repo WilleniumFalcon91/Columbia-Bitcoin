@@ -43,21 +43,35 @@ const navLinks: { label: string; href: string; sectionId?: string }[] = [
   { label: "Contact",       href: "/contact",       sectionId: "contact"   },
 ];
 
-const RESOURCES_SUBNAV = [
-  { label: "Overview",   href: "/resources"            },
-  { label: "Education",  href: "/resources/education"  },
-  { label: "Debt Clock", href: "/resources/debt-clock" },
-  { label: "Timechain",  href: "/resources/timechain"  },
-  { label: "Mempool",    href: "/resources/mempool"    },
-  { label: "BTC Charts", href: "/resources/bitbo"      },
-  { label: "BTC Map",      href: "/resources/map"      },
-  { label: "Meetup Finder", href: "/resources/meetupfinder" },
-  { label: "Privacy",     href: "/resources/privacy"   },
-  { label: "Carolinas",   href: "/resources/regional" },
-  { label: "Mining",      href: "/resources/mining"   },
-  { label: "Run a Node",  href: "/resources/node"     },
-  { label: "Businesses",  href: "/resources/business" },
-  { label: "Vibes",       href: "/resources/vibes"    },
+const RESOURCES_GROUPS = [
+  {
+    label: "Learn",
+    items: [
+      { label: "Education",  href: "/resources/education" },
+      { label: "Mining",     href: "/resources/mining"    },
+      { label: "Run a Node", href: "/resources/node"      },
+      { label: "Privacy",    href: "/resources/privacy"   },
+      { label: "Businesses", href: "/resources/business"  },
+    ],
+  },
+  {
+    label: "Data & Tools",
+    items: [
+      { label: "Debt Clock",    href: "/resources/debt-clock"   },
+      { label: "Timechain",     href: "/resources/timechain"    },
+      { label: "Mempool",       href: "/resources/mempool"      },
+      { label: "BTC Charts",    href: "/resources/bitbo"        },
+      { label: "BTC Map",       href: "/resources/map"          },
+      { label: "Meetup Finder", href: "/resources/meetupfinder" },
+    ],
+  },
+  {
+    label: "Community",
+    items: [
+      { label: "Carolinas", href: "/resources/regional" },
+      { label: "Vibes",     href: "/resources/vibes"    },
+    ],
+  },
 ];
 
 export default function Navbar() {
@@ -180,22 +194,44 @@ export default function Navbar() {
 
                   {/* Dropdown panel */}
                   <div className="absolute top-full -left-2 hidden group-hover:block z-50">
-                    {/* transparent bridge eliminates the gap between trigger and panel */}
                     <div className="pt-2">
-                      <div className="bg-card border border-border rounded-xl shadow-card-hover py-1.5 min-w-[180px]">
-                        {RESOURCES_SUBNAV.map((item) => (
+                      <div className="bg-card border border-border rounded-xl shadow-card-hover w-[480px]">
+                        {/* Overview row */}
+                        <div className="px-4 py-2.5 border-b border-border">
                           <Link
-                            key={item.href}
-                            href={item.href}
-                            className={`flex items-center px-4 py-2 text-sm transition-colors duration-100 ${
-                              pathname === item.href
-                                ? "text-primary bg-primary/5 font-medium"
-                                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                            href="/resources"
+                            className={`text-sm font-medium transition-colors duration-100 ${
+                              pathname === "/resources"
+                                ? "text-primary"
+                                : "text-muted-foreground hover:text-foreground"
                             }`}
                           >
-                            {item.label}
+                            All Resources
                           </Link>
-                        ))}
+                        </div>
+                        {/* Three-column grouped layout */}
+                        <div className="grid grid-cols-3 gap-0 p-3">
+                          {RESOURCES_GROUPS.map((group) => (
+                            <div key={group.label} className="px-1">
+                              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 pt-1 pb-2">
+                                {group.label}
+                              </p>
+                              {group.items.map((item) => (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className={`flex items-center px-3 py-1.5 rounded-lg text-sm transition-colors duration-100 ${
+                                    pathname === item.href
+                                      ? "text-primary bg-primary/5 font-medium"
+                                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                                  }`}
+                                >
+                                  {item.label}
+                                </Link>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -293,19 +329,38 @@ export default function Navbar() {
                       />
                     </button>
                     {resourcesMobileOpen && (
-                      <div className="ml-3 mt-1 mb-1 flex flex-col gap-0.5 border-l-2 border-border pl-3">
-                        {RESOURCES_SUBNAV.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className={`px-3 py-2 rounded-lg text-sm transition-all ${
-                              pathname === item.href
-                                ? "text-primary bg-primary/10 font-medium"
-                                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                            }`}
-                          >
-                            {item.label}
-                          </Link>
+                      <div className="ml-3 mt-1 mb-1 border-l-2 border-border pl-3">
+                        <Link
+                          href="/resources"
+                          className={`flex px-3 py-2 rounded-lg text-sm transition-all ${
+                            pathname === "/resources"
+                              ? "text-primary bg-primary/10 font-medium"
+                              : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                          }`}
+                        >
+                          All Resources
+                        </Link>
+                        {RESOURCES_GROUPS.map((group) => (
+                          <div key={group.label} className="mt-2">
+                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 pb-1">
+                              {group.label}
+                            </p>
+                            <div className="flex flex-col gap-0.5">
+                              {group.items.map((item) => (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className={`px-3 py-2 rounded-lg text-sm transition-all ${
+                                    pathname === item.href
+                                      ? "text-primary bg-primary/10 font-medium"
+                                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                                  }`}
+                                >
+                                  {item.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     )}
