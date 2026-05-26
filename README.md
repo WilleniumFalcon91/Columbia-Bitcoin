@@ -36,6 +36,7 @@ Columbia Bitcoin is a grassroots community meetup held monthly at Savage Craft A
 - Bitcoin meetup finder map for locating nearby communities
 - Carolinas regional Bitcoin community directory
 - Curated education resources (books, podcasts, articles, tools)
+- Bitcoin data and charts page (bitbo.io) — live TradingView price chart + curated charts for price history, purchasing power, and long-term appreciation
 - Bitcoin privacy and web privacy resources
 - Bitcoin mining and node-running resource guides
 - Business Bitcoin onboarding resources
@@ -97,7 +98,8 @@ src/
 │   │   ├── sparrow-wallet/page.tsx        # Sparrow Wallet slide deck
 │   │   └── blue-wallet/page.tsx           # BlueWallet slide deck
 │   ├── resources/
-│   │   ├── page.tsx                       # Resources hub
+│   │   ├── page.tsx                       # Resources hub (grouped: Learn / Data & Tools / Community)
+│   │   ├── bitbo/page.tsx                 # Bitcoin data & charts — live price chart + bitbo.io curated charts
 │   │   ├── business/page.tsx              # Business Bitcoin onboarding
 │   │   ├── debt-clock/page.tsx            # US debt clock embed
 │   │   ├── education/page.tsx             # Curated Bitcoin education links
@@ -114,7 +116,7 @@ src/
 │       ├── btcmap/route.ts                # Proxy for BTCMap API (Bitcoin-accepting businesses)
 │       └── meetup-map/route.ts            # Proxy for meetup finder map data
 ├── components/
-│   ├── Navbar.tsx                         # Nav with BTC price ticker
+│   ├── Navbar.tsx                         # Nav with BTC price ticker and grouped resources dropdown
 │   ├── Hero.tsx                           # Hero section with Matrix rain background
 │   ├── MatrixRain.tsx                     # Canvas-based Matrix rain animation
 │   ├── EventSection.tsx                   # Next meetup details + what to expect
@@ -151,7 +153,7 @@ Security headers are set globally in `next.config.mjs`:
 | `Referrer-Policy` | `strict-origin-when-cross-origin` |
 | `Permissions-Policy` | Camera, microphone, and geolocation disabled |
 
-CSP frame allowlist includes `timechaincalendar.com`, `us-debt-clock.com`, `youtube.com`, and `youtube-nocookie.com`. Script allowlist includes `googletagmanager.com` and `youtube.com` (required by the YouTube IFrame API).
+CSP frame allowlist includes `timechaincalendar.com`, `us-debt-clock.com`, `youtube.com`, `youtube-nocookie.com`, `tradingview.com`, and `s.tradingview.com`. Script allowlist includes `googletagmanager.com` and `youtube.com` (required by the YouTube IFrame API).
 
 ---
 
