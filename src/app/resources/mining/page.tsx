@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -323,7 +322,7 @@ export default function MiningPage() {
                 <SectionLabel>Profitability</SectionLabel>
                 <h3 className="text-2xl font-bold text-foreground mb-4">Mining Economics</h3>
                 <p className="text-muted-foreground leading-relaxed mb-5">
-                  Mining profitability is a function of four variables: <strong className="text-foreground">hashrate</strong> (your machine's speed), <strong className="text-foreground">power consumption</strong> (your machine's energy draw), <strong className="text-foreground">electricity cost</strong> (your rate in $/kWh), and <strong className="text-foreground">network difficulty</strong> (competition from other miners). Bitcoin price matters but is outside your control.
+                  Mining profitability is a function of four variables: <strong className="text-foreground">hashrate</strong> (your machine&apos;s speed), <strong className="text-foreground">power consumption</strong> (your machine&apos;s energy draw), <strong className="text-foreground">electricity cost</strong> (your rate in $/kWh), and <strong className="text-foreground">network difficulty</strong> (competition from other miners). Bitcoin price matters but is outside your control.
                 </p>
                 <div className="bg-card border border-border rounded-xl p-5 shadow-card mb-4">
                   <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Break-even electricity rate</p>
@@ -333,7 +332,7 @@ export default function MiningPage() {
                 </div>
                 <div className="bg-accent/30 border border-accent rounded-xl p-4">
                   <p className="text-sm text-muted-foreground">
-                    <span className="font-semibold text-foreground">Long-term view:</span> Many serious home miners view it as a form of dollar-cost-averaging into Bitcoin with the bonus of earning transaction fees and supporting the network's decentralization — not purely as a profit play.
+                    <span className="font-semibold text-foreground">Long-term view:</span> Many serious home miners view it as a form of dollar-cost-averaging into Bitcoin with the bonus of earning transaction fees and supporting the network&apos;s decentralization — not purely as a profit play.
                   </p>
                 </div>
               </section>

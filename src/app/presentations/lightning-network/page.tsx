@@ -192,19 +192,19 @@ export default function LightningNetworkPage() {
                 <div className="bg-accent/30 border border-accent rounded-xl p-5">
                   <p className="text-sm text-foreground font-semibold mb-1">On-chain is often fine right now.</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    On-chain fees are currently cheap. Lightning's main practical advantage is for merchants — Square terminals and similar POS systems only accept Lightning.
+                    On-chain fees are currently cheap. Lightning&apos;s main practical advantage is for merchants — Square terminals and similar POS systems only accept Lightning.
                   </p>
                 </div>
                 <div className="bg-accent/30 border border-accent rounded-xl p-5">
                   <p className="text-sm text-foreground font-semibold mb-1">Lightning is NOT for your savings.</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    A Lightning wallet is always "hot" — keys are always online. Don't keep more sats in a Lightning channel than you'd carry as cash in your physical wallet.
+                    A Lightning wallet is always &quot;hot&quot; — keys are always online. Don&apos;t keep more sats in a Lightning channel than you&apos;d carry as cash in your physical wallet.
                   </p>
                 </div>
                 <div className="bg-accent/30 border border-accent rounded-xl p-5">
                   <p className="text-sm text-foreground font-semibold mb-1">Privacy depends on your node.</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    If you're not using your own node, assume the node you're connected to can see all your payments.
+                    If you&apos;re not using your own node, assume the node you&apos;re connected to can see all your payments.
                   </p>
                 </div>
               </div>
@@ -268,7 +268,7 @@ export default function LightningNetworkPage() {
                 <div className="bg-card border border-border rounded-xl p-5 shadow-card">
                   <h3 className="font-semibold text-foreground mb-2">Inbound Liquidity</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Capacity to <strong className="text-foreground">receive</strong> payments. Others have funds on your side of the channel, enabling them to send to you. Without it, incoming payments can't route.
+                    Capacity to <strong className="text-foreground">receive</strong> payments. Others have funds on your side of the channel, enabling them to send to you. Without it, incoming payments can&apos;t route.
                   </p>
                 </div>
                 <div className="bg-card border border-border rounded-xl p-5 shadow-card">
