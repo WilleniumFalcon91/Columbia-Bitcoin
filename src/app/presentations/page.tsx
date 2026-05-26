@@ -28,7 +28,7 @@ type Presentation = {
   sections: string[];
 };
 
-export const presentations: Presentation[] = [
+const presentations: Presentation[] = [
   {
     slug: "bitcoin-101",
     title: "Bitcoin 101",
@@ -38,6 +38,36 @@ export const presentations: Presentation[] = [
     description:
       "A foundational introduction to Bitcoin: what it is, why it matters, its key properties, and how transactions work under the hood. Perfect for newcomers.",
     sections: ["What is Bitcoin?", "Properties of Bitcoin", "Why Bitcoin?", "How Transactions Work", "Bitcoin Wallets"],
+  },
+  {
+    slug: "lightning-network",
+    title: "Lightning Network Workshop",
+    date: "Monthly Meetup",
+    topic: "Lightning",
+    topicColor: "bg-yellow-500/10 text-yellow-600",
+    description:
+      "A hands-on workshop covering how the Lightning Network works, wallet options for every experience level, channel management, liquidity, and privacy tradeoffs.",
+    sections: ["Why Lightning?", "Wallet Options", "Channels & Nodes", "Liquidity", "Privacy", "Real-World Uses"],
+  },
+  {
+    slug: "sparrow-wallet",
+    title: "Sparrow Wallet",
+    date: "Monthly Meetup",
+    topic: "Wallets",
+    topicColor: "bg-emerald-500/10 text-emerald-600",
+    description:
+      "A deep dive into Sparrow Wallet — hardware wallet setup, node connection, UTXO coin control, watch-only wallets, and advanced Bitcoin self-custody features.",
+    sections: ["Why Sparrow?", "Core Features", "Hardware Setup", "Node Connection", "Coin Control", "Security"],
+  },
+  {
+    slug: "blue-wallet",
+    title: "BlueWallet",
+    date: "Monthly Meetup",
+    topic: "Wallets",
+    topicColor: "bg-blue-500/10 text-blue-500",
+    description:
+      "A beginner-friendly guide to BlueWallet for iPhone and Android — creating your first wallet, securing your seed phrase, sending and receiving bitcoin, and advanced features.",
+    sections: ["Create Wallet", "Seed Backup", "Send & Receive", "Security", "Advanced Features"],
   },
 ];
 
