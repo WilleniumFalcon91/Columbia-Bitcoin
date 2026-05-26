@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description:
       "Details for the next Columbia, SC Bitcoin meetup — date, time, location, and what to expect. Free to attend, all are welcome.",
     url: "/event",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Next Meetup | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Next Meetup | Columbia, SC Bitcoin" }],
   },
 };
 

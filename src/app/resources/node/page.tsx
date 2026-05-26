@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Run a Bitcoin Node | Columbia, SC Bitcoin",
     description: "Don't trust, verify. Everything you need to run your own Bitcoin full node.",
     url: "/resources/node",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Run a Bitcoin Node | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Run a Bitcoin Node | Columbia, SC Bitcoin" }],
   },
 };
 

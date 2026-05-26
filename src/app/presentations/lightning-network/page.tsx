@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   description:
     "A hands-on Lightning Network workshop covering how it works, wallet options, channel management, liquidity, privacy tradeoffs, and real-world use cases.",
   alternates: { canonical: "/presentations/lightning-network" },
+  openGraph: {
+    title: "Lightning Network Workshop | Columbia, SC Bitcoin",
+    description: "A hands-on Lightning Network workshop covering how it works, wallet options, channel management, liquidity, privacy tradeoffs, and real-world use cases.",
+    url: "/presentations/lightning-network",
+    images: [{ url: `/api/og?title=${encodeURIComponent("Lightning Network Workshop | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Lightning Network Workshop | Columbia, SC Bitcoin" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lightning Network Workshop | Columbia, SC Bitcoin",
+  },
 };
 
 function SectionLabel({ children }: { children: React.ReactNode }) {

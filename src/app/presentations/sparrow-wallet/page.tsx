@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   description:
     "A deep dive into Sparrow Wallet — hardware wallet setup, node connection, UTXO coin control, watch-only wallets, and advanced Bitcoin self-custody features.",
   alternates: { canonical: "/presentations/sparrow-wallet" },
+  openGraph: {
+    title: "Sparrow Wallet Deep Dive | Columbia, SC Bitcoin",
+    description: "A deep dive into Sparrow Wallet — hardware wallet setup, node connection, UTXO coin control, watch-only wallets, and advanced Bitcoin self-custody features.",
+    url: "/presentations/sparrow-wallet",
+    images: [{ url: `/api/og?title=${encodeURIComponent("Sparrow Wallet Deep Dive | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Sparrow Wallet Deep Dive | Columbia, SC Bitcoin" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sparrow Wallet Deep Dive | Columbia, SC Bitcoin",
+  },
 };
 
 function SectionLabel({ children }: { children: React.ReactNode }) {

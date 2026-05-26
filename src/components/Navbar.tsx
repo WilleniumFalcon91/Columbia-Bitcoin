@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Menu, X, Bitcoin,
-  TrendingUp, TrendingDown, ChevronDown,
+  TrendingUp, TrendingDown, ChevronDown, Search,
 } from "lucide-react";
+import SearchModal from "@/components/SearchModal";
 
 const COINGECKO_URL =
   "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true";
@@ -79,6 +80,7 @@ const RESOURCES_GROUPS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [resourcesMobileOpen, setResourcesMobileOpen] = useState(false);
   const [resourcesGroupsOpen, setResourcesGroupsOpen] = useState<Record<string, boolean>>({});
   const [scrolled, setScrolled] = useState(false);
@@ -101,6 +103,18 @@ export default function Navbar() {
     setResourcesMobileOpen(false);
     setResourcesGroupsOpen({});
   }, [pathname]);
+
+  // Cmd/Ctrl+K to open search
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   const handleScroll = useCallback((sectionId: string) => {
     setMenuOpen(false);
@@ -202,7 +216,7 @@ export default function Navbar() {
                     <div className="pt-2">
                       <div className="bg-card border border-border rounded-xl shadow-card-hover w-[480px]">
                         {/* Overview row */}
-                        <div className="px-4 py-2.5 border-b border-border">
+                        <div className="px-4 py-2.5 border-b border-border flex items-center justify-between gap-3">
                           <Link
                             href="/resources"
                             className={`text-sm font-medium transition-colors duration-100 ${
@@ -212,6 +226,12 @@ export default function Navbar() {
                             }`}
                           >
                             All Resources
+                          </Link>
+                          <Link
+                            href="/resources/start-here"
+                            className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
+                          >
+                            New? Start Here →
                           </Link>
                         </div>
                         {/* Three-column grouped layout */}
@@ -259,17 +279,25 @@ export default function Navbar() {
             );
           })}
 
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+            aria-label="Search"
+          >
+            <Search className="w-4 h-4" />
+          </button>
+
           {isHome ? (
             <button
               onClick={() => handleScroll("donate")}
-              className="ml-2 px-4 py-2 rounded-lg text-sm font-semibold btn-orange"
+              className="ml-1 px-4 py-2 rounded-lg text-sm font-semibold btn-orange"
             >
               Donate ⚡
             </button>
           ) : (
             <Link
               href="/donate"
-              className="ml-2 px-4 py-2 rounded-lg text-sm font-semibold btn-orange"
+              className="ml-1 px-4 py-2 rounded-lg text-sm font-semibold btn-orange"
             >
               Donate ⚡
             </Link>
@@ -284,6 +312,13 @@ export default function Navbar() {
             </span>
           )}
           <button
+            onClick={() => setSearchOpen(true)}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+            aria-label="Search"
+          >
+            <Search className="w-4 h-4" />
+          </button>
+          <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
             aria-label="Toggle menu"
@@ -292,6 +327,8 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {/* Mobile menu */}
       {menuOpen && (

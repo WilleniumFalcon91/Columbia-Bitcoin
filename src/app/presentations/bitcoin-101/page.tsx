@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "Bitcoin 101 | Columbia, SC Bitcoin",
     description: "A foundational introduction to Bitcoin from our monthly meetup.",
     url: "/presentations/bitcoin-101",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin 101 | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin 101 | Columbia, SC Bitcoin" }],
   },
 };
 

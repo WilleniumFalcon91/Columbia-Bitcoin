@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description:
       "Find local businesses in Columbia, SC that accept Bitcoin — community-sourced merchant data.",
     url: "/resources/map",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Map | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Map | Columbia, SC Bitcoin" }],
   },
 };
 

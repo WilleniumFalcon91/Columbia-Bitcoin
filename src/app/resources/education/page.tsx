@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description:
       "Curated books, podcasts, articles, videos, and tools for every level — from first-timer to seasoned bitcoiner.",
     url: "/resources/education",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Education | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Education | Columbia, SC Bitcoin" }],
   },
 };
 

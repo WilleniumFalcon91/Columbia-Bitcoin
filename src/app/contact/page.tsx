@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Get in touch with Columbia, SC Bitcoin. Reach us on Nostr, email, or Signal. Propose a talk, ask a question, or just say hello.",
     url: "/contact",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Contact | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Contact | Columbia, SC Bitcoin" }],
   },
 };
 

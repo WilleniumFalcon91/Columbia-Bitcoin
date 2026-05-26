@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "Find Bitcoin meetup communities around the world — community data from BTCMap.org.",
     url: "/resources/meetupfinder",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Meetup Finder | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Meetup Finder | Columbia, SC Bitcoin" }],
   },
 };
 

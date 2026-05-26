@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   description:
     "A beginner-friendly guide to BlueWallet for iPhone and Android — creating your first wallet, securing your seed phrase, sending and receiving bitcoin.",
   alternates: { canonical: "/presentations/blue-wallet" },
+  openGraph: {
+    title: "BlueWallet Guide | Columbia, SC Bitcoin",
+    description: "A beginner-friendly guide to BlueWallet for iPhone and Android — creating your first wallet, securing your seed phrase, sending and receiving bitcoin, and advanced features.",
+    url: "/presentations/blue-wallet",
+    images: [{ url: `/api/og?title=${encodeURIComponent("BlueWallet Guide | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "BlueWallet Guide | Columbia, SC Bitcoin" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BlueWallet Guide | Columbia, SC Bitcoin",
+  },
 };
 
 function SectionLabel({ children }: { children: React.ReactNode }) {

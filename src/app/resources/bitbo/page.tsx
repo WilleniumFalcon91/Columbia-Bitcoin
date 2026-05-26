@@ -20,14 +20,7 @@ export const metadata: Metadata = {
     description:
       "Live Bitcoin price history, purchasing power, and long-term appreciation charts curated from bitbo.io.",
     url: "/resources/bitbo",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1024,
-        height: 1024,
-        alt: "Columbia, SC Bitcoin Meetup",
-      },
-    ],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Data & Charts | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Data & Charts | Columbia, SC Bitcoin" }],
   },
 };
 

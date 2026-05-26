@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Bitcoin Mining | Columbia, SC Bitcoin",
     description: "Everything you need to know about Bitcoin mining — how it works, hardware options, and economics.",
     url: "/resources/mining",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Mining | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Mining | Columbia, SC Bitcoin" }],
   },
 };
 

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description:
       "Music handpicked by the Columbia, SC Bitcoin community. Sit back and enjoy.",
     url: "/resources/vibes",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Vibes | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Vibes | Columbia, SC Bitcoin" }],
   },
 };
 

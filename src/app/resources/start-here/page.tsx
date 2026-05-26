@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Five focused steps from first principles to self-custody. The recommended learning path from the Columbia, SC Bitcoin community.",
     url: "/resources/start-here",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("New to Bitcoin? Start Here | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "New to Bitcoin? Start Here | Columbia, SC Bitcoin" }],
   },
 };
 

@@ -21,14 +21,7 @@ export const metadata: Metadata = {
     description:
       "Curated Bitcoin and web privacy tools, guides, and educational resources recommended by the Columbia, SC Bitcoin community.",
     url: "/resources/privacy",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1024,
-        height: 1024,
-        alt: "Columbia, SC Bitcoin Meetup",
-      },
-    ],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin & Web Privacy | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin & Web Privacy | Columbia, SC Bitcoin" }],
   },
 };
 

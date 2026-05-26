@@ -21,14 +21,7 @@ export const metadata: Metadata = {
     description:
       "Bitcoin meetup groups across South Carolina and North Carolina — Charlotte, Charleston, Greenville, Raleigh, and Asheville.",
     url: "/resources/regional",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1024,
-        height: 1024,
-        alt: "Columbia, SC Bitcoin Meetup",
-      },
-    ],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Carolinas Bitcoin Communities | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Carolinas Bitcoin Communities | Columbia, SC Bitcoin" }],
   },
 };
 

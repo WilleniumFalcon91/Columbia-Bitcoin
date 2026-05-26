@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "Live federal debt and deficit data — a real-time ledger of a monetary system with no hard cap. Bitcoin has 21 million.",
     url: "/resources/debt-clock",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("U.S. Debt Clock | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "U.S. Debt Clock | Columbia, SC Bitcoin" }],
   },
 };
 

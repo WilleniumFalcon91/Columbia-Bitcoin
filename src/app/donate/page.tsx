@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Support Columbia, SC Bitcoin with a Lightning payment. Your sats keep the meetups running. On-chain and BIP47 also accepted.",
     url: "/donate",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Donate | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Donate | Columbia, SC Bitcoin" }],
   },
 };
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "Every block ever mined, laid out as a calendar. A living record of Bitcoin's unbroken chain from the genesis block to today.",
     url: "/resources/timechain",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Timechain | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Timechain | Columbia, SC Bitcoin" }],
   },
 };
 

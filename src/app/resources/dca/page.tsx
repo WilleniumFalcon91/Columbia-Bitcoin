@@ -20,14 +20,7 @@ export const metadata: Metadata = {
     description:
       "The investment philosophy behind dollar cost averaging, why it beats timing the market, and the best trusted services to DCA your Bitcoin.",
     url: "/resources/dca",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1024,
-        height: 1024,
-        alt: "Columbia, SC Bitcoin Meetup",
-      },
-    ],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Dollar Cost Averaging (DCA) | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Dollar Cost Averaging (DCA) | Columbia, SC Bitcoin" }],
   },
 };
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "Real-time visibility into Bitcoin's transaction backlog. Track fee rates, block activity, and network congestion.",
     url: "/resources/mempool",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Mempool | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Mempool | Columbia, SC Bitcoin" }],
   },
 };
 

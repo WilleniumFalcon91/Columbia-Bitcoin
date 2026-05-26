@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Bitcoin for Businesses | Columbia, SC Bitcoin",
     description: "Tips, tools, and a step-by-step guide for businesses ready to accept Bitcoin.",
     url: "/resources/business",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin for Businesses | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin for Businesses | Columbia, SC Bitcoin" }],
   },
 };
 
@@ -88,6 +88,13 @@ const successStories = [
     icon: "☕",
     story: "Hundreds of small businesses — including several in the Carolinas — use simple setups: a Lightning wallet like Phoenix or a tablet running BTCPay Server. Staff show a QR code on a phone or tablet, customer pays, and the sale is done in seconds. No special hardware required.",
     takeaway: "A phone and a Lightning wallet is all you need to start accepting bitcoin today.",
+  },
+  {
+    name: "Columbia / Midlands Business — Coming Soon",
+    type: "Local Success Story",
+    icon: "📍",
+    story: "Know a local Columbia or Midlands business that accepts Bitcoin? We'd love to feature their story here. Real local examples are the most persuasive case for other South Carolina business owners considering Bitcoin.",
+    takeaway: "Reach out via the Contact page to share a local merchant story.",
   },
 ];
 
@@ -211,9 +218,27 @@ const resources = [
   { label: "Lopp.net — Bitcoin Merchant Guide", href: "https://www.lopp.net/bitcoin-information/merchant-adoption.html", desc: "Jameson Lopp's curated list of merchant tools and resources." },
 ];
 
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Accept Bitcoin at Your Business",
+  description:
+    "A step-by-step guide for businesses to start accepting Bitcoin and Lightning Network payments.",
+  step: implementationSteps.map((s, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: s.title,
+    text: s.desc,
+  })),
+};
+
 export default function BusinessPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
       <Navbar />
       <div className="pt-16">
         <h1 className="sr-only">Bitcoin for Businesses — Columbia, SC Bitcoin</h1>
@@ -430,7 +455,7 @@ export default function BusinessPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/business" />
       <Footer />
     </main>
   );

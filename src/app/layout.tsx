@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: "Columbia, SC Bitcoin",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Columbia, SC Bitcoin Meetup")}`, width: 1200, height: 630, alt: "Columbia, SC Bitcoin Meetup" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -81,6 +81,26 @@ export const metadata: Metadata = {
   },
 };
 
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Columbia Bitcoin",
+  url: siteUrl,
+  description:
+    "Free monthly Bitcoin meetup in Columbia, South Carolina. Education, community, and open discussion about Bitcoin.",
+  email: "columbiabitcoin@proton.me",
+  location: {
+    "@type": "Place",
+    name: "Savage Craft Ale Works",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "West Columbia",
+      addressRegion: "SC",
+      addressCountry: "US",
+    },
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -89,6 +109,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${sourceSerif4.variable} ${monoton.variable}`}>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
         {children}
         <Analytics />
         {/* Google Analytics */}

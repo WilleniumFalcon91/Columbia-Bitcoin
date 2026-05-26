@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description:
       "Curated Bitcoin education resources for every level — books, podcasts, articles, videos, and tools recommended by the Columbia, SC Bitcoin community.",
     url: "/resources",
-    images: [{ url: "/opengraph-image.png", width: 1024, height: 1024, alt: "Columbia, SC Bitcoin Meetup" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Resources | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Resources | Columbia, SC Bitcoin" }],
   },
 };
 

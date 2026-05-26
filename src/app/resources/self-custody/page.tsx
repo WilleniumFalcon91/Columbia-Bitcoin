@@ -20,14 +20,7 @@ export const metadata: Metadata = {
     description:
       "Not your keys, not your coins. Learn why self-custody matters, the difference between hot and cold storage, and how to protect your Bitcoin with a hardware wallet.",
     url: "/resources/self-custody",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1024,
-        height: 1024,
-        alt: "Columbia, SC Bitcoin Meetup",
-      },
-    ],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Self-Custody | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Self-Custody | Columbia, SC Bitcoin" }],
   },
 };
 
@@ -192,9 +185,27 @@ const bestPractices = [
   },
 ];
 
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Set Up Bitcoin Self-Custody",
+  description:
+    "A step-by-step guide to taking personal control of your Bitcoin using a hardware wallet.",
+  step: steps.map((s, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: s.title,
+    text: s.body,
+  })),
+};
+
 export default function SelfCustodyPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
       <Navbar />
       <div className="pt-16">
         <h1 className="sr-only">Bitcoin Self-Custody Guide — Columbia, SC Bitcoin</h1>
@@ -437,7 +448,7 @@ export default function SelfCustodyPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/self-custody" />
       <Footer />
     </main>
   );
