@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RelatedPages from "@/components/RelatedPages";
 import {
-  BookOpen, TrendingDown, TrendingUp, CalendarDays, Activity, MapPin,
+  BookOpen, BookMarked, TrendingDown, TrendingUp, CalendarDays, Activity, MapPin,
   Music, Users, ArrowUpRight, Network, ShieldCheck, Cpu, Server, Store,
   type LucideIcon,
 } from "lucide-react";
@@ -39,6 +39,14 @@ const groups: { label: string; icon: LucideIcon; gridCols: string; items: Sectio
     icon: BookOpen,
     gridCols: "sm:grid-cols-2 lg:grid-cols-3",
     items: [
+      {
+        href: "/resources/glossary",
+        icon: BookMarked,
+        label: "Bitcoin Glossary",
+        description: "New to Bitcoin? Start here. What Bitcoin is, why it matters, and every term you'll hear defined in plain English.",
+        tag: "Start Here",
+        tagColor: "bg-primary/10 text-primary",
+      },
       {
         href: "/resources/education",
         icon: BookOpen,

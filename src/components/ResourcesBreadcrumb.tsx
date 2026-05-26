@@ -9,6 +9,7 @@ const SUBNAV_GROUPS = [
   {
     label: "Learn",
     items: [
+      { label: "Glossary",     href: "/resources/glossary"     },
       { label: "Education",    href: "/resources/education"    },
       { label: "Self-Custody", href: "/resources/self-custody" },
       { label: "DCA",          href: "/resources/dca"          },
