@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --card: #2a3040;
+  --card: #27344d;
   --ring: #f7931a;
-  --input: #3d4354;
-  --muted: #2a303e;
-  --accent: #2a3656;
-  --border: #3d4354;
+  --input: #232f45;
+  --muted: #1b2438;
+  --accent: #0e1f3a;
+  --border: #2e3c54;
   --radius: 0.75rem;
-  --popover: #262b38;
+  --popover: #1e2840;
   --primary: #f7931a;
   --font-mono: 'JetBrains Mono', monospace;
   --font-sans: 'Inter', sans-serif;
-  --secondary: #2a303e;
-  --background: #1c2433;
+  --secondary: #232e44;
+  --background: #161d2c;
   --font-serif: 'Source Serif 4', serif;
   --foreground: #efefef;
   --destructive: #ef4444;
@@ -26,7 +26,7 @@
   --card-foreground: #efefef;
   --shadow-offset-x: 0px;
   --shadow-offset-y: 1px;
-  --muted-foreground: #b8b8b8;
+  --muted-foreground: #98a6be;
   --accent-foreground: #bfdbfe;
   --popover-foreground: #e5e5e5;
   --primary-foreground: #ffffff;

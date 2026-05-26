@@ -85,6 +85,14 @@ const privacyResources: Resource[] = [
     href: "https://peachbitcoin.com",
   },
   {
+    icon: "⚔️",
+    label: "Ashigaru",
+    description: "Open-source, self-custodial Bitcoin wallet focused on privacy. Runs Whirlpool CoinJoin, routes all traffic through Tor, and offers encrypted key recovery. A community-maintained successor to Samourai's privacy features.",
+    category: "Bitcoin",
+    site: "ashigaru.rs",
+    href: "https://ashigaru.rs",
+  },
+  {
     icon: "🔬",
     label: "Am I Exposed?",
     description: "Check whether your Bitcoin addresses appear in chain analysis databases. A quick first step to understanding your on-chain privacy posture.",
