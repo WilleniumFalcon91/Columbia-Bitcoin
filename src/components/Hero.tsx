@@ -24,7 +24,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.06]"
         style={{
-          backgroundImage: `url("/sc-flag.jpg")`,
+          backgroundImage: `url("/sc-flag.svg")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
