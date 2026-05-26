@@ -79,6 +79,7 @@ const RESOURCES_GROUPS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [resourcesMobileOpen, setResourcesMobileOpen] = useState(false);
+  const [resourcesGroupsOpen, setResourcesGroupsOpen] = useState<Record<string, boolean>>({});
   const [scrolled, setScrolled] = useState(false);
   const { price, change24h } = useBitcoinPrice();
   const pathname = usePathname();
@@ -97,6 +98,7 @@ export default function Navbar() {
   useEffect(() => {
     setMenuOpen(false);
     setResourcesMobileOpen(false);
+    setResourcesGroupsOpen({});
   }, [pathname]);
 
   const handleScroll = useCallback((sectionId: string) => {
@@ -342,28 +344,46 @@ export default function Navbar() {
                         >
                           All Resources
                         </Link>
-                        {RESOURCES_GROUPS.map((group) => (
-                          <div key={group.label} className="mt-2">
-                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 pb-1">
-                              {group.label}
-                            </p>
-                            <div className="flex flex-col gap-0.5">
-                              {group.items.map((item) => (
-                                <Link
-                                  key={item.href}
-                                  href={item.href}
-                                  className={`px-3 py-2 rounded-lg text-sm transition-all ${
-                                    pathname === item.href
-                                      ? "text-primary bg-primary/10 font-medium"
-                                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                        {RESOURCES_GROUPS.map((group) => {
+                          const groupOpen = !!resourcesGroupsOpen[group.label];
+                          return (
+                            <div key={group.label} className="mt-1">
+                              <button
+                                onClick={() =>
+                                  setResourcesGroupsOpen((prev) => ({
+                                    ...prev,
+                                    [group.label]: !prev[group.label],
+                                  }))
+                                }
+                                className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-muted-foreground uppercase tracking-wider hover:text-foreground hover:bg-secondary transition-all"
+                              >
+                                {group.label}
+                                <ChevronDown
+                                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                                    groupOpen ? "rotate-180" : ""
                                   }`}
-                                >
-                                  {item.label}
-                                </Link>
-                              ))}
+                                />
+                              </button>
+                              {groupOpen && (
+                                <div className="flex flex-col gap-0.5 mt-0.5 ml-2 border-l border-border pl-2">
+                                  {group.items.map((item) => (
+                                    <Link
+                                      key={item.href}
+                                      href={item.href}
+                                      className={`px-3 py-2 rounded-lg text-sm transition-all ${
+                                        pathname === item.href
+                                          ? "text-primary bg-primary/10 font-medium"
+                                          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                                      }`}
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
                             </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     )}
                   </div>
