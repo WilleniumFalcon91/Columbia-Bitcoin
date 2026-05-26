@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, ArrowRight, Calendar, Clock } from "lucide-react";
+import { BookOpen, ArrowRight, Calendar } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -71,51 +71,6 @@ const presentations: Presentation[] = [
   },
 ];
 
-type PastTopic = {
-  date: string;
-  title: string;
-  description: string;
-  tags: string[];
-};
-
-const pastTopics: PastTopic[] = [
-  {
-    date: "April 2025",
-    title: "Bitcoin Privacy Deep Dive",
-    description: "Coin control, CoinJoin, Tor, no-KYC purchasing, and tools for financial privacy on Bitcoin.",
-    tags: ["Privacy", "Sparrow", "CoinJoin"],
-  },
-  {
-    date: "March 2025",
-    title: "Running Your Own Bitcoin Node",
-    description: "Why full node sovereignty matters, hardware options, Umbrel vs. Start9, and a live demo.",
-    tags: ["Node", "Umbrel", "Sovereignty"],
-  },
-  {
-    date: "February 2025",
-    title: "Bitcoin Mining: How It Works",
-    description: "Proof of work, hashrate, difficulty adjustment, halvings, and the economics of home mining.",
-    tags: ["Mining", "PoW", "Halvings"],
-  },
-  {
-    date: "January 2025",
-    title: "Nostr: Decentralized Social Media",
-    description: "What Nostr is, why it matters for censorship resistance, and how to get started.",
-    tags: ["Nostr", "Freedom Tech", "Social"],
-  },
-  {
-    date: "November 2024",
-    title: "Dollar Cost Averaging Strategy",
-    description: "The psychology and data behind DCA, a comparison of auto-buy services, and tax-efficient stacking.",
-    tags: ["DCA", "Investing", "Swan"],
-  },
-  {
-    date: "October 2024",
-    title: "Bitcoin for Businesses",
-    description: "Payment processors, Lightning integration, staff training, and a walkthrough of a BTCPay demo.",
-    tags: ["Business", "BTCPay", "Lightning"],
-  },
-];
 
 export default function PresentationsPage() {
   return (
@@ -179,37 +134,6 @@ export default function PresentationsPage() {
                   </div>
                 </Link>
               ))}
-            </div>
-
-            {/* Past Topics Archive */}
-            <div className="mt-16">
-              <div className="flex items-center gap-3 mb-6">
-                <Clock className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                <h2 className="text-xl font-bold text-foreground">Past Meetup Topics</h2>
-              </div>
-              <p className="text-sm text-muted-foreground mb-6">
-                Topics covered at recent Columbia Bitcoin meetups. Every session is open to questions — no slides required.
-              </p>
-              <div className="space-y-3">
-                {pastTopics.map((t) => (
-                  <div key={t.title} className="flex gap-4 bg-card border border-border rounded-xl p-5 shadow-card">
-                    <div className="flex-shrink-0 w-24 text-right">
-                      <p className="text-xs font-mono text-muted-foreground leading-tight">{t.date}</p>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-foreground text-sm mb-1">{t.title}</p>
-                      <p className="text-xs text-muted-foreground leading-relaxed mb-2">{t.description}</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {t.tags.map((tag) => (
-                          <span key={tag} className="text-xs px-2 py-0.5 rounded-md bg-muted text-muted-foreground border border-border">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* CTA */}
