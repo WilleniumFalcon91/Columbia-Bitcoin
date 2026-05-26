@@ -234,6 +234,26 @@ export default function ResourcesPage() {
               </p>
             </div>
 
+            {/* Start Here banner for newcomers */}
+            <div className="mb-12">
+              <Link
+                href="/resources/start-here"
+                className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-primary/5 border border-primary/20 hover:border-primary/40 rounded-2xl px-6 py-5 transition-all duration-200"
+              >
+                <div>
+                  <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-1">New to Bitcoin?</p>
+                  <p className="font-bold text-foreground text-lg leading-snug">Follow the guided learning path →</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Five focused steps from first principles to self-custody. ~90 minutes total.
+                  </p>
+                </div>
+                <div className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-orange text-sm font-semibold">
+                  Start Here
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
+              </Link>
+            </div>
+
             <div className="space-y-14">
               {groups.map((group) => {
                 const GroupIcon = group.icon;
