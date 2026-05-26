@@ -86,6 +86,17 @@ const groups: Group[] = [
     ],
   },
   {
+    name: "Myrtle Beach Bitcoin",
+    city: "Myrtle Beach",
+    state: "SC",
+    status: "New",
+    description:
+      "A new Bitcoin community forming on the Grand Strand. Follow them on Nostr to stay updated on upcoming meetups and events in the Myrtle Beach area.",
+    links: [
+      { label: "Nostr", href: "https://primal.net/p/nprofile1qqsrcd5nhktsu0xmhluuke58zmdqp52crclkcem3cuclvd67a86q8jgccfgsk" },
+    ],
+  },
+  {
     name: "Triangle BitDevs",
     city: "Raleigh / Durham",
     state: "NC",
