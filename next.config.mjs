@@ -26,12 +26,12 @@ const nextConfig = {
             value: [
               "default-src 'self'",
               // 'unsafe-inline' required for Next.js hydration scripts and theme blocking script
-              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.youtube.com",
               "style-src 'self' 'unsafe-inline'",
               // fonts are self-hosted via next/font/google — no external font-src needed
               "font-src 'self'",
               "img-src 'self' https: data: blob:",
-              "frame-src https://timechaincalendar.com https://www.us-debt-clock.com",
+              "frame-src https://timechaincalendar.com https://www.us-debt-clock.com https://www.youtube.com https://www.youtube-nocookie.com",
               "connect-src 'self' https://api.coingecko.com https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com https://vitals.vercel-insights.com",
               "object-src 'none'",
               "base-uri 'self'",
