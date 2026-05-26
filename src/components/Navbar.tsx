@@ -53,6 +53,9 @@ const RESOURCES_SUBNAV = [
   { label: "Meetup Finder", href: "/resources/meetupfinder" },
   { label: "Privacy",     href: "/resources/privacy"   },
   { label: "Carolinas",   href: "/resources/regional" },
+  { label: "Mining",      href: "/resources/mining"   },
+  { label: "Run a Node",  href: "/resources/node"     },
+  { label: "Businesses",  href: "/resources/business" },
   { label: "Vibes",       href: "/resources/vibes"    },
 ];
 

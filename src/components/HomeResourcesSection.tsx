@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight, Network, ShieldCheck } from "lucide-react";
+import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight, Network, ShieldCheck, Cpu, Server, Store } from "lucide-react";
 
 const sections = [
   {
@@ -82,6 +82,33 @@ const sections = [
       "Bitcoin meetup groups across South Carolina and North Carolina — Charlotte, Charleston, Greenville, Raleigh, Asheville, and more.",
     tag: "Regional",
     tagColor: "bg-amber-500/10 text-amber-600",
+  },
+  {
+    href: "/resources/mining",
+    icon: Cpu,
+    label: "Bitcoin Mining",
+    description:
+      "Proof of work, hashrate, difficulty adjustment, halvings, solo vs pool mining, and home mining options.",
+    tag: "Technical",
+    tagColor: "bg-amber-500/10 text-amber-600",
+  },
+  {
+    href: "/resources/node",
+    icon: Server,
+    label: "Run a Node",
+    description:
+      "The cypherpunk case for running your own node, plus software and hardware options to get started.",
+    tag: "Sovereignty",
+    tagColor: "bg-cyan-500/10 text-cyan-600",
+  },
+  {
+    href: "/resources/business",
+    icon: Store,
+    label: "Bitcoin for Businesses",
+    description:
+      "Help local businesses accept Bitcoin — payment processors, implementation steps, and success stories.",
+    tag: "Commerce",
+    tagColor: "bg-violet-500/10 text-violet-600",
   },
 ];
 

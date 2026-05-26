@@ -3,7 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RelatedPages from "@/components/RelatedPages";
-import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight, Network, ShieldCheck } from "lucide-react";
+import { BookOpen, TrendingDown, CalendarDays, Activity, MapPin, Music, Users, ArrowUpRight, Network, ShieldCheck, Cpu, Server, Store } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Bitcoin Resources",
@@ -101,6 +101,33 @@ const sections = [
       "Bitcoin meetup groups across South Carolina and North Carolina — Charlotte, Charleston, Greenville, Raleigh, Asheville, and more.",
     tag: "Regional",
     tagColor: "bg-amber-500/10 text-amber-600",
+  },
+  {
+    href: "/resources/mining",
+    icon: Cpu,
+    label: "Bitcoin Mining",
+    description:
+      "Proof of work, hashrate, difficulty adjustment, halvings, solo vs pool mining, home mining hardware options, and economics.",
+    tag: "Technical",
+    tagColor: "bg-amber-500/10 text-amber-600",
+  },
+  {
+    href: "/resources/node",
+    icon: Server,
+    label: "Run a Node",
+    description:
+      "The cypherpunk case for running your own node, software options (Umbrel, Start9, Bitcoin Core), hardware, and a getting-started guide.",
+    tag: "Sovereignty",
+    tagColor: "bg-cyan-500/10 text-cyan-600",
+  },
+  {
+    href: "/resources/business",
+    icon: Store,
+    label: "Bitcoin for Businesses",
+    description:
+      "Help local businesses accept Bitcoin — payment processors, implementation steps, staff training, success stories, and tax notes.",
+    tag: "Commerce",
+    tagColor: "bg-violet-500/10 text-violet-600",
   },
 ];
 
