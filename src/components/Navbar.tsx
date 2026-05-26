@@ -35,11 +35,12 @@ function useBitcoinPrice() {
   return { price, change24h };
 }
 
-const navLinks = [
-  { label: "Event",     href: "/event",     sectionId: "event"     },
-  { label: "About",     href: "/about",     sectionId: "about"     },
-  { label: "Resources", href: "/resources", sectionId: "resources" },
-  { label: "Contact",   href: "/contact",   sectionId: "contact"   },
+const navLinks: { label: string; href: string; sectionId?: string }[] = [
+  { label: "Event",         href: "/event",         sectionId: "event"     },
+  { label: "About",         href: "/about",         sectionId: "about"     },
+  { label: "Presentations", href: "/presentations"                         },
+  { label: "Resources",     href: "/resources",     sectionId: "resources" },
+  { label: "Contact",       href: "/contact",       sectionId: "contact"   },
 ];
 
 const RESOURCES_SUBNAV = [
@@ -143,13 +144,13 @@ export default function Navbar() {
           {navLinks.map((link) => {
             const active = link.href === "/resources"
               ? isResourcesActive
-              : pathname === link.href;
+              : pathname.startsWith(link.href) && link.href !== "/";
 
-            if (isHome) {
+            if (isHome && link.sectionId) {
               return (
                 <button
                   key={link.href}
-                  onClick={() => handleScroll(link.sectionId)}
+                  onClick={() => handleScroll(link.sectionId!)}
                   className="px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-150"
                 >
                   {link.label}
@@ -254,13 +255,13 @@ export default function Navbar() {
             {navLinks.map((link) => {
               const active = link.href === "/resources"
                 ? isResourcesActive
-                : pathname === link.href;
+                : pathname.startsWith(link.href) && link.href !== "/";
 
-              if (isHome) {
+              if (isHome && link.sectionId) {
                 return (
                   <button
                     key={link.href}
-                    onClick={() => handleScroll(link.sectionId)}
+                    onClick={() => handleScroll(link.sectionId!)}
                     className="text-left px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
                   >
                     {link.label}

@@ -9,12 +9,13 @@ import { Bitcoin, Zap, ChevronUp, Mail } from "lucide-react";
 const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
 const NOSTR_LOGO = "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png";
 
-const footerLinks = [
-  { label: "Event",     href: "/event",     sectionId: "event"     },
-  { label: "About",     href: "/about",     sectionId: "about"     },
-  { label: "Resources", href: "/resources", sectionId: "resources" },
-  { label: "Contact",   href: "/contact",   sectionId: "contact"   },
-  { label: "Donate",    href: "/donate",    sectionId: "donate"    },
+const footerLinks: { label: string; href: string; sectionId?: string }[] = [
+  { label: "Event",         href: "/event",         sectionId: "event"     },
+  { label: "About",         href: "/about",         sectionId: "about"     },
+  { label: "Presentations", href: "/presentations"                         },
+  { label: "Resources",     href: "/resources",     sectionId: "resources" },
+  { label: "Contact",       href: "/contact",       sectionId: "contact"   },
+  { label: "Donate",        href: "/donate",        sectionId: "donate"    },
 ];
 
 export default function Footer() {
@@ -73,10 +74,10 @@ export default function Footer() {
           {/* Nav links */}
           <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-1">
             {footerLinks.map((link) =>
-              isHome ? (
+              isHome && link.sectionId ? (
                 <button
                   key={link.href}
-                  onClick={() => scrollTo(link.sectionId)}
+                  onClick={() => scrollTo(link.sectionId!)}
                   className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.label}
