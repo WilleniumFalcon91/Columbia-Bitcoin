@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org").trim();
 
 // Static content last updated date — bump when a page's content meaningfully changes
-const LAST_UPDATED = new Date("2026-05-26");
+const LAST_UPDATED = new Date("2026-05-27");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
