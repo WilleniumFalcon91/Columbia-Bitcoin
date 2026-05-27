@@ -100,7 +100,7 @@ export default function PresentationsPage() {
                 <Link
                   key={p.slug}
                   href={`/presentations/${p.slug}`}
-                  className="group flex flex-col bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/30 transition-all duration-200"
+                  className="group flex flex-col bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/30 hover-lift"
                 >
                   <div className="flex items-start justify-between gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">

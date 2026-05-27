@@ -231,6 +231,7 @@ export default function VibesCarousel() {
                 alt=""
                 fill
                 sizes="128px"
+                loading={i === 0 ? undefined : "lazy"}
                 className="object-cover"
               />
               {i === index && (

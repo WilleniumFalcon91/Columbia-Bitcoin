@@ -123,7 +123,7 @@ export default function MatrixRain() {
       }, 100);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
       cancelAnimationFrame(animId);

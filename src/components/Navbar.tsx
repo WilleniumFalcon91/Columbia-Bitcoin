@@ -19,7 +19,7 @@ function useBitcoinPrice() {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const res = await fetch(COINGECKO_URL);
+        const res = await fetch(COINGECKO_URL, { priority: "low" } as RequestInit);
         if (!res.ok) return;
         const data = await res.json();
         setPrice(data.bitcoin.usd);
@@ -96,6 +96,7 @@ export default function Navbar() {
   const [resourcesMobileOpen, setResourcesMobileOpen] = useState(false);
   const [resourcesGroupsOpen, setResourcesGroupsOpen] = useState<Record<string, boolean>>({});
   const [scrolled, setScrolled] = useState(false);
+  const [flashKey, setFlashKey] = useState(0);
   const { price, change24h } = useBitcoinPrice();
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -105,9 +106,14 @@ export default function Navbar() {
   const onScroll = useCallback(() => setScrolled(window.scrollY > 20), []);
 
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
+
+  // Flash price on update
+  useEffect(() => {
+    if (price !== null) setFlashKey((k) => k + 1);
+  }, [price]);
 
   // Close mobile menu and desktop dropdown on route change
   useEffect(() => {
@@ -185,7 +191,7 @@ export default function Navbar() {
               <div className="w-16 h-3.5 rounded bg-muted/60 animate-pulse" />
             ) : (
               <>
-                <span className="text-foreground">
+                <span key={flashKey} className="price-flash">
                   ${price.toLocaleString("en-US", { maximumFractionDigits: 0 })}
                 </span>
                 {change24h !== null && (
@@ -245,7 +251,7 @@ export default function Navbar() {
                   </Link>
 
                   {/* Dropdown panel */}
-                  <div className={`absolute top-full right-0 z-50 ${resourcesDropdownOpen ? "block" : "hidden"}`}>
+                  <div className="absolute top-full right-0 z-50 dropdown-panel" data-open={resourcesDropdownOpen ? "true" : "false"}>
                     <div className="pt-2">
                       <div className="bg-card border border-border rounded-xl shadow-card-hover w-[480px] max-w-[calc(100vw-2rem)]">
                         {/* Overview row */}
@@ -389,8 +395,11 @@ export default function Navbar() {
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-card/95 backdrop-blur-md border-b border-border">
+      <div
+        className="md:hidden bg-card/95 backdrop-blur-md border-b border-border mobile-menu-grid"
+        data-open={menuOpen ? "true" : "false"}
+      >
+        <div className="mobile-menu-inner">
           <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
             {navLinks.map((link) => {
               const active = link.href === "/resources"
@@ -428,60 +437,70 @@ export default function Navbar() {
                         }`}
                       />
                     </button>
-                    {resourcesMobileOpen && (
-                      <div className="ml-3 mt-1 mb-1 border-l-2 border-border pl-3">
-                        <Link
-                          href="/resources"
-                          className={`flex px-3 py-2 rounded-lg text-sm transition-all ${
-                            pathname === "/resources"
-                              ? "text-primary bg-primary/10 font-medium"
-                              : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                          }`}
-                        >
-                          All Resources
-                        </Link>
-                        {RESOURCES_GROUPS.map((group) => {
-                          const groupOpen = !!resourcesGroupsOpen[group.label];
-                          return (
-                            <div key={group.label} className="mt-1">
-                              <button
-                                onClick={() =>
-                                  setResourcesGroupsOpen((prev) => ({
-                                    ...prev,
-                                    [group.label]: !prev[group.label],
-                                  }))
-                                }
-                                className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-muted-foreground uppercase tracking-wider hover:text-foreground hover:bg-secondary transition-all"
-                              >
-                                {group.label}
-                                <ChevronDown
-                                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                                    groupOpen ? "rotate-180" : ""
-                                  }`}
-                                />
-                              </button>
-                              {groupOpen && (
-                                <div className="flex flex-col gap-0.5 mt-0.5 ml-2 border-l border-border pl-2">
-                                  {group.items.map((item) => (
-                                    <Link
-                                      key={item.href}
-                                      href={item.href}
-                                      className={`px-3 py-2 rounded-lg text-sm transition-all ${
-                                        pathname === item.href
-                                          ? "text-primary bg-primary/10 font-medium"
-                                          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                                      }`}
-                                    >
-                                      {item.label}
-                                    </Link>
-                                  ))}
+                    <div
+                      className="mobile-submenu-grid"
+                      data-open={resourcesMobileOpen ? "true" : "false"}
+                    >
+                      <div className="mobile-menu-inner">
+                        <div className="ml-3 mt-1 mb-1 border-l-2 border-border pl-3">
+                          <Link
+                            href="/resources"
+                            className={`flex px-3 py-2 rounded-lg text-sm transition-all ${
+                              pathname === "/resources"
+                                ? "text-primary bg-primary/10 font-medium"
+                                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                            }`}
+                          >
+                            All Resources
+                          </Link>
+                          {RESOURCES_GROUPS.map((group) => {
+                            const groupOpen = !!resourcesGroupsOpen[group.label];
+                            return (
+                              <div key={group.label} className="mt-1">
+                                <button
+                                  onClick={() =>
+                                    setResourcesGroupsOpen((prev) => ({
+                                      ...prev,
+                                      [group.label]: !prev[group.label],
+                                    }))
+                                  }
+                                  className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-muted-foreground uppercase tracking-wider hover:text-foreground hover:bg-secondary transition-all"
+                                >
+                                  {group.label}
+                                  <ChevronDown
+                                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                                      groupOpen ? "rotate-180" : ""
+                                    }`}
+                                  />
+                                </button>
+                                <div
+                                  className="mobile-submenu-grid"
+                                  data-open={groupOpen ? "true" : "false"}
+                                >
+                                  <div className="mobile-menu-inner">
+                                    <div className="flex flex-col gap-0.5 mt-0.5 ml-2 border-l border-border pl-2">
+                                      {group.items.map((item) => (
+                                        <Link
+                                          key={item.href}
+                                          href={item.href}
+                                          className={`px-3 py-2 rounded-lg text-sm transition-all ${
+                                            pathname === item.href
+                                              ? "text-primary bg-primary/10 font-medium"
+                                              : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                                          }`}
+                                        >
+                                          {item.label}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
                                 </div>
-                              )}
-                            </div>
-                          );
-                        })}
+                              </div>
+                            );
+                          })}
+                        </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               }
@@ -518,7 +537,7 @@ export default function Navbar() {
             )}
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }

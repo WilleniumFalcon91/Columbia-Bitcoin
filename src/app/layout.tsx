@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Inter, JetBrains_Mono, Source_Serif_4, Monoton } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import PageTransition from "@/components/PageTransition";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -108,12 +109,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${sourceSerif4.variable} ${monoton.variable}`}>
+      <head>
+        <link rel="dns-prefetch" href="https://img.youtube.com" />
+        <link rel="preconnect" href="https://img.youtube.com" crossOrigin="" />
+      </head>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Analytics />
         {/* Google Analytics */}
         <Script

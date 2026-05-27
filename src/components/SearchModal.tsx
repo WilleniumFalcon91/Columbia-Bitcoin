@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, X, ArrowUpRight } from "lucide-react";
 import Fuse from "fuse.js";
 import { SEARCH_INDEX, type SearchEntry } from "@/lib/searchIndex";
 
-const fuse = new Fuse(SEARCH_INDEX, {
+const FUSE_OPTIONS = {
   keys: [
     { name: "title",       weight: 0.5 },
     { name: "description", weight: 0.3 },
@@ -15,7 +15,7 @@ const fuse = new Fuse(SEARCH_INDEX, {
   ],
   threshold: 0.4,
   includeScore: true,
-});
+};
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Learn":        "bg-primary/10 text-primary",
@@ -40,10 +40,16 @@ export default function SearchModal({ open, onClose }: Props) {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
+  const fuseRef = useRef<Fuse<SearchEntry> | null>(null);
   const router = useRouter();
 
+  const getFuse = useMemo(() => () => {
+    if (!fuseRef.current) fuseRef.current = new Fuse(SEARCH_INDEX, FUSE_OPTIONS);
+    return fuseRef.current;
+  }, []);
+
   const results: SearchEntry[] = query.trim().length > 0
-    ? fuse.search(query).slice(0, 8).map((r) => r.item)
+    ? getFuse().search(query).slice(0, 8).map((r) => r.item)
     : [];
 
   const handleClose = useCallback(() => {
@@ -75,12 +81,8 @@ export default function SearchModal({ open, onClose }: Props) {
 
   // Prevent body scroll when open
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
+    document.body.classList.toggle("modal-open", open);
+    return () => document.body.classList.remove("modal-open");
   }, [open]);
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -105,11 +107,11 @@ export default function SearchModal({ open, onClose }: Props) {
       onClick={handleClose}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="modal-overlay absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-xl bg-card border border-border rounded-2xl shadow-card-hover overflow-hidden"
+        className="modal-panel relative w-full max-w-xl bg-card border border-border rounded-2xl shadow-card-hover overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search input */}

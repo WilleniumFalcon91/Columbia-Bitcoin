@@ -15,8 +15,12 @@ export default function RevealOnScroll({
 
   useEffect(() => {
     const el = ref.current;
+    if (el) el.style.transitionDelay = `${delay}ms`;
+  }, [delay]);
+
+  useEffect(() => {
+    const el = ref.current;
     if (!el) return;
-    el.style.transitionDelay = `${delay}ms`;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -28,7 +32,7 @@ export default function RevealOnScroll({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay]);
+  }, []);
 
   return (
     <div ref={ref} className={`reveal ${className}`}>

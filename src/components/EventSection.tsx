@@ -49,7 +49,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
   const gcalUrl = buildGCalUrl(event);
 
   return (
-    <section id="event" className="py-12 sm:py-16 lg:py-24 bg-muted">
+    <section id="event" className="py-12 sm:py-16 lg:py-24 bg-muted section-offscreen">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
@@ -170,7 +170,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
               const Icon = item.icon;
               return (
                 <RevealOnScroll key={i} delay={i * 100}>
-                  <div className="flex gap-4 bg-card border border-border rounded-xl p-5 shadow-card hover:shadow-card-hover hover:border-primary/20 transition-all duration-200">
+                  <div className="flex gap-4 bg-card border border-border rounded-xl p-5 shadow-card hover:shadow-card-hover hover:border-primary/20 hover-lift">
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Icon className="w-5 h-5 text-primary" />
                     </div>

@@ -66,7 +66,7 @@ const GROUP_CARDS: GroupCard[] = [
 
 export default function HomeResourcesSection() {
   return (
-    <section id="resources" className="py-12 sm:py-16 lg:py-24 bg-background">
+    <section id="resources" className="py-12 sm:py-16 lg:py-24 bg-background section-offscreen">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
@@ -85,7 +85,7 @@ export default function HomeResourcesSection() {
         <div className="mb-12">
           <Link
             href="/resources/start-here"
-            className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-primary/5 border border-primary/20 hover:border-primary/40 rounded-2xl px-6 py-5 transition-all duration-200"
+            className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-primary/5 border border-primary/20 hover:border-primary/40 rounded-2xl px-6 py-5 hover-lift"
           >
             <div>
               <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-1">New to Bitcoin?</p>
@@ -109,7 +109,7 @@ export default function HomeResourcesSection() {
               <Link
                 key={card.label}
                 href={card.href}
-                className={`group flex flex-col bg-card border border-border rounded-2xl p-7 shadow-card hover:shadow-card-hover ${card.borderHover} transition-all duration-200`}
+                className={`group flex flex-col bg-card border border-border rounded-2xl p-7 shadow-card hover:shadow-card-hover ${card.borderHover} hover-lift`}
               >
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-colors ${card.iconClass}`}>
                   <Icon className="w-5 h-5" />

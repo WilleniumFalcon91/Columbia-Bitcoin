@@ -37,7 +37,7 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-24 bg-background">
+    <section id="about" className="py-12 sm:py-16 lg:py-24 bg-background section-offscreen">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
@@ -77,7 +77,7 @@ export default function AboutSection() {
             const Icon = v.icon;
             return (
               <RevealOnScroll key={i} delay={i * 120}>
-                <div className="bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/20 transition-all duration-200 group">
+                <div className="bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/20 hover-lift group">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-6 h-6 text-primary" />
                   </div>

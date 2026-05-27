@@ -73,7 +73,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-24 bg-muted">
+    <section id="contact" className="py-12 sm:py-16 lg:py-24 bg-muted section-offscreen">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
@@ -103,7 +103,7 @@ export default function ContactSection() {
                   href={ch.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-card hover:shadow-card-hover hover:border-primary/30 transition-all duration-200 group"
+                  className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-card hover:shadow-card-hover hover:border-primary/30 hover-lift group"
                 >
                   <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                     {ch.imgSrc ? (
