@@ -86,6 +86,8 @@ const RESOURCES_GROUPS = [
       { label: "Bitcoin Fixes This",    href: "/resources/philosophy/bitcoin-fixes-this" },
       { label: "The Sovereign Individual", href: "/resources/philosophy/sovereign-individual" },
       { label: "Cryptosovereignty",     href: "/resources/philosophy/cryptosovereignty"  },
+      { label: "Bitcoin Whitepaper",    href: "/resources/philosophy/bitcoin-whitepaper" },
+      { label: "Decentralization",      href: "/resources/philosophy/decentralization"   },
     ],
   },
 ];
