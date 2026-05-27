@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
 import Image from "next/image";
 import type { ComponentType } from "react";
 import RevealOnScroll from "./RevealOnScroll";
+import { trackFormStart, trackFormSubmit, trackFormSuccess, trackFormError, trackOutboundLink } from "@/lib/analytics";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 const FORMSPREE_ENDPOINT = FORMSPREE_ID
@@ -44,6 +45,7 @@ export default function ContactSection() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const formStartedRef = useRef(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,6 +53,7 @@ export default function ContactSection() {
       setError("Contact form is not configured yet. Please email us directly.");
       return;
     }
+    trackFormSubmit({ form_id: "contact" });
     setSending(true);
     setError(null);
     try {
@@ -60,12 +63,15 @@ export default function ContactSection() {
         body: JSON.stringify(form),
       });
       if (res.ok) {
+        trackFormSuccess({ form_id: "contact" });
         setSent(true);
       } else {
         const data = await res.json().catch(() => ({})) as { error?: string };
+        trackFormError({ form_id: "contact", error_message: data.error ?? "submission_failed" });
         setError(data.error ?? "Submission failed. Please try again or email us directly.");
       }
     } catch {
+      trackFormError({ form_id: "contact", error_message: "network_error" });
       setError("Something went wrong. Please try again or reach out directly via email.");
     } finally {
       setSending(false);
@@ -103,6 +109,7 @@ export default function ContactSection() {
                   href={ch.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackOutboundLink({ url: ch.href, label: ch.label, section: "contact_channels" })}
                   className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-card hover:shadow-card-hover hover:border-primary/30 hover-lift group"
                 >
                   <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -169,6 +176,7 @@ export default function ContactSection() {
                 </p>
                 <button
                   onClick={() => {
+                    formStartedRef.current = false;
                     setSent(false);
                     setForm({ name: "", email: "", message: "" });
                   }}
@@ -195,6 +203,12 @@ export default function ContactSection() {
                       onChange={(e) =>
                         setForm((f) => ({ ...f, name: e.target.value }))
                       }
+                      onFocus={() => {
+                        if (!formStartedRef.current) {
+                          formStartedRef.current = true;
+                          trackFormStart({ form_id: "contact" });
+                        }
+                      }}
                       placeholder="Satoshi Nakamoto"
                       className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all disabled:opacity-60"
                     />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { trackCtaClick, trackNavMenuOpen } from "@/lib/analytics";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -92,6 +93,7 @@ const RESOURCES_GROUPS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchOpenSource, setSearchOpenSource] = useState<"keyboard" | "click">("click");
   const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
   const [resourcesMobileOpen, setResourcesMobileOpen] = useState(false);
   const [resourcesGroupsOpen, setResourcesGroupsOpen] = useState<Record<string, boolean>>({});
@@ -128,6 +130,7 @@ export default function Navbar() {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
+        setSearchOpenSource("keyboard");
         setSearchOpen(true);
       }
       if (e.key === "Escape") {
@@ -341,7 +344,7 @@ export default function Navbar() {
           })}
 
           <button
-            onClick={() => setSearchOpen(true)}
+            onClick={() => { setSearchOpenSource("click"); setSearchOpen(true); }}
             className="flex items-center gap-1.5 px-2 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
             aria-label="Search"
           >
@@ -351,7 +354,10 @@ export default function Navbar() {
 
           {isHome ? (
             <button
-              onClick={() => handleScroll("donate")}
+              onClick={() => {
+                trackCtaClick({ label: "Donate ⚡", section: "navbar", url: "#donate" });
+                handleScroll("donate");
+              }}
               className="ml-1 px-4 py-2 rounded-lg text-sm font-semibold btn-orange"
             >
               Donate ⚡
@@ -359,6 +365,7 @@ export default function Navbar() {
           ) : (
             <Link
               href="/donate"
+              onClick={() => trackCtaClick({ label: "Donate ⚡", section: "navbar", url: "/donate" })}
               className="ml-1 px-4 py-2 rounded-lg text-sm font-semibold btn-orange"
             >
               Donate ⚡
@@ -376,14 +383,18 @@ export default function Navbar() {
             </span>
           )}
           <button
-            onClick={() => setSearchOpen(true)}
+            onClick={() => { setSearchOpenSource("click"); setSearchOpen(true); }}
             className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
           </button>
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => {
+              const next = !menuOpen;
+              setMenuOpen(next);
+              if (next) trackNavMenuOpen();
+            }}
             className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
             aria-label="Toggle menu"
           >
@@ -392,7 +403,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} openSource={searchOpenSource} />
 
       {/* Mobile menu */}
       <div
@@ -522,7 +533,10 @@ export default function Navbar() {
 
             {isHome ? (
               <button
-                onClick={() => handleScroll("donate")}
+                onClick={() => {
+                  trackCtaClick({ label: "Donate ⚡", section: "navbar_mobile", url: "#donate" });
+                  handleScroll("donate");
+                }}
                 className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all text-left"
               >
                 Donate ⚡
@@ -530,6 +544,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/donate"
+                onClick={() => trackCtaClick({ label: "Donate ⚡", section: "navbar_mobile", url: "/donate" })}
                 className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
               >
                 Donate ⚡

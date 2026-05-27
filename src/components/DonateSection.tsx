@@ -4,6 +4,7 @@ import { useState } from "react";
 import RevealOnScroll from "./RevealOnScroll";
 import { Zap, Copy, CheckCheck, ExternalLink, Heart } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
+import { trackDonationAction } from "@/lib/analytics";
 
 const LIGHTNING_ADDRESS = "Blissfulinspiration519440@getalby.com";
 const LIGHTNING_URI = `lightning:${LIGHTNING_ADDRESS}`;
@@ -23,6 +24,7 @@ export default function DonateSection() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(LIGHTNING_ADDRESS).then(() => {
+      trackDonationAction({ action: "copy_address" });
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
@@ -30,6 +32,7 @@ export default function DonateSection() {
 
   const handleCopyBip47 = () => {
     navigator.clipboard.writeText(BIP47_CODE).then(() => {
+      trackDonationAction({ action: "copy_bip47" });
       setCopiedBip47(true);
       setTimeout(() => setCopiedBip47(false), 2000);
     });
@@ -113,6 +116,7 @@ export default function DonateSection() {
               {/* Open in wallet button */}
               <a
                 href={LIGHTNING_URI}
+                onClick={() => trackDonationAction({ action: "open_wallet" })}
                 className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all shadow-card"
               >
                 <Zap className="w-4 h-4" />
@@ -140,6 +144,7 @@ export default function DonateSection() {
                       ? `lightning:${LIGHTNING_ADDRESS}?amount=${a.sats}`
                       : LIGHTNING_URI
                   }
+                  onClick={() => trackDonationAction({ action: "amount_select", value: a.sats ?? undefined, label: a.label })}
                   className="flex flex-col bg-card border border-border rounded-xl p-4 shadow-card hover:border-primary/40 hover:shadow-card-hover transition-all text-center group"
                 >
                   <span className="font-bold text-foreground text-sm group-hover:text-primary transition-colors">

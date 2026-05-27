@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Search, X, ArrowUpRight } from "lucide-react";
 import Fuse from "fuse.js";
 import { SEARCH_INDEX, type SearchEntry } from "@/lib/searchIndex";
+import { trackNavSearchOpen, trackSearchQuery, trackSearchResultClick } from "@/lib/analytics";
 
 const FUSE_OPTIONS = {
   keys: [
@@ -34,13 +35,16 @@ const SUGGESTED = ["Self-Custody", "Next Meetup", "Hard Money", "DCA", "Lightnin
 type Props = {
   open: boolean;
   onClose: () => void;
+  openSource?: "keyboard" | "click";
 };
 
-export default function SearchModal({ open, onClose }: Props) {
+export default function SearchModal({ open, onClose, openSource = "click" }: Props) {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const fuseRef = useRef<Fuse<SearchEntry> | null>(null);
+  const queryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastTrackedQueryRef = useRef("");
   const router = useRouter();
 
   const getFuse = useMemo(() => () => {
@@ -63,12 +67,13 @@ export default function SearchModal({ open, onClose }: Props) {
     setSelectedIndex(-1);
   }, [query]);
 
-  // Focus input when opened
+  // Focus input and track modal open
   useEffect(() => {
     if (open) {
+      trackNavSearchOpen({ source: openSource });
       setTimeout(() => inputRef.current?.focus(), 50);
     }
-  }, [open]);
+  }, [open, openSource]);
 
   // Close on Escape
   useEffect(() => {
@@ -121,7 +126,18 @@ export default function SearchModal({ open, onClose }: Props) {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              const newVal = e.target.value;
+              setQuery(newVal);
+              if (queryTimerRef.current) clearTimeout(queryTimerRef.current);
+              queryTimerRef.current = setTimeout(() => {
+                if (newVal.trim().length > 1 && newVal !== lastTrackedQueryRef.current) {
+                  lastTrackedQueryRef.current = newVal;
+                  const count = fuseRef.current ? fuseRef.current.search(newVal).slice(0, 8).length : 0;
+                  trackSearchQuery({ query: newVal, result_count: count });
+                }
+              }, 600);
+            }}
             onKeyDown={handleInputKeyDown}
             placeholder="Search…"
             className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground text-base md:text-sm outline-none"
@@ -164,7 +180,10 @@ export default function SearchModal({ open, onClose }: Props) {
                 <li key={entry.href}>
                   <Link
                     href={entry.href}
-                    onClick={handleClose}
+                    onClick={() => {
+                      trackSearchResultClick({ title: entry.title, href: entry.href, category: entry.category, position: idx });
+                      handleClose();
+                    }}
                     className={`flex items-start gap-3 px-4 py-3 transition-colors group ${
                       idx === selectedIndex ? "bg-secondary" : "hover:bg-secondary"
                     }`}

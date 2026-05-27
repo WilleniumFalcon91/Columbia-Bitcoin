@@ -34,7 +34,7 @@ const nextConfig = {
               "font-src 'self'",
               "img-src 'self' https: data: blob:",
               "frame-src https://timechaincalendar.com https://www.us-debt-clock.com https://www.youtube.com https://www.youtube-nocookie.com https://www.tradingview.com https://s.tradingview.com",
-              "connect-src 'self' https://api.coingecko.com https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com https://vitals.vercel-insights.com",
+              "connect-src 'self' https://api.coingecko.com https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://vitals.vercel-insights.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join("; "),

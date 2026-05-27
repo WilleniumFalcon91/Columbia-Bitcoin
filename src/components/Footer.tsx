@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Bitcoin, Zap, ChevronUp, Mail } from "lucide-react";
+import { trackOutboundLink } from "@/lib/analytics";
 
 const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
 const NOSTR_LOGO = "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png";
@@ -96,6 +97,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Find us on Nostr"
+                onClick={() => trackOutboundLink({ url: `https://primal.net/p/${NOSTR_NPUB}`, label: "Nostr", section: "footer" })}
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Image src={NOSTR_LOGO} alt="" width={16} height={16} className="opacity-70" />
@@ -104,6 +106,7 @@ export default function Footer() {
               <a
                 href="mailto:btcwrestle2001@protonmail.com"
                 aria-label="Email us"
+                onClick={() => trackOutboundLink({ url: "mailto:btcwrestle2001@protonmail.com", label: "Email", section: "footer" })}
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail className="w-4 h-4" />

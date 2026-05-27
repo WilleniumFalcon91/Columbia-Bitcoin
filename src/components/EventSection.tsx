@@ -1,6 +1,9 @@
+"use client";
+
 import { Calendar, CalendarPlus, Clock, MapPin, Users, Beer, MessageSquare, Bot, ArrowUpRight } from "lucide-react";
 import type { LumaEvent } from "@/lib/luma";
 import RevealOnScroll from "./RevealOnScroll";
+import { trackCtaClick, trackOutboundLink } from "@/lib/analytics";
 
 function buildGCalUrl(event: LumaEvent): string {
   const start = new Date(event.startDateISO);
@@ -121,6 +124,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
                     href={mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackOutboundLink({ url: mapUrl, label: "Open in Maps", section: "event_section" })}
                     className="inline-block mt-2 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
                   >
                     Open in Maps <ArrowUpRight className="w-3.5 h-3.5 inline-block ml-0.5" />
@@ -140,6 +144,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
                     href={event.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackCtaClick({ label: "RSVP on Luma", section: "event_section", url: event.url })}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-orange text-sm font-semibold"
                   >
                     RSVP on Luma <ArrowUpRight className="w-3.5 h-3.5" />
@@ -148,6 +153,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
                     href={gcalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackCtaClick({ label: "Add to Calendar", section: "event_section", url: gcalUrl })}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary border border-border text-sm font-medium text-foreground hover:border-primary/40 transition-all"
                   >
                     <CalendarPlus className="w-4 h-4" />

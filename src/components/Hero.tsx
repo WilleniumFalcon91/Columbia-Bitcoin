@@ -3,6 +3,7 @@
 import { Calendar, Clock, MapPin, ArrowDown, ArrowUpRight } from "lucide-react";
 import type { LumaEvent } from "@/lib/luma";
 import MatrixRain from "./MatrixRain";
+import { trackCtaClick } from "@/lib/analytics";
 
 export default function Hero({ event }: { event: LumaEvent }) {
   const scrollToEvent = () => {
@@ -120,6 +121,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
             href={event.url}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackCtaClick({ label: "RSVP on Luma", section: "hero", url: event.url })}
             className="px-8 py-3.5 rounded-xl btn-orange font-semibold text-sm"
           >
             RSVP on Luma <ArrowUpRight className="w-4 h-4 inline-block" />
@@ -128,6 +130,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
             href="#about"
             onClick={(e) => {
               e.preventDefault();
+              trackCtaClick({ label: "Learn More", section: "hero", url: "#about" });
               document
                 .querySelector("#about")
                 ?.scrollIntoView({ behavior: "smooth" });

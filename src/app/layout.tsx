@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, JetBrains_Mono, Source_Serif_4, Monoton } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
+import AnalyticsProvider from "@/components/AnalyticsProvider";
 import PageTransition from "@/components/PageTransition";
 
 const inter = Inter({
@@ -119,7 +119,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
         <PageTransition>{children}</PageTransition>
-        <Analytics />
+        <AnalyticsProvider />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-QMS4S6LNFL"

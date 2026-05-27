@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Calendar, Users, BookOpen, Mail, Zap } from "lucide-react";
+import { trackNavLinkClick } from "@/lib/analytics";
 
 const mainSections = [
   {
@@ -189,6 +192,7 @@ export default function RelatedPages({ current }: { current: string }) {
               <Link
                 key={page.href}
                 href={page.href}
+                onClick={() => trackNavLinkClick({ label: page.label, href: page.href, section: "related_pages" })}
                 className="group flex flex-col bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/30 transition-all duration-150"
               >
                 <p className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
@@ -220,6 +224,7 @@ export default function RelatedPages({ current }: { current: string }) {
               <Link
                 key={section.href}
                 href={section.href}
+                onClick={() => trackNavLinkClick({ label: section.label, href: section.href, section: "related_pages" })}
                 className="group flex flex-col bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/30 transition-all duration-150"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
