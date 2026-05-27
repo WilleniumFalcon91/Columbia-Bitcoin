@@ -516,7 +516,7 @@ export default function DCAPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/dca" />
       <Footer />
     </main>
   );

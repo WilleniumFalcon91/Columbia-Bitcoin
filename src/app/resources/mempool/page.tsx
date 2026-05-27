@@ -132,7 +132,7 @@ export default function MempoolPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/mempool" />
       <Footer />
     </main>
   );

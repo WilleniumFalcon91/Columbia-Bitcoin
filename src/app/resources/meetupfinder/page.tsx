@@ -68,7 +68,7 @@ export default function MeetupsPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/meetupfinder" />
       <Footer />
     </main>
   );

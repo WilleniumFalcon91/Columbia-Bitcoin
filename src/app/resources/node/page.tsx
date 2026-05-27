@@ -400,7 +400,7 @@ export default function NodePage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/node" />
       <Footer />
     </main>
   );

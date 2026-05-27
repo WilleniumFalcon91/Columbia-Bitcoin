@@ -69,7 +69,7 @@ export default function DebtClockPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/debt-clock" />
       <Footer />
     </main>
   );

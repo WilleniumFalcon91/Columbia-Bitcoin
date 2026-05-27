@@ -54,7 +54,7 @@ export default function EducationPage() {
         </div>
         <ResourcesSection />
       </div>
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/education" />
       <Footer />
     </main>
   );

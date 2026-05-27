@@ -374,7 +374,7 @@ export default function MiningPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/mining" />
       <Footer />
     </main>
   );

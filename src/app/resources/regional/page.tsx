@@ -205,7 +205,7 @@ export default function RegionalPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/regional" />
       <Footer />
     </main>
   );

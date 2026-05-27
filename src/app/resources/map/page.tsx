@@ -71,7 +71,7 @@ export default function MapPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/map" />
       <Footer />
     </main>
   );

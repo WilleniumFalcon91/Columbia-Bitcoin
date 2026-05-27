@@ -67,7 +67,7 @@ export default function TimechainPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/timechain" />
       <Footer />
     </main>
   );

@@ -240,7 +240,7 @@ export default function BitboPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/bitbo" />
       <Footer />
     </main>
   );

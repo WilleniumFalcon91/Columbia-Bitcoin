@@ -59,7 +59,7 @@ export default function PrivacyPage() {
         </div>
         <PrivacySection />
       </div>
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/privacy" />
       <Footer />
     </main>
   );

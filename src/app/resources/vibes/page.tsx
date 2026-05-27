@@ -50,7 +50,7 @@ export default function VibesPage() {
         </section>
       </div>
 
-      <RelatedPages current="/resources" />
+      <RelatedPages current="/resources/vibes" />
       <Footer />
     </main>
   );
