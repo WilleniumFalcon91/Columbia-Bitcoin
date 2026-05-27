@@ -8,14 +8,14 @@ type Category = "All" | "Learn" | "News" | "Tools" | "Social";
 
 const CATEGORY_PILL: Record<Exclude<Category, "All">, string> = {
   Learn:  "bg-primary/10 text-primary",
-  News:   "bg-blue-500/10 text-blue-500",
+  News:   "bg-cyan-400/10 text-cyan-400",
   Tools:  "bg-emerald-500/10 text-emerald-600",
   Social: "bg-purple-500/10 text-purple-500",
 };
 
 const ICON_BG: Record<Exclude<Category, "All">, string> = {
   Learn:  "bg-primary/10",
-  News:   "bg-blue-500/10",
+  News:   "bg-cyan-400/10",
   Tools:  "bg-emerald-500/10",
   Social: "bg-purple-500/10",
 };

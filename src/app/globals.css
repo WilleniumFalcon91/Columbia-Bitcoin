@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --card: #27344d;
+  --card: #1f2b3e;
   --ring: #f7931a;
   --input: #232f45;
-  --muted: #1b2438;
+  --muted: #19202d;
   --accent: #0e1f3a;
   --border: #2e3c54;
   --radius: 0.75rem;
@@ -15,7 +15,7 @@
   --font-mono: 'JetBrains Mono', monospace;
   --font-sans: 'Inter', sans-serif;
   --secondary: #232e44;
-  --background: #161d2c;
+  --background: #131820;
   --font-serif: 'Source Serif 4', serif;
   --foreground: #efefef;
   --destructive: #ef4444;

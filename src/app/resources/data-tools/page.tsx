@@ -44,7 +44,7 @@ const items: Item[] = [
     label: "U.S. Debt Clock",
     description: "Live federal debt and deficit data ticking upward in real time — a ledger of a monetary system with no hard cap.",
     tag: "Live",
-    tagColor: "bg-blue-500/10 text-blue-500",
+    tagColor: "bg-cyan-400/10 text-cyan-400",
   },
   {
     href: "/resources/timechain",
@@ -52,7 +52,7 @@ const items: Item[] = [
     label: "Timechain",
     description: "Every Bitcoin block ever mined, laid out as a calendar. A living record of the unbroken chain from genesis to today.",
     tag: "Live",
-    tagColor: "bg-blue-500/10 text-blue-500",
+    tagColor: "bg-cyan-400/10 text-cyan-400",
   },
   {
     href: "/resources/mempool",
@@ -60,7 +60,7 @@ const items: Item[] = [
     label: "Mempool Explorer",
     description: "Real-time visibility into Bitcoin's transaction backlog. Track fee rates, block activity, and network congestion.",
     tag: "Live",
-    tagColor: "bg-blue-500/10 text-blue-500",
+    tagColor: "bg-cyan-400/10 text-cyan-400",
   },
   {
     href: "/resources/bitbo",
@@ -68,7 +68,7 @@ const items: Item[] = [
     label: "Bitcoin Data & Charts",
     description: "Price history, purchasing power, and long-term appreciation — curated charts from bitbo.io covering power law, drawdown cycles, and more.",
     tag: "Live",
-    tagColor: "bg-blue-500/10 text-blue-500",
+    tagColor: "bg-cyan-400/10 text-cyan-400",
   },
   {
     href: "/resources/map",
@@ -97,7 +97,7 @@ export default function DataToolsPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-16">
-            <p className="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-3">
+            <p className="text-xs font-semibold text-cyan-400 uppercase tracking-widest mb-3">
               Data &amp; Tools
             </p>
             <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -115,21 +115,21 @@ export default function DataToolsPage() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="group relative flex flex-col bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:border-blue-500/30 transition-all duration-200"
+                  className="group relative flex flex-col bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:border-cyan-400/30 transition-all duration-200"
                 >
                   <span className={`absolute top-5 right-5 text-xs font-semibold px-2.5 py-1 rounded-full ${item.tagColor}`}>
                     {item.tag}
                   </span>
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition-colors">
-                    <Icon className="w-5 h-5 text-blue-500" />
+                  <div className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center mb-4 group-hover:bg-cyan-400/20 transition-colors">
+                    <Icon className="w-5 h-5 text-cyan-400" />
                   </div>
-                  <p className="font-semibold text-foreground mb-2 group-hover:text-blue-500 transition-colors duration-150 pr-16">
+                  <p className="font-semibold text-foreground mb-2 group-hover:text-cyan-400 transition-colors duration-150 pr-16">
                     {item.label}
                   </p>
                   <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                     {item.description}
                   </p>
-                  <div className="flex items-center gap-1 mt-5 text-xs font-semibold text-blue-500">
+                  <div className="flex items-center gap-1 mt-5 text-xs font-semibold text-cyan-400">
                     Explore
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
                   </div>

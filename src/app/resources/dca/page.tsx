@@ -43,9 +43,9 @@ const dcaExamples = [
     invested: "$5,200",
     result: "Avg. 3–5× growth",
     note: "Across any 4-year Bitcoin DCA window, the average return has been strongly positive due to Bitcoin's long-term appreciation.",
-    color: "border-blue-500/30",
-    accent: "text-blue-500",
-    bg: "bg-blue-500/10",
+    color: "border-cyan-400/30",
+    accent: "text-cyan-400",
+    bg: "bg-cyan-400/10",
   },
   {
     label: "$100 / month",

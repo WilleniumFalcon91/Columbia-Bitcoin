@@ -117,7 +117,7 @@ const groups: { label: string; icon: LucideIcon; gridCols: string; items: Sectio
         label: "U.S. Debt Clock",
         description: "Live federal debt and deficit data ticking upward in real time — a ledger of a monetary system with no hard cap.",
         tag: "Live",
-        tagColor: "bg-blue-500/10 text-blue-500",
+        tagColor: "bg-cyan-400/10 text-cyan-400",
       },
       {
         href: "/resources/timechain",
@@ -125,7 +125,7 @@ const groups: { label: string; icon: LucideIcon; gridCols: string; items: Sectio
         label: "Timechain",
         description: "Every Bitcoin block ever mined, laid out as a calendar. A living record of the unbroken chain from genesis to today.",
         tag: "Live",
-        tagColor: "bg-blue-500/10 text-blue-500",
+        tagColor: "bg-cyan-400/10 text-cyan-400",
       },
       {
         href: "/resources/mempool",
@@ -133,7 +133,7 @@ const groups: { label: string; icon: LucideIcon; gridCols: string; items: Sectio
         label: "Mempool Explorer",
         description: "Real-time visibility into Bitcoin's transaction backlog. Track fee rates, block activity, and network congestion.",
         tag: "Live",
-        tagColor: "bg-blue-500/10 text-blue-500",
+        tagColor: "bg-cyan-400/10 text-cyan-400",
       },
       {
         href: "/resources/bitbo",
@@ -141,7 +141,7 @@ const groups: { label: string; icon: LucideIcon; gridCols: string; items: Sectio
         label: "Bitcoin Data & Charts",
         description: "Price history, purchasing power, and long-term appreciation — curated charts from bitbo.io covering power law, drawdown cycles, stock-to-flow, and more.",
         tag: "Live",
-        tagColor: "bg-blue-500/10 text-blue-500",
+        tagColor: "bg-cyan-400/10 text-cyan-400",
       },
       {
         href: "/resources/map",

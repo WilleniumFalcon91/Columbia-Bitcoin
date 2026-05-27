@@ -47,8 +47,8 @@ const steps = [
       "Bitcoin isn't just digital money. It's a fixed-supply, censorship-resistant, self-sovereign monetary network. This presentation covers the core properties, why people hold it, and how transactions actually work.",
     readTime: "15 min",
     tag: "Foundations",
-    tagColor: "bg-blue-500/10 text-blue-500",
-    accent: "border-blue-500/30",
+    tagColor: "bg-cyan-400/10 text-cyan-400",
+    accent: "border-cyan-400/30",
   },
   {
     number: "03",

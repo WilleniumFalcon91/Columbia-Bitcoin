@@ -28,7 +28,7 @@ type ChartTag = "Appreciation" | "Price History" | "Purchasing Power" | "Scarcit
 
 const TAG_COLOR: Record<ChartTag, string> = {
   Appreciation:     "bg-emerald-500/10 text-emerald-600",
-  "Price History":  "bg-blue-500/10 text-blue-500",
+  "Price History":  "bg-cyan-400/10 text-cyan-400",
   "Purchasing Power": "bg-amber-500/10 text-amber-600",
   Scarcity:         "bg-purple-500/10 text-purple-500",
 };

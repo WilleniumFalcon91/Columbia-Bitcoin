@@ -302,9 +302,9 @@ export default function SelfCustodyPage() {
                 </div>
 
                 {/* Cold */}
-                <div className="bg-card border border-blue-500/30 rounded-2xl p-6 shadow-card">
+                <div className="bg-card border border-cyan-400/30 rounded-2xl p-6 shadow-card">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-xl">
+                    <div className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center text-xl">
                       ❄️
                     </div>
                     <div>
@@ -369,7 +369,7 @@ export default function SelfCustodyPage() {
                         </span>
                       )}
                       {w.airGapped && (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-500 font-medium">
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-400/10 text-cyan-400 font-medium">
                           Air-gapped
                         </span>
                       )}

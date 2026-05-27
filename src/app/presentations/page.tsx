@@ -64,7 +64,7 @@ const presentations: Presentation[] = [
     title: "BlueWallet",
     date: "Monthly Meetup",
     topic: "Wallets",
-    topicColor: "bg-blue-500/10 text-blue-500",
+    topicColor: "bg-cyan-400/10 text-cyan-400",
     description:
       "A beginner-friendly guide to BlueWallet for iPhone and Android — creating your first wallet, securing your seed phrase, sending and receiving bitcoin, and advanced features.",
     sections: ["Create Wallet", "Seed Backup", "Send & Receive", "Security", "Advanced Features"],

@@ -7,7 +7,7 @@ import type { GlossaryCategory } from "@/lib/glossaryTerms";
 type Category = "All" | GlossaryCategory;
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Network:          "bg-blue-500/10 text-blue-500",
+  Network:          "bg-cyan-400/10 text-cyan-400",
   Economics:        "bg-amber-500/10 text-amber-600",
   "Keys & Wallets": "bg-emerald-500/10 text-emerald-600",
   Lightning:        "bg-violet-500/10 text-violet-500",

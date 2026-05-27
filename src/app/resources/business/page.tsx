@@ -128,7 +128,7 @@ const processors = [
   {
     name: "OpenNode",
     type: "Hosted — Full-featured",
-    typeColor: "bg-blue-500/10 text-blue-500",
+    typeColor: "bg-cyan-400/10 text-cyan-400",
     fees: "1% per transaction",
     onchain: true,
     lightning: true,

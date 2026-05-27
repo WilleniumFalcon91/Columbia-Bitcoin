@@ -19,7 +19,7 @@ const fuse = new Fuse(SEARCH_INDEX, {
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Learn":        "bg-primary/10 text-primary",
-  "Data & Tools": "bg-blue-500/10 text-blue-500",
+  "Data & Tools": "bg-cyan-400/10 text-cyan-400",
   "Community":    "bg-amber-500/10 text-amber-600",
   "Philosophy":   "bg-violet-500/10 text-violet-500",
   "Presentations":"bg-emerald-500/10 text-emerald-600",
