@@ -24,7 +24,6 @@ export default function DebtClockPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">U.S. National Debt Clock — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
@@ -33,9 +32,9 @@ export default function DebtClockPage() {
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Live Data
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 U.S. National Debt
-              </h2>
+              </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 The dollar is being debased in real time. Every figure you see
                 below is ticking upward — a live ledger of a monetary system

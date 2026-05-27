@@ -132,9 +132,9 @@ export default function ResourcesSection() {
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             Level Up
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Bitcoin Education
-          </h2>
+          </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Curated resources for every level — from newcomers to seasoned
             bitcoiners. Filter by category to find what you need.

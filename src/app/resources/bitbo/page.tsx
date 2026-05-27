@@ -95,7 +95,6 @@ export default function BitboPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Bitcoin Price Charts & Data — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
@@ -106,9 +105,9 @@ export default function BitboPage() {
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Live Data
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Bitcoin Data &amp; Charts
-              </h2>
+              </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Price history, purchasing power, and long-term appreciation — all
                 in one place. Curated from{" "}

@@ -41,7 +41,6 @@ export default function EducationPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Bitcoin Education Resources — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
         <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-1">
           <Link

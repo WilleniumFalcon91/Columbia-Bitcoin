@@ -230,7 +230,6 @@ export default function DCAPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Bitcoin Dollar Cost Averaging Guide — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
@@ -249,9 +248,9 @@ export default function DCAPage() {
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Investment Strategy
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Dollar Cost Averaging
-              </h2>
+              </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 The simplest, most effective strategy for accumulating Bitcoin — and the one most backed by data and human psychology. Buy a fixed amount, on a fixed schedule, no matter what the price is doing.
               </p>

@@ -37,7 +37,6 @@ export default function MeetupsPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Bitcoin Meetups Map — Worldwide</h1>
         <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
@@ -46,9 +45,9 @@ export default function MeetupsPage() {
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Find Your Community
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Bitcoin Meetups
-              </h2>
+              </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Find a Bitcoin community near you. Data sourced from{" "}
                 <a

@@ -99,7 +99,6 @@ export default function MiningPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Bitcoin Mining — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
@@ -117,9 +116,9 @@ export default function MiningPage() {
               <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 mb-4">
                 Mining
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
                 Bitcoin Mining
-              </h2>
+              </h1>
               <p className="text-muted-foreground leading-relaxed">
                 Mining is the process that secures Bitcoin, creates new blocks, and issues new coins. Understanding it is essential to understanding why Bitcoin works.
               </p>

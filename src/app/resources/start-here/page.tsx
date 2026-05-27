@@ -112,7 +112,6 @@ export default function StartHerePage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Start Here — New to Bitcoin? | Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
@@ -123,9 +122,9 @@ export default function StartHerePage() {
               <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary mb-4">
                 New to Bitcoin
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
                 Start Here
-              </h2>
+              </h1>
               <p className="text-muted-foreground leading-relaxed max-w-xl">
                 You found us — now here&apos;s the fastest path from &ldquo;what is Bitcoin?&rdquo; to holding your own keys.
                 Five steps, curated by the Columbia Bitcoin community.

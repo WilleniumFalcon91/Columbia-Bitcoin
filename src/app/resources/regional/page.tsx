@@ -145,7 +145,6 @@ export default function RegionalPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Carolinas Bitcoin Communities — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
@@ -156,9 +155,9 @@ export default function RegionalPage() {
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Your Neighbors
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Carolinas Bitcoin Communities
-              </h2>
+              </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Bitcoin is growing across South Carolina and North Carolina.
                 Whether you&apos;re traveling or looking for a second community,

@@ -273,7 +273,6 @@ export default function ResourcesPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Bitcoin Resources — Columbia, SC Bitcoin</h1>
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
           <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -282,9 +281,9 @@ export default function ResourcesPage() {
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Level Up
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Resources
-              </h2>
+              </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Curated Bitcoin education, live network data, and community picks — organized by what you&apos;re looking for.
               </p>

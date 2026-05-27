@@ -260,9 +260,9 @@ export default function PrivacySection() {
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             Take Back Control
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Privacy Resources
-          </h2>
+          </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Bitcoin and financial privacy go hand in hand. These are the tools
             and guides recommended by the Columbia Bitcoin community — for

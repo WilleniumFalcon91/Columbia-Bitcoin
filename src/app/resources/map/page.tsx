@@ -38,7 +38,6 @@ export default function MapPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <h1 className="sr-only">Bitcoin Map — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
@@ -47,9 +46,9 @@ export default function MapPage() {
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Spend Bitcoin Locally
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Bitcoin Map
-              </h2>
+              </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Find businesses near Columbia, SC that accept Bitcoin. Data
                 sourced from{" "}
