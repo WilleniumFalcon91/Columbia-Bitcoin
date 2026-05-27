@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Why Bitcoin's 21 million cap is the most important property in monetary history. Austrian economics, stock-to-flow, and the case for sound money.",
     url: "/resources/philosophy/hard-money",
-    images: [{ url: `/api/og?title=${encodeURIComponent("Hard Money | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Hard Money | Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Hard Money | Columbia, SC Bitcoin")}&section=philosophy`, width: 1200, height: 630, alt: "Hard Money | Columbia, SC Bitcoin" }],
   },
 };
 
@@ -102,13 +102,38 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
 export default function HardMoneyPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/resources` },
+          { "@type": "ListItem", position: 3, name: "Philosophy", item: `${siteUrl}/resources/philosophy` },
+          { "@type": "ListItem", position: 4, name: "Hard Money", item: `${siteUrl}/resources/philosophy/hard-money` },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: "Hard Money — Bitcoin Philosophy",
+        description: "Why Bitcoin's 21 million cap is the most important property in monetary history. Austrian economics, stock-to-flow, and the case for sound money.",
+        url: `${siteUrl}/resources/philosophy/hard-money`,
+        publisher: { "@type": "Organization", name: "Columbia, SC Bitcoin", url: siteUrl },
+      },
+    ],
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <ResourcesBreadcrumb />
 
-      <section className="py-24 bg-background">
+      <section className="py-12 sm:py-16 lg:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
           <Link
@@ -122,7 +147,7 @@ export default function HardMoneyPage() {
           {/* Hero */}
           <div>
             <SectionLabel>Philosophy</SectionLabel>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Hard Money
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -133,7 +158,7 @@ export default function HardMoneyPage() {
           {/* What is Hard Money */}
           <div>
             <SectionLabel>Foundation</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">What Makes Money &quot;Hard&quot;?</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">What Makes Money &quot;Hard&quot;?</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Money serves two core functions: a medium of exchange (you use it to buy things) and a store of value (you save it and it holds purchasing power over time). &quot;Hard money&quot; excels at the second function — it resists supply inflation.
@@ -150,7 +175,7 @@ export default function HardMoneyPage() {
           {/* Hardness comparison */}
           <div>
             <SectionLabel>Comparison</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Gold vs. Fiat vs. Bitcoin</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Gold vs. Fiat vs. Bitcoin</h2>
             <div className="grid gap-4">
               {hardnessComparison.map((item) => (
                 <div key={item.money} className="bg-card border border-border rounded-xl p-5 shadow-card">
@@ -174,7 +199,7 @@ export default function HardMoneyPage() {
           {/* Bitcoin's 21M Cap */}
           <div>
             <SectionLabel>Bitcoin&apos;s Supply</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Why 21 Million Can&apos;t Be Changed</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Why 21 Million Can&apos;t Be Changed</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Bitcoin&apos;s 21 million supply cap is not a setting — it is a consensus rule enforced by every node on the network. Any miner who produces a block with an invalid reward (more than the protocol allows) will have that block rejected by every honest node. The economic incentive to cheat doesn&apos;t exist because the cheater&apos;s coins would be worthless to everyone else.
@@ -194,7 +219,7 @@ export default function HardMoneyPage() {
           {/* Austrian Economics */}
           <div>
             <SectionLabel>Intellectual Roots</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Austrian Economics & Hard Money</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Austrian Economics & Hard Money</h2>
             <div className="space-y-4">
               {austrianPrinciples.map((item) => (
                 <div key={item.thinker} className="bg-card border border-border rounded-xl p-5 shadow-card">
@@ -211,7 +236,7 @@ export default function HardMoneyPage() {
           {/* Go Deeper */}
           <div>
             <SectionLabel>Go Deeper</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Essential Reading</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Essential Reading</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {resources.map((r) => (
                 <a

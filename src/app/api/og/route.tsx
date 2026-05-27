@@ -3,12 +3,21 @@ import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
+const SECTION_COLORS: Record<string, string> = {
+  learn: "#fb923c",
+  philosophy: "#a78bfa",
+  data: "#22d3ee",
+  community: "#34d399",
+};
+
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const rawTitle = searchParams.get("title") ?? "Columbia, SC Bitcoin";
+  const section = searchParams.get("section") ?? "";
 
   // Strip the site name suffix for display
   const title = rawTitle.replace(/ \| Columbia, SC Bitcoin$/, "");
+  const accent = SECTION_COLORS[section] ?? "#f7931a";
 
   return new ImageResponse(
     (
@@ -21,12 +30,12 @@ export async function GET(req: NextRequest) {
           fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
-        {/* Orange left accent bar */}
+        {/* Left accent bar — color varies by section */}
         <div
           style={{
             width: "8px",
             height: "100%",
-            background: "#f7931a",
+            background: accent,
             flexShrink: 0,
           }}
         />
@@ -90,7 +99,7 @@ export async function GET(req: NextRequest) {
               style={{
                 width: "60px",
                 height: "3px",
-                background: "#f7931a",
+                background: accent,
                 borderRadius: "2px",
               }}
             />

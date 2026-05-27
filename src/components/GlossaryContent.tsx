@@ -24,7 +24,7 @@ export default function GlossaryContent() {
     : TERMS.filter((t) => t.category === activeCategory);
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-12 sm:py-16 lg:py-24 bg-background">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
         {/* Header */}
@@ -40,7 +40,7 @@ export default function GlossaryContent() {
         <div className="bg-card border border-primary/20 rounded-2xl p-8 sm:p-10 shadow-card">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-xl flex-shrink-0">₿</div>
-            <h3 className="text-xl font-bold text-foreground">What is Bitcoin?</h3>
+            <h3 className="text-xl lg:text-2xl font-bold text-foreground">What is Bitcoin?</h3>
           </div>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>

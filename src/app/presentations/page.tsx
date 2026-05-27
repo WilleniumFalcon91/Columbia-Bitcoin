@@ -77,11 +77,11 @@ export default function PresentationsPage() {
     <main>
       <Navbar />
       <div className="pt-16">
-        <section className="py-24 bg-background">
+        <section className="py-12 sm:py-16 lg:py-24 bg-background">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Header */}
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Learn
               </p>

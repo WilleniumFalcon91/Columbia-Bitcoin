@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "The Cantillon effect, debt monetization, and surveillance capitalism — what's broken about the current monetary system and how Bitcoin addresses each problem.",
     url: "/resources/philosophy/bitcoin-fixes-this",
-    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Fixes This | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Fixes This | Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Fixes This | Columbia, SC Bitcoin")}&section=philosophy`, width: 1200, height: 630, alt: "Bitcoin Fixes This | Columbia, SC Bitcoin" }],
   },
 };
 
@@ -86,13 +86,38 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
 export default function BitcoinFixesThisPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/resources` },
+          { "@type": "ListItem", position: 3, name: "Philosophy", item: `${siteUrl}/resources/philosophy` },
+          { "@type": "ListItem", position: 4, name: "Bitcoin Fixes This", item: `${siteUrl}/resources/philosophy/bitcoin-fixes-this` },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: "Bitcoin Fixes This — Bitcoin Philosophy",
+        description: "The Cantillon effect, debt monetization, and surveillance capitalism — what's broken about the current monetary system and how Bitcoin addresses each problem.",
+        url: `${siteUrl}/resources/philosophy/bitcoin-fixes-this`,
+        publisher: { "@type": "Organization", name: "Columbia, SC Bitcoin", url: siteUrl },
+      },
+    ],
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <ResourcesBreadcrumb />
 
-      <section className="py-24 bg-background">
+      <section className="py-12 sm:py-16 lg:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
           <Link
@@ -106,7 +131,7 @@ export default function BitcoinFixesThisPage() {
           {/* Hero */}
           <div>
             <SectionLabel>Philosophy</SectionLabel>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Bitcoin Fixes This
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -117,7 +142,7 @@ export default function BitcoinFixesThisPage() {
           {/* The Problems */}
           <div>
             <SectionLabel>The Problems</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">What Bitcoin Fixes</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">What Bitcoin Fixes</h2>
             <div className="space-y-4">
               {problems.map((p) => (
                 <div key={p.label} className="bg-card border border-border rounded-xl p-5 shadow-card">
@@ -131,7 +156,7 @@ export default function BitcoinFixesThisPage() {
           {/* Parker Lewis */}
           <div>
             <SectionLabel>Parker Lewis</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Gradually, Then Suddenly</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Gradually, Then Suddenly</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Parker Lewis, head of business development at Unchained, wrote the most rigorous essay series in Bitcoin arguing the case for Bitcoin&apos;s inevitability. The title &quot;Gradually, Then Suddenly&quot; — borrowed from Hemingway&apos;s description of how one goes bankrupt — captures his thesis: Bitcoin adoption is not a linear ramp. It proceeds slowly, then all at once.
@@ -153,7 +178,7 @@ export default function BitcoinFixesThisPage() {
           {/* Allen Farrington */}
           <div>
             <SectionLabel>Allen Farrington</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Bitcoin Is Venice</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Bitcoin Is Venice</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Allen Farrington&apos;s essay &quot;Bitcoin Is Venice&quot; makes an argument that goes beyond economics into civilizational philosophy. His thesis: the flourishing of Renaissance Venice — its art, architecture, trade, and culture — was only possible because Venice had sound capital. Merchants and investors had confidence that their returns would not be inflated away, so they made long-horizon bets.
@@ -173,7 +198,7 @@ export default function BitcoinFixesThisPage() {
           {/* Hyperbitcoinization */}
           <div>
             <SectionLabel>The Endgame</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Hyperbitcoinization</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Hyperbitcoinization</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 &quot;Hyperbitcoinization&quot; describes the terminal state — a world where Bitcoin has become the dominant monetary base layer. Not because governments adopted it, but because rational actors, one by one, chose Bitcoin over an asset that loses purchasing power by design.
@@ -190,7 +215,7 @@ export default function BitcoinFixesThisPage() {
           {/* Go Deeper */}
           <div>
             <SectionLabel>Go Deeper</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Essential Reading</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Essential Reading</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {resources.map((r) => (
                 <a

@@ -28,8 +28,8 @@ export default function VibesPage() {
         <h1 className="sr-only">Bitcoin Vibes — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
-        <section className="py-24 bg-background">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 sm:py-16 lg:py-24 bg-background">
+          <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-4 vibes-title">
                 {"Vibes".split("").map((char, i) => (

@@ -244,7 +244,7 @@ export default function BusinessPage() {
         <h1 className="sr-only">Bitcoin for Businesses — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
-        <section className="py-24 bg-background">
+        <section className="py-12 sm:py-16 lg:py-24 bg-background">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <Link

@@ -42,7 +42,13 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem;
+  scroll-padding-top: calc(4rem + 0.5rem);
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 4rem;
+  }
 }
 
 body {
@@ -223,6 +229,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-fade-up { animation: none; opacity: 1; transform: none; }
+  .path-draw { animation: none; stroke-dashoffset: 0; opacity: 0.4; }
+  .animate-bounce, .animate-pulse, .animate-breathe, .animate-spin { animation: none; }
 }
 
 /* ---------- Gradient primary button ---------- */

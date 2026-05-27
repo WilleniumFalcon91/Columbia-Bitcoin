@@ -124,8 +124,8 @@ export default function ResourcesSection() {
       : educationResources.filter((r) => r.category === active);
 
   return (
-    <section id="resources" className="py-24 bg-background">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="resources" className="py-12 sm:py-16 lg:py-24 bg-background">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section header */}
         <div className="text-center mb-12">

@@ -49,17 +49,17 @@ export default function EventSection({ event }: { event: LumaEvent }) {
   const gcalUrl = buildGCalUrl(event);
 
   return (
-    <section id="event" className="py-24 bg-muted">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="event" className="py-12 sm:py-16 lg:py-24 bg-muted">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <RevealOnScroll className="text-center mb-16">
+        <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             Upcoming Event
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Next Meetup Details
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground lg:text-lg max-w-xl mx-auto">
             A casual monthly gathering for Bitcoiners in the Midlands. Come as
             you are — whether you&apos;ve never heard of Bitcoin or you&apos;re running a
             full node.

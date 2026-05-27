@@ -32,74 +32,90 @@ export default function Footer() {
 
   return (
     <footer className="bg-card border-t border-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          {/* Logo */}
-          {isHome ? (
-            <div className="flex items-center gap-2 font-bold text-foreground">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <Bitcoin className="w-5 h-5 text-white" />
-              </div>
-              <span>Columbia, SC Bitcoin</span>
-            </div>
-          ) : (
-            <Link href="/" className="flex items-center gap-2 font-bold text-foreground hover:text-primary transition-colors">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <Bitcoin className="w-5 h-5 text-white" />
-              </div>
-              <span>Columbia, SC Bitcoin</span>
-            </Link>
-          )}
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-[2fr_3fr_1fr] gap-8">
 
-          {/* Social links */}
-          <div className="flex items-center gap-3">
-            <a
-              href={`https://primal.net/p/${NOSTR_NPUB}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Find us on Nostr"
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
-            >
-              <Image src={NOSTR_LOGO} alt="Nostr" width={18} height={18} className="opacity-70 hover:opacity-100 transition-opacity" />
-            </a>
-            <a
-              href="mailto:btcwrestle2001@protonmail.com"
-              aria-label="Email us"
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
+          {/* Column 1: Logo + tagline */}
+          <div className="flex flex-col gap-3">
+            {isHome ? (
+              <div className="flex items-center gap-2 font-bold text-foreground">
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                  <Bitcoin className="w-5 h-5 text-white" />
+                </div>
+                <span>Columbia, SC Bitcoin</span>
+              </div>
+            ) : (
+              <Link href="/" className="flex items-center gap-2 font-bold text-foreground hover:text-primary transition-colors">
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                  <Bitcoin className="w-5 h-5 text-white" />
+                </div>
+                <span>Columbia, SC Bitcoin</span>
+              </Link>
+            )}
+            <p className="text-sm text-muted-foreground">
+              Columbia, SC&apos;s local Bitcoin community — meeting monthly to learn, connect, and stack sats.
+            </p>
           </div>
 
-          {/* Nav links */}
-          <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-1">
-            {footerLinks.map((link) =>
-              isHome && link.sectionId ? (
-                <button
-                  key={link.href}
-                  onClick={() => scrollTo(link.sectionId!)}
-                  className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </button>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
-          </nav>
+          {/* Column 2: Quick links */}
+          <div className="sm:flex sm:flex-col sm:items-center">
+            <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider mb-3">
+              Quick Links
+            </h3>
+            <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-x-16 gap-y-1">
+              {footerLinks.map((link) =>
+                isHome && link.sectionId ? (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollTo(link.sectionId!)}
+                    className="text-left py-1 text-sm text-muted-foreground hover:text-primary underline-offset-4 hover:underline transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="py-1 text-sm text-muted-foreground hover:text-primary underline-offset-4 hover:underline transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
+            </nav>
+          </div>
+
+          {/* Column 3: Connect */}
+          <div className="sm:flex sm:flex-col sm:items-end">
+            <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider mb-3">
+              Connect
+            </h3>
+            <div className="flex flex-col gap-3 sm:items-end">
+              <a
+                href={`https://primal.net/p/${NOSTR_NPUB}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Find us on Nostr"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Image src={NOSTR_LOGO} alt="" width={16} height={16} className="opacity-70" />
+                <span>Nostr</span>
+              </a>
+              <a
+                href="mailto:btcwrestle2001@protonmail.com"
+                aria-label="Email us"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+
         </div>
 
         <div className="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>
-            &copy; {new Date().getFullYear()} Columbia, SC Bitcoin. All rights
-            reserved.
-          </p>
+          <p>&copy; {new Date().getFullYear()} Columbia, SC Bitcoin</p>
           <p className="font-mono flex items-center gap-1">
             Est. 857221 <Zap className="w-3 h-3 text-primary fill-primary" />
           </p>

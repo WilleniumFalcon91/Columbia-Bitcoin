@@ -19,10 +19,10 @@ const GROUP_CARDS: GroupCard[] = [
     label: "Learn",
     description: "From first principles to self-custody — guides on Bitcoin fundamentals, security, privacy, mining, and how the network works.",
     icon: BookOpen,
-    iconClass: "bg-primary/10 text-primary group-hover:bg-primary/20",
-    chipClass: "bg-primary/10 text-primary",
-    borderHover: "hover:border-primary/40",
-    ctaClass: "text-primary",
+    iconClass: "bg-orange-400/10 text-orange-400 group-hover:bg-orange-400/20",
+    chipClass: "bg-orange-400/10 text-orange-400",
+    borderHover: "hover:border-orange-400/30",
+    ctaClass: "text-orange-400",
     topics: ["Glossary", "Self-Custody", "DCA"],
     moreCount: 5,
     href: "/resources/learn",
@@ -66,17 +66,17 @@ const GROUP_CARDS: GroupCard[] = [
 
 export default function HomeResourcesSection() {
   return (
-    <section id="resources" className="py-24 bg-background">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="resources" className="py-12 sm:py-16 lg:py-24 bg-background">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             Level Up
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Resources
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">
             Curated Bitcoin education, live network data, and community picks — organized by what you&apos;re looking for.
           </p>
         </div>
@@ -101,8 +101,8 @@ export default function HomeResourcesSection() {
           </Link>
         </div>
 
-        {/* 2×2 group cards */}
-        <div className="grid sm:grid-cols-2 gap-6">
+        {/* 2×2 group cards — expands to 4-column on xl */}
+        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {GROUP_CARDS.map((card) => {
             const Icon = card.icon;
             return (

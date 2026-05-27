@@ -34,6 +34,8 @@ export const metadata: Metadata = {
   },
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -47,6 +49,17 @@ const faqSchema = {
   })),
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/resources` },
+    { "@type": "ListItem", position: 3, name: "Learn", item: `${siteUrl}/resources/learn` },
+    { "@type": "ListItem", position: 4, name: "Glossary", item: `${siteUrl}/resources/glossary` },
+  ],
+};
+
 export default function GlossaryPage() {
   return (
     <main>
@@ -54,11 +67,15 @@ export default function GlossaryPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar />
       <div className="pt-16">
         <h1 className="sr-only">Bitcoin Glossary — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-1">
+        <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-1">
           <Link
             href="/resources/learn"
             className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"

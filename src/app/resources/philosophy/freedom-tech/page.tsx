@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "From the Cypherpunk Manifesto to Bitcoin — the philosophical case for censorship-resistant money and why privacy is a human right, not a privilege.",
     url: "/resources/philosophy/freedom-tech",
-    images: [{ url: `/api/og?title=${encodeURIComponent("Freedom Tech | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Freedom Tech | Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Freedom Tech | Columbia, SC Bitcoin")}&section=philosophy`, width: 1200, height: 630, alt: "Freedom Tech | Columbia, SC Bitcoin" }],
   },
 };
 
@@ -112,13 +112,38 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
 export default function FreedomTechPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/resources` },
+          { "@type": "ListItem", position: 3, name: "Philosophy", item: `${siteUrl}/resources/philosophy` },
+          { "@type": "ListItem", position: 4, name: "Freedom Tech", item: `${siteUrl}/resources/philosophy/freedom-tech` },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: "Freedom Tech — Bitcoin Philosophy",
+        description: "From the Cypherpunk Manifesto to Bitcoin — the philosophical case for censorship-resistant money and why privacy is a human right, not a privilege.",
+        url: `${siteUrl}/resources/philosophy/freedom-tech`,
+        publisher: { "@type": "Organization", name: "Columbia, SC Bitcoin", url: siteUrl },
+      },
+    ],
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <ResourcesBreadcrumb />
 
-      <section className="py-24 bg-background">
+      <section className="py-12 sm:py-16 lg:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
           <Link
@@ -132,7 +157,7 @@ export default function FreedomTechPage() {
           {/* Hero */}
           <div>
             <SectionLabel>Philosophy</SectionLabel>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Freedom Tech
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -143,7 +168,7 @@ export default function FreedomTechPage() {
           {/* The Cypherpunk Vision */}
           <div>
             <SectionLabel>The Manifesto</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Privacy Is a Right, Not a Privilege</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Privacy Is a Right, Not a Privilege</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 In 1993, mathematician Eric Hughes published &quot;A Cypherpunk&apos;s Manifesto.&quot; Its opening line: <em>&quot;Privacy is necessary for an open society in the electronic age.&quot;</em>
@@ -166,7 +191,7 @@ export default function FreedomTechPage() {
           {/* Lineage */}
           <div>
             <SectionLabel>Lineage</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">From PGP to Bitcoin</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">From PGP to Bitcoin</h2>
             <div className="space-y-3">
               {lineage.map((item, i) => (
                 <div key={item.year} className="flex gap-4">
@@ -192,7 +217,7 @@ export default function FreedomTechPage() {
           {/* Bitcoin as Freedom Tech */}
           <div>
             <SectionLabel>Bitcoin&apos;s Properties</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Why Bitcoin Is Freedom Technology</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Why Bitcoin Is Freedom Technology</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {freedomProperties.map((p) => (
                 <div key={p.label} className="bg-card border border-border rounded-xl p-5 shadow-card">
@@ -206,7 +231,7 @@ export default function FreedomTechPage() {
           {/* Erik Cason */}
           <div>
             <SectionLabel>Erik Cason</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Separating Money from State</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Separating Money from State</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Erik Cason is among the most philosophically rigorous voices in Bitcoin. His central argument: Bitcoin is doing to money what the Reformation did to religion — removing the state&apos;s monopoly on a domain it was never qualified to control.
@@ -223,7 +248,7 @@ export default function FreedomTechPage() {
           {/* Go Deeper */}
           <div>
             <SectionLabel>Go Deeper</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Essential Reading</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Essential Reading</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {resources.map((r) => (
                 <a

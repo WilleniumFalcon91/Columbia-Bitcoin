@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Davidson & Rees-Mogg's 1997 prophecy about digital cash and individual sovereignty — and how Bitcoin fulfills it.",
     url: "/resources/philosophy/sovereign-individual",
-    images: [{ url: `/api/og?title=${encodeURIComponent("The Sovereign Individual | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "The Sovereign Individual | Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("The Sovereign Individual | Columbia, SC Bitcoin")}&section=philosophy`, width: 1200, height: 630, alt: "The Sovereign Individual | Columbia, SC Bitcoin" }],
   },
 };
 
@@ -100,13 +100,38 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
 export default function SovereignIndividualPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/resources` },
+          { "@type": "ListItem", position: 3, name: "Philosophy", item: `${siteUrl}/resources/philosophy` },
+          { "@type": "ListItem", position: 4, name: "The Sovereign Individual", item: `${siteUrl}/resources/philosophy/sovereign-individual` },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: "The Sovereign Individual — Bitcoin Philosophy",
+        description: "Davidson & Rees-Mogg's 1997 prophecy about digital cash and individual sovereignty — and how Bitcoin fulfills it.",
+        url: `${siteUrl}/resources/philosophy/sovereign-individual`,
+        publisher: { "@type": "Organization", name: "Columbia, SC Bitcoin", url: siteUrl },
+      },
+    ],
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <ResourcesBreadcrumb />
 
-      <section className="py-24 bg-background">
+      <section className="py-12 sm:py-16 lg:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
           <Link
@@ -120,7 +145,7 @@ export default function SovereignIndividualPage() {
           {/* Hero */}
           <div>
             <SectionLabel>Philosophy</SectionLabel>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               The Sovereign Individual
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -131,7 +156,7 @@ export default function SovereignIndividualPage() {
           {/* The Book */}
           <div>
             <SectionLabel>The 1997 Prophecy</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Davidson & Rees-Mogg&apos;s Vision</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Davidson & Rees-Mogg&apos;s Vision</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 James Dale Davidson and William Rees-Mogg published <em>The Sovereign Individual</em> in 1997. Their argument: the transition from the Industrial Age to the Information Age would undermine the nation-state&apos;s monopoly on violence — because for the first time, the most valuable economic activity (intellectual work) would be untethered from physical geography.
@@ -148,7 +173,7 @@ export default function SovereignIndividualPage() {
           {/* What It Got Right */}
           <div>
             <SectionLabel>The Score</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">What the Book Got Right</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">What the Book Got Right</h2>
             <div className="space-y-4">
               {bookPredictions.map((item, i) => (
                 <div key={i} className="bg-card border border-border rounded-xl p-5 shadow-card">
@@ -164,7 +189,7 @@ export default function SovereignIndividualPage() {
           {/* Knut Svanholm */}
           <div>
             <SectionLabel>Knut Svanholm</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Sovereignty Through Mathematics</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Sovereignty Through Mathematics</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Knut Svanholm is a Swedish author who has written more clearly about Bitcoin&apos;s philosophical implications than almost anyone. His central insight: sovereignty, historically, depended on political power or physical force. Bitcoin offers a third option — sovereignty enforced by mathematics.
@@ -202,7 +227,7 @@ export default function SovereignIndividualPage() {
           {/* Go Deeper */}
           <div>
             <SectionLabel>Go Deeper</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Essential Reading</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Essential Reading</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {resources.map((r) => (
                 <a

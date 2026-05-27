@@ -187,6 +187,8 @@ const bestPractices = [
   },
 ];
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -201,6 +203,17 @@ const howToSchema = {
   })),
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/resources` },
+    { "@type": "ListItem", position: 3, name: "Learn", item: `${siteUrl}/resources/learn` },
+    { "@type": "ListItem", position: 4, name: "Self-Custody", item: `${siteUrl}/resources/self-custody` },
+  ],
+};
+
 export default function SelfCustodyPage() {
   return (
     <main>
@@ -208,12 +221,16 @@ export default function SelfCustodyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar />
       <div className="pt-16">
         <h1 className="sr-only">Bitcoin Self-Custody Guide — Columbia, SC Bitcoin</h1>
         <ResourcesBreadcrumb />
 
-        <section className="py-24 bg-background">
+        <section className="py-12 sm:py-16 lg:py-24 bg-background">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
             <Link
@@ -229,7 +246,7 @@ export default function SelfCustodyPage() {
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Sovereignty
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 Self-Custody
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-lg">
@@ -242,7 +259,7 @@ export default function SelfCustodyPage() {
 
             {/* Why it matters — exchange failures */}
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Why this matters</h3>
+              <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-2">Why this matters</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Exchanges are not banks. They are not insured by the FDIC. They are not required to hold your Bitcoin in reserve. History has proven, repeatedly, that trusting a third party with your Bitcoin is a bet you will eventually lose.
               </p>
@@ -272,7 +289,7 @@ export default function SelfCustodyPage() {
 
             {/* Hot vs Cold */}
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Hot wallet vs. cold storage</h3>
+              <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-2">Hot wallet vs. cold storage</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Once you decide to self-custody, the next question is where to store your keys. There are two categories: hot wallets and cold storage.
               </p>
@@ -329,7 +346,7 @@ export default function SelfCustodyPage() {
 
             {/* Hardware wallet recommendations */}
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Recommended hardware wallets</h3>
+              <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-2">Recommended hardware wallets</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Only buy from the manufacturer&apos;s official website. All four wallets below are open-source and have strong track records in the Bitcoin community.
               </p>
@@ -390,7 +407,7 @@ export default function SelfCustodyPage() {
 
             {/* Step-by-step guide */}
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-2">How to set up self-custody</h3>
+              <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-2">How to set up self-custody</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Follow these steps in order. Take your time — especially on the seed phrase backup. There are no password resets in Bitcoin.
               </p>
@@ -414,7 +431,7 @@ export default function SelfCustodyPage() {
 
             {/* Best practices */}
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Best practices</h3>
+              <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-2">Best practices</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Getting the hardware is the easy part. How you protect your seed phrase determines whether your Bitcoin stays yours.
               </p>
@@ -439,7 +456,7 @@ export default function SelfCustodyPage() {
             {/* Closing CTA */}
             <div className="bg-card border border-primary/20 rounded-2xl p-8 sm:p-10 text-center shadow-card">
               <p className="text-2xl mb-3">🔑</p>
-              <h3 className="text-xl font-bold text-foreground mb-3">
+              <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3">
                 Your keys. Your Bitcoin. Your responsibility.
               </h3>
               <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6 text-sm">

@@ -275,8 +275,8 @@ export default function ResourcesPage() {
       <div className="pt-16">
         <h1 className="sr-only">Bitcoin Resources — Columbia, SC Bitcoin</h1>
 
-        <section className="py-24 bg-background">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 sm:py-16 lg:py-24 bg-background">
+          <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div className="text-center mb-16">
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">

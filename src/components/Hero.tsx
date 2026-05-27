@@ -13,10 +13,10 @@ export default function Hero({ event }: { event: LumaEvent }) {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background">
       {/* Background geometric shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-accent/40 blur-3xl" />
+        <div className="absolute -top-32 -right-32 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-full bg-accent/40 blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl animate-breathe" />
+          <div className="w-72 h-72 sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-primary/5 blur-3xl animate-breathe" />
         </div>
       </div>
 
@@ -34,7 +34,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
       {/* Matrix rain: falling cryptographic characters */}
       <MatrixRain />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+      <div className="relative z-10 max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32 text-center">
         {/* Badge */}
         <div
           className="animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8"

@@ -7,17 +7,17 @@ const LAST_UPDATED = new Date("2026-05-26");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    // Dynamic pages — ISR from Luma API, always fresh
+    // Dynamic pages — ISR from Luma API, revalidates hourly
     {
       url: siteUrl,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${siteUrl}/event`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "weekly",
       priority: 0.9,
     },
 

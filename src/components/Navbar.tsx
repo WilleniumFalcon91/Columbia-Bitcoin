@@ -92,6 +92,7 @@ const RESOURCES_GROUPS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
   const [resourcesMobileOpen, setResourcesMobileOpen] = useState(false);
   const [resourcesGroupsOpen, setResourcesGroupsOpen] = useState<Record<string, boolean>>({});
   const [scrolled, setScrolled] = useState(false);
@@ -108,19 +109,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
 
-  // Close mobile menu on route change
+  // Close mobile menu and desktop dropdown on route change
   useEffect(() => {
     setMenuOpen(false);
+    setResourcesDropdownOpen(false);
     setResourcesMobileOpen(false);
     setResourcesGroupsOpen({});
   }, [pathname]);
 
-  // Cmd/Ctrl+K to open search
+  // Cmd/Ctrl+K to open search; Escape to close dropdown
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setSearchOpen(true);
+      }
+      if (e.key === "Escape") {
+        setResourcesDropdownOpen(false);
       }
     };
     window.addEventListener("keydown", onKey);
@@ -144,14 +149,14 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         {isHome ? (
           <button
             onClick={handleScrollTop}
             className="flex items-center gap-2 font-bold text-lg text-foreground hover:text-primary transition-colors"
           >
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
               <Bitcoin className="w-5 h-5 text-white" />
             </div>
             <span className="font-sans tracking-tight">Columbia, SC Bitcoin</span>
@@ -161,7 +166,7 @@ export default function Navbar() {
             href="/"
             className="flex items-center gap-2 font-bold text-lg text-foreground hover:text-primary transition-colors"
           >
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
               <Bitcoin className="w-5 h-5 text-white" />
             </div>
             <span className="font-sans tracking-tight">Columbia, SC Bitcoin</span>
@@ -173,7 +178,7 @@ export default function Navbar() {
           <div
             aria-live="polite"
             aria-label="Bitcoin price"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-xs font-semibold mr-2"
+            className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-xs font-semibold mr-2"
           >
             <span className="text-primary">BTC</span>
             {price === null ? (
@@ -213,9 +218,22 @@ export default function Navbar() {
             // Resources — dropdown on desktop
             if (link.href === "/resources") {
               return (
-                <div key={link.href} className="relative group">
+                <div
+                  key={link.href}
+                  className="relative"
+                  onMouseEnter={() => setResourcesDropdownOpen(true)}
+                  onMouseLeave={() => setResourcesDropdownOpen(false)}
+                  onFocus={() => setResourcesDropdownOpen(true)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                      setResourcesDropdownOpen(false);
+                    }
+                  }}
+                >
                   <Link
                     href="/resources"
+                    aria-haspopup="menu"
+                    aria-expanded={resourcesDropdownOpen}
                     className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
                       active
                         ? "text-primary bg-primary/10"
@@ -223,13 +241,13 @@ export default function Navbar() {
                     }`}
                   >
                     Resources
-                    <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${resourcesDropdownOpen ? "rotate-180" : ""}`} />
                   </Link>
 
                   {/* Dropdown panel */}
-                  <div className="absolute top-full -left-2 hidden group-hover:block z-50">
+                  <div className={`absolute top-full right-0 z-50 ${resourcesDropdownOpen ? "block" : "hidden"}`}>
                     <div className="pt-2">
-                      <div className="bg-card border border-border rounded-xl shadow-card-hover w-[480px]">
+                      <div className="bg-card border border-border rounded-xl shadow-card-hover w-[480px] max-w-[calc(100vw-2rem)]">
                         {/* Overview row */}
                         <div className="px-4 py-2.5 border-b border-border flex items-center justify-between gap-3">
                           <Link

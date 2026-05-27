@@ -37,17 +37,17 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-12 sm:py-16 lg:py-24 bg-background">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <RevealOnScroll className="text-center mb-16">
+        <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             About Us
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Bitcoin in Columbia, SC
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">
             Columbia, SC Bitcoin Meetup is a grassroots meetup group for anyone
             interested in Bitcoin as a tool for individual freedom and protection
             against monetary debasement.
@@ -55,7 +55,7 @@ export default function AboutSection() {
         </RevealOnScroll>
 
         {/* Stats row */}
-        <RevealOnScroll className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16" delay={100}>
+        <RevealOnScroll className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 sm:mb-12 lg:mb-16" delay={100}>
           {stats.map((stat, i) => (
             <div
               key={i}
@@ -72,7 +72,7 @@ export default function AboutSection() {
         </RevealOnScroll>
 
         {/* Values grid */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 gap-6 mb-8 sm:mb-12 lg:mb-16">
           {values.map((v, i) => {
             const Icon = v.icon;
             return (

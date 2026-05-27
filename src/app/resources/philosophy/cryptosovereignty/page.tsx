@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Erik Cason's framework for sovereignty through cryptography — why holding your own Bitcoin keys is a political act and a new form of property rights enforcement.",
     url: "/resources/philosophy/cryptosovereignty",
-    images: [{ url: `/api/og?title=${encodeURIComponent("Cryptosovereignty | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Cryptosovereignty | Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Cryptosovereignty | Columbia, SC Bitcoin")}&section=philosophy`, width: 1200, height: 630, alt: "Cryptosovereignty | Columbia, SC Bitcoin" }],
   },
 };
 
@@ -115,13 +115,38 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
 export default function CryptosovereigntyPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/resources` },
+          { "@type": "ListItem", position: 3, name: "Philosophy", item: `${siteUrl}/resources/philosophy` },
+          { "@type": "ListItem", position: 4, name: "Cryptosovereignty", item: `${siteUrl}/resources/philosophy/cryptosovereignty` },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: "Cryptosovereignty — Bitcoin Philosophy",
+        description: "Erik Cason's framework for sovereignty through cryptography — why holding your own Bitcoin keys is a political act and a new form of property rights enforcement.",
+        url: `${siteUrl}/resources/philosophy/cryptosovereignty`,
+        publisher: { "@type": "Organization", name: "Columbia, SC Bitcoin", url: siteUrl },
+      },
+    ],
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <ResourcesBreadcrumb />
 
-      <section className="py-24 bg-background">
+      <section className="py-12 sm:py-16 lg:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
           <Link
@@ -135,7 +160,7 @@ export default function CryptosovereigntyPage() {
           {/* Hero */}
           <div>
             <SectionLabel>Philosophy</SectionLabel>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Cryptosovereignty
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -146,7 +171,7 @@ export default function CryptosovereigntyPage() {
           {/* Keys = Sovereignty */}
           <div>
             <SectionLabel>Foundation</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Keys Are Sovereignty</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Keys Are Sovereignty</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Throughout history, property rights have been enforced by physical power — the sovereign&apos;s army, the court&apos;s bailiff, the bank&apos;s ability to freeze your account. Property was yours because an institution with a monopoly on violence agreed it was yours. That agreement could be revoked.
@@ -163,7 +188,7 @@ export default function CryptosovereigntyPage() {
           {/* Trust Comparison */}
           <div>
             <SectionLabel>Trust Hierarchy</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Comparing Systems of Property Rights</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Comparing Systems of Property Rights</h2>
             <div className="space-y-4">
               {trustComparison.map((item) => (
                 <div key={item.system} className={`bg-card border rounded-xl p-5 shadow-card ${
@@ -189,7 +214,7 @@ export default function CryptosovereigntyPage() {
           {/* Erik Cason's Framework */}
           <div>
             <SectionLabel>Erik Cason</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">The Cryptosovereign Framework</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">The Cryptosovereign Framework</h2>
             <div className="space-y-4">
               {casonPrinciples.map((p) => (
                 <div key={p.principle} className="bg-card border border-border rounded-xl p-5 shadow-card">
@@ -203,7 +228,7 @@ export default function CryptosovereigntyPage() {
           {/* Nick Szabo */}
           <div>
             <SectionLabel>Intellectual Predecessor</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Nick Szabo&apos;s Foundations</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Nick Szabo&apos;s Foundations</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed mb-6">
               <p>
                 Nick Szabo is a cryptographer, legal theorist, and computer scientist whose work in the 1990s laid the philosophical groundwork for what Cason would later articulate as cryptosovereignty. Szabo&apos;s core insight: contracts and property rights don&apos;t need human enforcement if the code enforces them.
@@ -222,7 +247,7 @@ export default function CryptosovereigntyPage() {
           {/* Go Deeper */}
           <div>
             <SectionLabel>Go Deeper</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Essential Reading</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Essential Reading</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {resources.map((r) => (
                 <a

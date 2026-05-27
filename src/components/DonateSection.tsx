@@ -36,17 +36,17 @@ export default function DonateSection() {
   };
 
   return (
-    <section id="donate" className="py-24 bg-background">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="donate" className="py-12 sm:py-16 lg:py-24 bg-background">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <RevealOnScroll className="text-center mb-16">
+        <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             Support Us
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Donate via Lightning ⚡
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground lg:text-lg max-w-xl mx-auto">
             Columbia, SC Bitcoin is community-funded. Your sats keep the meetups
             running, the coffee flowing, and the conversations going.
           </p>
@@ -61,15 +61,15 @@ export default function DonateSection() {
                 <div className="p-4 bg-white rounded-xl shadow-inner border border-border">
                   <QRCodeSVG
                     value={LIGHTNING_URI}
-                    size={160}
+                    size={220}
                     level="M"
                     includeMargin={false}
                     fgColor="#f7931a"
                     bgColor="#ffffff"
                     imageSettings={{
                       src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f7931a'%3E%3Cpath d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/%3E%3C/svg%3E",
-                      height: 36,
-                      width: 36,
+                      height: 48,
+                      width: 48,
                       excavate: true,
                     }}
                   />
@@ -131,7 +131,7 @@ export default function DonateSection() {
             </div>
 
             {/* Donation amounts */}
-            <div className="w-full max-w-sm mx-auto mt-6 grid grid-cols-2 gap-3">
+            <div className="w-full max-w-sm mx-auto mt-6 grid grid-cols-1 min-[360px]:grid-cols-2 gap-3">
               {donationAmounts.map((a, i) => (
                 <a
                   key={i}
@@ -163,7 +163,7 @@ export default function DonateSection() {
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Heart className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">
+                <h3 className="text-xl lg:text-2xl font-bold text-foreground">
                   Why Your Support Matters
                 </h3>
               </div>

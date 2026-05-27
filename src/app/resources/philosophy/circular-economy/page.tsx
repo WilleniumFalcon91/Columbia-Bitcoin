@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "How to close the fiat loop — earning, spending, and saving in Bitcoin to build a self-sustaining Bitcoin-native economy.",
     url: "/resources/philosophy/circular-economy",
-    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Circular Economy | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin Circular Economy | Columbia, SC Bitcoin" }],
+    images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin Circular Economy | Columbia, SC Bitcoin")}&section=philosophy`, width: 1200, height: 630, alt: "Bitcoin Circular Economy | Columbia, SC Bitcoin" }],
   },
 };
 
@@ -119,13 +119,38 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
 export default function CircularEconomyPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/resources` },
+          { "@type": "ListItem", position: 3, name: "Philosophy", item: `${siteUrl}/resources/philosophy` },
+          { "@type": "ListItem", position: 4, name: "Circular Economy", item: `${siteUrl}/resources/philosophy/circular-economy` },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: "Circular Economy — Bitcoin Philosophy",
+        description: "How to close the fiat loop — earning, spending, and saving in Bitcoin to build a self-sustaining Bitcoin-native economy.",
+        url: `${siteUrl}/resources/philosophy/circular-economy`,
+        publisher: { "@type": "Organization", name: "Columbia, SC Bitcoin", url: siteUrl },
+      },
+    ],
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <ResourcesBreadcrumb />
 
-      <section className="py-24 bg-background">
+      <section className="py-12 sm:py-16 lg:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
           <Link
@@ -139,7 +164,7 @@ export default function CircularEconomyPage() {
           {/* Hero */}
           <div>
             <SectionLabel>Philosophy</SectionLabel>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Circular Economy
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -150,7 +175,7 @@ export default function CircularEconomyPage() {
           {/* The Fiat Leak */}
           <div>
             <SectionLabel>The Problem</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">The Fiat Leak</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">The Fiat Leak</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Most people think of Bitcoin as an investment: buy low, hold, sell high. But this model keeps you permanently tethered to the fiat system. Every conversion is a taxable event, a re-entry into the system you&apos;re trying to exit, and a signal that Bitcoin is a speculative asset rather than a monetary network.
@@ -172,7 +197,7 @@ export default function CircularEconomyPage() {
           {/* Closing the Loop */}
           <div>
             <SectionLabel>The Solution</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Closing the Loop</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Closing the Loop</h2>
             <div className="space-y-4">
               {circularSteps.map((item) => (
                 <div key={item.step} className="flex gap-4 bg-card border border-border rounded-xl p-5 shadow-card">
@@ -191,7 +216,7 @@ export default function CircularEconomyPage() {
           {/* Lightning */}
           <div>
             <SectionLabel>Infrastructure</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Why Lightning Enables This</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Why Lightning Enables This</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 On-chain Bitcoin transactions are too slow and expensive for daily commerce. The Lightning Network changes this — it enables near-instant, near-zero-fee payments that are final and Bitcoin-denominated. Paying for coffee with Lightning is as fast as tapping a card.
@@ -205,7 +230,7 @@ export default function CircularEconomyPage() {
           {/* Real World Examples */}
           <div>
             <SectionLabel>Real World</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Circular Economies in Action</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Circular Economies in Action</h2>
             <div className="grid gap-4">
               {realWorldExamples.map((ex) => (
                 <a
@@ -229,7 +254,7 @@ export default function CircularEconomyPage() {
           {/* Go Deeper */}
           <div>
             <SectionLabel>Go Deeper</SectionLabel>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Essential Reading</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Essential Reading</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {resources.map((r) => (
                 <a

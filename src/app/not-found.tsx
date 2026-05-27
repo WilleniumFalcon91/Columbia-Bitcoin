@@ -14,9 +14,9 @@ export default function NotFound() {
       <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background px-4">
         {/* Ambient blobs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-accent/40 blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute -top-32 -right-32 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute -bottom-32 -left-32 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-full bg-accent/40 blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-primary/5 blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-2xl mx-auto text-center">
