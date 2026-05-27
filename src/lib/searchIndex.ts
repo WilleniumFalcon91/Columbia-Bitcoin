@@ -141,6 +141,20 @@ export const SEARCH_INDEX: SearchEntry[] = [
 
   // Philosophy
   {
+    title: "Bitcoin Whitepaper",
+    description: "Satoshi Nakamoto's 9-page founding document — a breakdown of every breakthrough: peer-to-peer cash, proof-of-work, the blockchain, and Nakamoto consensus.",
+    href: "/resources/philosophy/bitcoin-whitepaper",
+    category: "Philosophy",
+    keywords: "whitepaper Satoshi Nakamoto 2008 peer to peer electronic cash double spend proof of work blockchain consensus incentive pseudonymous nakamoto original paper PDF",
+  },
+  {
+    title: "Decentralization",
+    description: "The philosophical, political, economic, and systems-level case for distributed systems — Hayek, Ostrom, Taleb, Bitcoin, and Nostr as champions of decentralization.",
+    href: "/resources/philosophy/decentralization",
+    category: "Philosophy",
+    keywords: "decentralization centralization Hayek knowledge problem Tocqueville soft despotism Ostrom polycentric governance Taleb antifragile Lindy effect Nostr fiatjaf distributed systems resilience censorship resistance seizure resistance DigiCash e-gold Liberty Reserve Cyprus Canada trucker convoy",
+  },
+  {
     title: "Hard Money",
     description: "Bitcoin's 21M cap and Austrian economics — why sound money matters and how Bitcoin became the hardest money in history.",
     href: "/resources/philosophy/hard-money",

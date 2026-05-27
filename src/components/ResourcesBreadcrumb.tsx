@@ -40,6 +40,8 @@ const SUBNAV_GROUPS = [
   {
     label: "Philosophy",
     items: [
+      { label: "Bitcoin Whitepaper",    href: "/resources/philosophy/bitcoin-whitepaper"  },
+      { label: "Decentralization",      href: "/resources/philosophy/decentralization"    },
       { label: "Hard Money",            href: "/resources/philosophy/hard-money"          },
       { label: "Freedom Tech",          href: "/resources/philosophy/freedom-tech"        },
       { label: "Circular Economy",      href: "/resources/philosophy/circular-economy"    },

@@ -5,7 +5,7 @@ import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import Footer from "@/components/Footer";
 import RelatedPages from "@/components/RelatedPages";
 import {
-  Coins, Lock, RefreshCw, Wrench, Crown, KeyRound, ArrowUpRight,
+  Coins, Lock, RefreshCw, Wrench, Crown, KeyRound, ArrowUpRight, ScrollText, Network,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -28,6 +28,22 @@ export const metadata: Metadata = {
 };
 
 const topics = [
+  {
+    href: "/resources/philosophy/bitcoin-whitepaper",
+    icon: ScrollText,
+    label: "Bitcoin Whitepaper",
+    description: "Satoshi Nakamoto's 9-page paper that solved the double-spend problem — no banks, no trust, no permission required. The founding document of Bitcoin.",
+    tag: "Whitepaper",
+    tagColor: "bg-orange-500/10 text-orange-600",
+  },
+  {
+    href: "/resources/philosophy/decentralization",
+    icon: Network,
+    label: "Decentralization",
+    description: "The philosophical, political, and systems-level case for distributed systems over central control — and why Bitcoin and Nostr are its most important modern implementations.",
+    tag: "Systems",
+    tagColor: "bg-sky-500/10 text-sky-600",
+  },
   {
     href: "/resources/philosophy/hard-money",
     icon: Coins,

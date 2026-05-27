@@ -13,10 +13,26 @@ const SECTION_COLORS: Record<string, string> = {
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const rawTitle = searchParams.get("title") ?? "Columbia, SC Bitcoin";
-  const section = searchParams.get("section") ?? "";
+  const rawSection = searchParams.get("section") ?? "";
 
-  // Strip the site name suffix for display
-  const title = rawTitle.replace(/ \| Columbia, SC Bitcoin$/, "");
+  // Validate section against the exact allowlist
+  const validSections = Object.keys(SECTION_COLORS);
+  const section = validSections.includes(rawSection) ? rawSection : "";
+
+  // Reject explicitly invalid non-empty section values
+  if (searchParams.has("section") && rawSection !== "" && section === "") {
+    return new Response(JSON.stringify({ error: "Invalid section" }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  // Strip control chars, cap length, then strip site name suffix
+  const title = rawTitle
+    .replace(/[\x00-\x1F\x7F]/g, "")
+    .slice(0, 200)
+    .replace(/ \| Columbia, SC Bitcoin$/, "");
+
   const accent = SECTION_COLORS[section] ?? "#f7931a";
 
   return new ImageResponse(
@@ -131,6 +147,13 @@ export async function GET(req: NextRequest) {
         </div>
       </div>
     ),
-    { width: 1200, height: 630 }
+    {
+      width: 1200,
+      height: 630,
+      headers: {
+        "Cache-Control": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000",
+        "X-Content-Type-Options": "nosniff",
+      },
+    }
   );
 }

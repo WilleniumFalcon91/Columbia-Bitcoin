@@ -2,6 +2,16 @@ import { NextResponse } from "next/server";
 
 export const revalidate = 21600; // 6-hour cache — meetup data changes slowly
 
+const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.com";
+
+const API_HEADERS = {
+  "Content-Type": "application/json; charset=utf-8",
+  "X-Content-Type-Options": "nosniff",
+  "Access-Control-Allow-Origin": SITE_ORIGIN,
+  "Access-Control-Allow-Methods": "GET",
+  "Cross-Origin-Resource-Policy": "same-origin",
+} as const;
+
 export type MeetupGroup = {
   id: string;
   name: string;
@@ -80,7 +90,7 @@ export async function GET() {
 
     if (!res.ok) {
       console.warn(`[meetup-map] BTCMap API returned ${res.status} — using fallback`);
-      return NextResponse.json({ groups: FALLBACK_GROUPS });
+      return NextResponse.json({ groups: FALLBACK_GROUPS }, { headers: API_HEADERS });
     }
 
     const areas = await res.json() as BtcMapArea[];
@@ -108,16 +118,17 @@ export async function GET() {
     }
 
     if (groups.length === 0) {
-      return NextResponse.json({ groups: FALLBACK_GROUPS });
+      return NextResponse.json({ groups: FALLBACK_GROUPS }, { headers: API_HEADERS });
     }
 
     return NextResponse.json({ groups }, {
       headers: {
+        ...API_HEADERS,
         "Cache-Control": "public, s-maxage=21600, stale-while-revalidate=86400",
       },
     });
   } catch (err) {
     console.warn("[meetup-map] fetch failed — using fallback:", err);
-    return NextResponse.json({ groups: FALLBACK_GROUPS });
+    return NextResponse.json({ groups: FALLBACK_GROUPS }, { headers: API_HEADERS });
   }
 }

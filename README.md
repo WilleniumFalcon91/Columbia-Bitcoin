@@ -42,7 +42,7 @@ Columbia Bitcoin is a grassroots community meetup held monthly at Savage Craft A
 - Bitcoin privacy and web privacy resources
 - Bitcoin mining and node-running resource guides
 - Business Bitcoin onboarding resources
-- **Philosophy section** — six topic pages covering the intellectual foundations of Bitcoin: Hard Money (Austrian economics, 21M cap), Freedom Tech (cypherpunk lineage, Erik Cason), Circular Economy (closing the fiat loop), Bitcoin Fixes This (Cantillon effect, Parker Lewis, Allen Farrington), The Sovereign Individual (Davidson & Rees-Mogg, Knut Svanholm), and Cryptosovereignty (Erik Cason, Nick Szabo)
+- **Philosophy section** — eight topic pages covering the intellectual foundations of Bitcoin: Bitcoin Whitepaper (Satoshi's 7 breakthrough discoveries), Decentralization (Hayek, Ostrom, Taleb, Bitcoin, and Nostr as champions of distributed systems), Hard Money (Austrian economics, 21M cap), Freedom Tech (cypherpunk lineage, Erik Cason), Circular Economy (closing the fiat loop), Bitcoin Fixes This (Cantillon effect, Parker Lewis, Allen Farrington), The Sovereign Individual (Davidson & Rees-Mogg, Knut Svanholm), and Cryptosovereignty (Erik Cason, Nick Szabo)
 - Meetup presentations archive (Bitcoin 101, Lightning Network, Sparrow Wallet, BlueWallet)
 - Community vibes playlist (YouTube IFrame player with thumbnail carousel)
 - Contact form wired to Formspree (Nostr, Signal, and email channels also listed)
@@ -119,6 +119,8 @@ src/
 │   │   ├── vibes/page.tsx                 # Community YouTube playlist carousel
 │   │   └── philosophy/
 │   │       ├── page.tsx                   # Philosophy section index
+│   │       ├── bitcoin-whitepaper/page.tsx # Satoshi's whitepaper — 7 breakthrough discoveries, proof-of-work, Nakamoto consensus
+│   │       ├── decentralization/page.tsx  # Decentralization — Hayek, Ostrom, Taleb, Bitcoin nodes, Nostr protocol
 │   │       ├── hard-money/page.tsx        # Hard money theory — Austrian economics, 21M cap, stock-to-flow
 │   │       ├── freedom-tech/page.tsx      # Cypherpunk lineage — PGP → Tor → Bitcoin, Erik Cason
 │   │       ├── circular-economy/page.tsx  # Bitcoin circular economy — closing the fiat loop

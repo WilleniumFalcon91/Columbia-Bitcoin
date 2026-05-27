@@ -4,6 +4,16 @@ import { NextResponse } from "next/server";
 // server-to-server fetches are far less likely to be rate-limited.
 export const revalidate = 3600;
 
+const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.com";
+
+const API_HEADERS = {
+  "Content-Type": "application/json; charset=utf-8",
+  "X-Content-Type-Options": "nosniff",
+  "Access-Control-Allow-Origin": SITE_ORIGIN,
+  "Access-Control-Allow-Methods": "GET",
+  "Cross-Origin-Resource-Policy": "same-origin",
+} as const;
+
 const BOUNDS = {
   minLat: 33.82,
   maxLat: 34.25,
@@ -54,6 +64,7 @@ export async function GET() {
     const data = await Promise.any(requests);
     return NextResponse.json(data, {
       headers: {
+        ...API_HEADERS,
         "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
       },
     });
@@ -61,7 +72,7 @@ export async function GET() {
     console.warn("[btcmap] all mirrors failed");
     return NextResponse.json(
       { error: "Failed to fetch merchant data from all Overpass mirrors" },
-      { status: 503 },
+      { status: 503, headers: API_HEADERS },
     );
   }
 }

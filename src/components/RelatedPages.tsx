@@ -141,9 +141,19 @@ const resourceRelated: Record<string, ResourceLink[]> = {
     { label: "Data & Tools", href: "/resources/data-tools", description: "Bitcoin maps, meetup finders, and live network data." },
   ],
   "/resources/philosophy": [
+    { label: "Bitcoin Whitepaper", href: "/resources/philosophy/bitcoin-whitepaper", description: "The 9-page founding document — every breakthrough discovery in Satoshi's original paper." },
     { label: "Hard Money", href: "/resources/philosophy/hard-money", description: "The 21M cap, Austrian economics, and why Bitcoin is the hardest money ever created." },
     { label: "Freedom Tech", href: "/resources/philosophy/freedom-tech", description: "From the Cypherpunk Manifesto to Bitcoin — privacy as a right, not a privilege." },
-    { label: "Bitcoin Fixes This", href: "/resources/philosophy/bitcoin-fixes-this", description: "The Cantillon effect, debt monetization, and why Bitcoin is the fix." },
+  ],
+  "/resources/philosophy/bitcoin-whitepaper": [
+    { label: "Decentralization", href: "/resources/philosophy/decentralization", description: "The deeper case for why Bitcoin's architecture matters — distributed systems vs. central control." },
+    { label: "Hard Money", href: "/resources/philosophy/hard-money", description: "The 21M cap, Austrian economics, and why Bitcoin is the hardest money ever created." },
+    { label: "Bitcoin Fixes This", href: "/resources/philosophy/bitcoin-fixes-this", description: "The problems the whitepaper set out to solve — and how Bitcoin addresses each one." },
+  ],
+  "/resources/philosophy/decentralization": [
+    { label: "Bitcoin Whitepaper", href: "/resources/philosophy/bitcoin-whitepaper", description: "The 9-page founding document — how Satoshi engineered decentralization into Bitcoin's architecture." },
+    { label: "Freedom Tech", href: "/resources/philosophy/freedom-tech", description: "From the Cypherpunk Manifesto to Bitcoin — the political case for censorship-resistant systems." },
+    { label: "Cryptosovereignty", href: "/resources/philosophy/cryptosovereignty", description: "Holding your own keys as a political act — individual sovereignty through cryptographic proof." },
   ],
   "/resources/philosophy/hard-money": [
     { label: "Bitcoin Fixes This", href: "/resources/philosophy/bitcoin-fixes-this", description: "The problems hard money solves — inflation, debt, and the Cantillon effect." },

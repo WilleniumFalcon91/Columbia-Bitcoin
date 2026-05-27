@@ -6,7 +6,7 @@ import RelatedPages from "@/components/RelatedPages";
 import {
   BookOpen, BookMarked, TrendingDown, TrendingUp, CalendarDays, Activity, MapPin,
   Music, Users, ArrowUpRight, Network, ShieldCheck, Cpu, Server, Store,
-  Lightbulb, Coins, Lock, RefreshCw, Wrench, Crown, KeyRound,
+  Lightbulb, Coins, Lock, RefreshCw, Wrench, Crown, KeyRound, ScrollText,
   type LucideIcon,
 } from "lucide-react";
 
@@ -189,6 +189,22 @@ const groups: { label: string; icon: LucideIcon; gridCols: string; items: Sectio
     icon: Lightbulb,
     gridCols: "sm:grid-cols-2 lg:grid-cols-3",
     items: [
+      {
+        href: "/resources/philosophy/bitcoin-whitepaper",
+        icon: ScrollText,
+        label: "Bitcoin Whitepaper",
+        description: "Satoshi Nakamoto's 9-page paper that solved the double-spend problem — no banks, no trust, no permission required. The founding document of Bitcoin.",
+        tag: "Whitepaper",
+        tagColor: "bg-orange-500/10 text-orange-600",
+      },
+      {
+        href: "/resources/philosophy/decentralization",
+        icon: Network,
+        label: "Decentralization",
+        description: "The philosophical, political, and systems-level case for distributed systems over central control — and why Bitcoin and Nostr are its most important modern implementations.",
+        tag: "Systems",
+        tagColor: "bg-sky-500/10 text-sky-600",
+      },
       {
         href: "/resources/philosophy/hard-money",
         icon: Coins,

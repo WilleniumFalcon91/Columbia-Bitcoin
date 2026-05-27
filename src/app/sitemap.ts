@@ -215,6 +215,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${siteUrl}/resources/philosophy/bitcoin-whitepaper`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/resources/philosophy/decentralization`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
       url: `${siteUrl}/resources/philosophy/hard-money`,
       lastModified: LAST_UPDATED,
       changeFrequency: "yearly",
