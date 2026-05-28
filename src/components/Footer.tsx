@@ -1,11 +1,29 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Bitcoin, Zap, ChevronUp, Mail } from "lucide-react";
 import { trackOutboundLink } from "@/lib/analytics";
+
+const MEMPOOL_TIP_URL = "https://mempool.space/api/blocks/tip/height";
+
+function useBlockHeight() {
+  const [height, setHeight] = useState<number | null>(null);
+  useEffect(() => {
+    const fetchHeight = async () => {
+      try {
+        const res = await fetch(MEMPOOL_TIP_URL);
+        if (res.ok) setHeight(await res.json());
+      } catch { /* silently fail */ }
+    };
+    fetchHeight();
+    const interval = setInterval(fetchHeight, 60_000);
+    return () => clearInterval(interval);
+  }, []);
+  return height;
+}
 
 const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
 const NOSTR_LOGO = "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png";
@@ -20,6 +38,7 @@ const footerLinks: { label: string; href: string; sectionId?: string }[] = [
 ];
 
 export default function Footer() {
+  const blockHeight = useBlockHeight();
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -119,8 +138,17 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Columbia, SC Bitcoin</p>
-          <p className="font-mono flex items-center gap-1">
-            Est. 857221 <Zap className="w-3 h-3 text-primary fill-primary" />
+          <p className="font-mono flex items-center gap-1.5">
+            Est. 857,221 <Zap className="w-3 h-3 text-primary fill-primary" />
+            {blockHeight !== null && (
+              <>
+                <span className="opacity-30 select-none">·</span>
+                <Link href="/resources/timechain" className="hover:text-foreground transition-colors">
+                  Current Block {blockHeight.toLocaleString()}
+                </Link>
+                <Zap className="w-3 h-3 text-primary fill-primary" />
+              </>
+            )}
           </p>
           <button
             onClick={scrollToTop}
