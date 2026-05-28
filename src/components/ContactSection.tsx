@@ -6,7 +6,7 @@ import Image from "next/image";
 import type { ComponentType } from "react";
 import RevealOnScroll from "./RevealOnScroll";
 import { trackFormStart, trackFormSubmit, trackFormSuccess, trackFormError, trackOutboundLink } from "@/lib/analytics";
-import { NOSTR_NPUB, TWITTER_URL } from "@/lib/social";
+import { NOSTR_NPUB, TWITTER_URL, CLUB_ORANGE_EMAIL } from "@/lib/social";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 const FORMSPREE_ENDPOINT = FORMSPREE_ID
@@ -42,6 +42,13 @@ const contactChannels: Channel[] = [
     value: "@ColumbiaBitcoin",
     href: TWITTER_URL,
     description: "Follow us on X for meetup announcements and Bitcoin content",
+  },
+  {
+    icon: Mail,
+    label: "Club Orange",
+    value: CLUB_ORANGE_EMAIL,
+    href: `mailto:${CLUB_ORANGE_EMAIL}`,
+    description: "Find us on Club Orange — a Bitcoin-native social network",
   },
   {
     icon: Mail,

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Bitcoin, Zap, ChevronUp, Mail } from "lucide-react";
 import { trackOutboundLink } from "@/lib/analytics";
-import { NOSTR_NPUB, TWITTER_URL } from "@/lib/social";
+import { NOSTR_NPUB, TWITTER_URL, CLUB_ORANGE_EMAIL } from "@/lib/social";
 
 const MEMPOOL_TIP_URL = "https://mempool.space/api/blocks/tip/height";
 
@@ -134,6 +134,15 @@ export default function Footer() {
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
                 </svg>
                 <span>Twitter / X</span>
+              </a>
+              <a
+                href={`mailto:${CLUB_ORANGE_EMAIL}`}
+                aria-label="Find us on Club Orange"
+                onClick={() => trackOutboundLink({ url: `mailto:${CLUB_ORANGE_EMAIL}`, label: "Club Orange", section: "footer" })}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Club Orange</span>
               </a>
               <a
                 href="mailto:btcwrestle2001@protonmail.com"
