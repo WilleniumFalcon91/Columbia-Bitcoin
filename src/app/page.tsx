@@ -5,6 +5,7 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import DonateSection from "@/components/DonateSection";
 import HomeResourcesSection from "@/components/HomeResourcesSection";
+import CommunityPathSection from "@/components/CommunityPathSection";
 import Footer from "@/components/Footer";
 import { fetchLumaEvent } from "@/lib/luma";
 
@@ -54,6 +55,7 @@ export default async function Home() {
       <Hero event={event} />
       <EventSection event={event} />
       <AboutSection />
+      <CommunityPathSection />
       <HomeResourcesSection />
       <ContactSection />
       <DonateSection />
