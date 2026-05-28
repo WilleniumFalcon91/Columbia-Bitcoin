@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Bitcoin, Zap, ChevronUp, Mail } from "lucide-react";
+import { Bitcoin, Zap, ChevronUp, Mail, Citrus } from "lucide-react";
 import { trackOutboundLink } from "@/lib/analytics";
 import { NOSTR_NPUB, TWITTER_URL, CLUB_ORANGE_URL } from "@/lib/social";
 
@@ -143,7 +143,7 @@ export default function Footer() {
                 onClick={() => trackOutboundLink({ url: CLUB_ORANGE_URL, label: "Club Orange", section: "footer" })}
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Mail className="w-4 h-4" />
+                <Citrus className="w-4 h-4" />
                 <span>Club Orange</span>
               </a>
               <a

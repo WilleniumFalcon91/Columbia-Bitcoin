@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
+import { Mail, MessageCircle, Send, CheckCircle, Citrus } from "lucide-react";
 import Image from "next/image";
 import type { ComponentType } from "react";
 import RevealOnScroll from "./RevealOnScroll";
@@ -44,7 +44,7 @@ const contactChannels: Channel[] = [
     description: "Follow us on X for meetup announcements and Bitcoin content",
   },
   {
-    icon: Mail,
+    icon: Citrus,
     label: "Club Orange",
     value: "Join on Club Orange",
     href: CLUB_ORANGE_URL,
