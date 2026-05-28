@@ -7,6 +7,29 @@ export type SearchEntry = {
 };
 
 export const SEARCH_INDEX: SearchEntry[] = [
+  // Top-level hub pages
+  {
+    title: "Bitcoin Resources",
+    description: "Curated Bitcoin education, live network data, and community picks — learning guides, tools, philosophy, and more.",
+    href: "/resources",
+    category: "Resources",
+    keywords: "resources overview all topics education tools philosophy community",
+  },
+  {
+    title: "Meetup Presentations",
+    description: "Educational presentations from Columbia Bitcoin meetups — Bitcoin fundamentals, privacy, Lightning Network, and more.",
+    href: "/presentations",
+    category: "Presentations",
+    keywords: "presentations slides meetup talks education all topics overview",
+  },
+  {
+    title: "Bitcoin Philosophy",
+    description: "The intellectual and ideological foundations of Bitcoin — hard money, freedom tech, circular economy, the sovereign individual, and cryptosovereignty.",
+    href: "/resources/philosophy",
+    category: "Philosophy",
+    keywords: "philosophy ideas ideology foundations overview all topics hard money freedom sovereignty",
+  },
+
   // Group hub pages
   {
     title: "Learn Bitcoin",
