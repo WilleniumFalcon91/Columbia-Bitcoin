@@ -59,7 +59,7 @@ const GROUP_CARDS: GroupCard[] = [
     borderHover: "hover:border-violet-500/30",
     ctaClass: "text-violet-500",
     topics: ["Hard Money", "Freedom Tech", "Bitcoin Fixes This"],
-    moreCount: 3,
+    moreCount: 6,
     href: "/resources/philosophy",
   },
 ];

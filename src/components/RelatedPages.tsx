@@ -152,7 +152,7 @@ const resourceRelated: Record<string, ResourceLink[]> = {
   ],
   "/resources/philosophy/decentralization": [
     { label: "Bitcoin Whitepaper", href: "/resources/philosophy/bitcoin-whitepaper", description: "The 9-page founding document — how Satoshi engineered decentralization into Bitcoin's architecture." },
-    { label: "Freedom Tech", href: "/resources/philosophy/freedom-tech", description: "From the Cypherpunk Manifesto to Bitcoin — the political case for censorship-resistant systems." },
+    { label: "Game Theory", href: "/resources/philosophy/game-theory", description: "The game-theoretic case for Bitcoin — why honest mining is the dominant strategy and why adoption is still early." },
     { label: "Cryptosovereignty", href: "/resources/philosophy/cryptosovereignty", description: "Holding your own keys as a political act — individual sovereignty through cryptographic proof." },
   ],
   "/resources/philosophy/hard-money": [
@@ -184,6 +184,11 @@ const resourceRelated: Record<string, ResourceLink[]> = {
     { label: "Freedom Tech", href: "/resources/philosophy/freedom-tech", description: "The cypherpunk lineage from which cryptosovereignty emerges." },
     { label: "The Sovereign Individual", href: "/resources/philosophy/sovereign-individual", description: "The political philosophy that predicted the cryptosovereign archetype." },
     { label: "Self-Custody", href: "/resources/self-custody", description: "Holding your own keys is cryptosovereignty in practice." },
+  ],
+  "/resources/philosophy/game-theory": [
+    { label: "Decentralization", href: "/resources/philosophy/decentralization", description: "The systems-level case for distributed architecture — and why Bitcoin's structure makes it seizure-resistant." },
+    { label: "Hard Money", href: "/resources/philosophy/hard-money", description: "The 21M cap, Austrian economics, and why Bitcoin is the hardest money ever created." },
+    { label: "Bitcoin Fixes This", href: "/resources/philosophy/bitcoin-fixes-this", description: "The problems Bitcoin's game-theoretic design set out to solve — and how it addresses each one." },
   ],
 };
 

@@ -5,7 +5,7 @@ import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import Footer from "@/components/Footer";
 import RelatedPages from "@/components/RelatedPages";
 import {
-  Coins, Lock, RefreshCw, Wrench, Crown, KeyRound, ArrowUpRight, ScrollText, Network,
+  Coins, Lock, RefreshCw, Wrench, Crown, KeyRound, ArrowUpRight, ScrollText, Network, Scale,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -91,6 +91,14 @@ const topics = [
     description: "Erik Cason's framework for sovereignty through cryptography — why holding your own keys is a political act, not just a security practice.",
     tag: "Philosophy",
     tagColor: "bg-primary/10 text-primary",
+  },
+  {
+    href: "/resources/philosophy/game-theory",
+    icon: Scale,
+    label: "Game Theory",
+    description: "How Bitcoin uses game theory to make honest behavior the dominant strategy — mining incentives, Nash equilibria, Schelling points, and why it's still early no matter the price.",
+    tag: "Strategy",
+    tagColor: "bg-indigo-500/10 text-indigo-600",
   },
 ];
 
