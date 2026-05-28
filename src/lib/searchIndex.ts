@@ -196,6 +196,13 @@ export const SEARCH_INDEX: SearchEntry[] = [
     category: "Philosophy",
     keywords: "cryptosovereignty Erik Cason keys sovereignty cryptographic truth Nick Szabo self custody political philosophy",
   },
+  {
+    title: "Game Theory",
+    description: "How Bitcoin uses game theory to make honest behavior the dominant strategy — Nash equilibria, mining incentives, Schelling points, credible commitment, and why global adoption is still early.",
+    href: "/resources/philosophy/game-theory",
+    category: "Philosophy",
+    keywords: "game theory Nash equilibrium Schelling point focal point Von Neumann mining incentives 51% attack selfish mining dominant strategy rational actor credible commitment early adoption still early",
+  },
 
   // Community
   {
