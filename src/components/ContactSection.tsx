@@ -13,10 +13,12 @@ const FORMSPREE_ENDPOINT = FORMSPREE_ID
   : null;
 
 const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
+const TWITTER_URL = "https://x.com/ColumbiaBitcoin";
 
 type Channel = {
   icon?: ComponentType<{ className?: string }>;
   imgSrc?: string;
+  svgIcon?: React.ReactNode;
   label: string;
   value: string;
   href: string;
@@ -30,6 +32,17 @@ const contactChannels: Channel[] = [
     value: "View on Primal",
     href: `https://primal.net/p/${NOSTR_NPUB}`,
     description: "Find us on Nostr — decentralized and censorship-resistant",
+  },
+  {
+    svgIcon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-primary" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+      </svg>
+    ),
+    label: "Twitter / X",
+    value: "@ColumbiaBitcoin",
+    href: TWITTER_URL,
+    description: "Follow us on X for meetup announcements and Bitcoin content",
   },
   {
     icon: Mail,
@@ -115,6 +128,8 @@ export default function ContactSection() {
                   <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                     {ch.imgSrc ? (
                       <Image src={ch.imgSrc} alt={ch.label} width={28} height={28} className="object-contain" />
+                    ) : ch.svgIcon ? (
+                      ch.svgIcon
                     ) : Icon ? (
                       <Icon className="w-5 h-5 text-primary" />
                     ) : null}

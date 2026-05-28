@@ -27,6 +27,7 @@ function useBlockHeight() {
 
 const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
 const NOSTR_LOGO = "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png";
+const TWITTER_URL = "https://x.com/ColumbiaBitcoin";
 
 const footerLinks: { label: string; href: string; sectionId?: string }[] = [
   { label: "Event",         href: "/event",         sectionId: "event"     },
@@ -121,6 +122,19 @@ export default function Footer() {
               >
                 <Image src={NOSTR_LOGO} alt="" width={16} height={16} className="opacity-70" />
                 <span>Nostr</span>
+              </a>
+              <a
+                href={TWITTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on X (Twitter)"
+                onClick={() => trackOutboundLink({ url: TWITTER_URL, label: "Twitter", section: "footer" })}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+                </svg>
+                <span>Twitter / X</span>
               </a>
               <a
                 href="mailto:btcwrestle2001@protonmail.com"

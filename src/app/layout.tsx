@@ -65,6 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@ColumbiaBitcoin",
+    creator: "@ColumbiaBitcoin",
     title: "Columbia, SC Bitcoin Meetup",
     description:
       "Free monthly Bitcoin meetup in Columbia, South Carolina. Join Bitcoiners in the Midlands to learn, discuss, and connect.",
@@ -90,6 +92,7 @@ const orgSchema = {
   description:
     "Free monthly Bitcoin meetup in Columbia, South Carolina. Education, community, and open discussion about Bitcoin.",
   email: "columbiabitcoin@proton.me",
+  sameAs: ["https://x.com/ColumbiaBitcoin"],
   location: {
     "@type": "Place",
     name: "Savage Craft Ale Works",
