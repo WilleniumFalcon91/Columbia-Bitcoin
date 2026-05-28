@@ -77,7 +77,7 @@ export default function HomeResourcesSection() {
             Resources
           </h2>
           <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">
-            Curated Bitcoin education, live network data, and community picks — organized by what you&apos;re looking for.
+            Curated Bitcoin education, live network data, community picks, and philosophical deep dives — organized by what you&apos;re looking for.
           </p>
         </div>
 
