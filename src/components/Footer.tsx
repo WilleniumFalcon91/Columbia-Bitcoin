@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Bitcoin, Zap, ChevronUp, Mail } from "lucide-react";
 import { trackOutboundLink } from "@/lib/analytics";
+import { NOSTR_NPUB, TWITTER_URL } from "@/lib/social";
 
 const MEMPOOL_TIP_URL = "https://mempool.space/api/blocks/tip/height";
 
@@ -25,9 +26,7 @@ function useBlockHeight() {
   return height;
 }
 
-const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
 const NOSTR_LOGO = "https://raw.githubusercontent.com/mbarulli/nostr-logo/refs/heads/main/PNG/nostr-icon-purple-transparent-256x256.png";
-const TWITTER_URL = "https://x.com/ColumbiaBitcoin";
 
 const footerLinks: { label: string; href: string; sectionId?: string }[] = [
   { label: "Event",         href: "/event",         sectionId: "event"     },

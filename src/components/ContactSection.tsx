@@ -6,14 +6,13 @@ import Image from "next/image";
 import type { ComponentType } from "react";
 import RevealOnScroll from "./RevealOnScroll";
 import { trackFormStart, trackFormSubmit, trackFormSuccess, trackFormError, trackOutboundLink } from "@/lib/analytics";
+import { NOSTR_NPUB, TWITTER_URL } from "@/lib/social";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 const FORMSPREE_ENDPOINT = FORMSPREE_ID
   ? `https://formspree.io/f/${FORMSPREE_ID}`
   : null;
 
-const NOSTR_NPUB = "npub168h60e5jj0t89kx08fd7x2nee4s2kr0zqqecdrfsdmka9htqn22qepwz7s";
-const TWITTER_URL = "https://x.com/ColumbiaBitcoin";
 
 type Channel = {
   icon?: ComponentType<{ className?: string }>;

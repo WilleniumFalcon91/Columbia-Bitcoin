@@ -21,7 +21,7 @@ const PATH_CARDS: PathCard[] = [
     title: "Join Our Meetup",
     description: "We meet monthly in West Columbia — free, open to all, and genuinely fun. Come stack sats with your neighbors.",
     cta: "See the next event",
-    href: "#event",
+    href: "/#event",
   },
   {
     icon: Users,
