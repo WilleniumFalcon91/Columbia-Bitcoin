@@ -58,7 +58,7 @@ export default function CommunityPathSection() {
             Bitcoin Is Everywhere
           </h2>
           <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">
-            We&apos;d love for you to join or meetup but we&apos;re here to help connect you to Bitcoiners no matter where you live. Whether you&apos;re down the street or across the country, there&apos;s a Bitcoin community for you.
+            We&apos;d love for you to join our meetup but we&apos;re here to help connect you to Bitcoiners no matter where you live. Whether you&apos;re down the street or across the country, there&apos;s a Bitcoin community for you.
           </p>
         </div>
 
