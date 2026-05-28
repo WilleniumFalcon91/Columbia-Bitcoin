@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Bitcoin, Zap, ChevronUp, Mail } from "lucide-react";
 import { trackOutboundLink } from "@/lib/analytics";
-import { NOSTR_NPUB, TWITTER_URL, CLUB_ORANGE_EMAIL } from "@/lib/social";
+import { NOSTR_NPUB, TWITTER_URL, CLUB_ORANGE_URL } from "@/lib/social";
 
 const MEMPOOL_TIP_URL = "https://mempool.space/api/blocks/tip/height";
 
@@ -136,9 +136,11 @@ export default function Footer() {
                 <span>Twitter / X</span>
               </a>
               <a
-                href={`mailto:${CLUB_ORANGE_EMAIL}`}
+                href={CLUB_ORANGE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Find us on Club Orange"
-                onClick={() => trackOutboundLink({ url: `mailto:${CLUB_ORANGE_EMAIL}`, label: "Club Orange", section: "footer" })}
+                onClick={() => trackOutboundLink({ url: CLUB_ORANGE_URL, label: "Club Orange", section: "footer" })}
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail className="w-4 h-4" />

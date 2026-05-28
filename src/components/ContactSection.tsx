@@ -6,7 +6,7 @@ import Image from "next/image";
 import type { ComponentType } from "react";
 import RevealOnScroll from "./RevealOnScroll";
 import { trackFormStart, trackFormSubmit, trackFormSuccess, trackFormError, trackOutboundLink } from "@/lib/analytics";
-import { NOSTR_NPUB, TWITTER_URL, CLUB_ORANGE_EMAIL } from "@/lib/social";
+import { NOSTR_NPUB, TWITTER_URL, CLUB_ORANGE_URL } from "@/lib/social";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 const FORMSPREE_ENDPOINT = FORMSPREE_ID
@@ -46,8 +46,8 @@ const contactChannels: Channel[] = [
   {
     icon: Mail,
     label: "Club Orange",
-    value: CLUB_ORANGE_EMAIL,
-    href: `mailto:${CLUB_ORANGE_EMAIL}`,
+    value: "Join on Club Orange",
+    href: CLUB_ORANGE_URL,
     description: "Find us on Club Orange — a Bitcoin-native social network",
   },
   {
