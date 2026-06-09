@@ -1,6 +1,7 @@
 "use client";
 
-import { Calendar, CalendarPlus, Clock, MapPin, Users, Beer, MessageSquare, Bot, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { Calendar, CalendarPlus, Clock, MapPin, Users, Beer, MessageSquare, Bot, ArrowUpRight, Share2, CheckCheck } from "lucide-react";
 import type { LumaEvent } from "@/lib/luma";
 import RevealOnScroll from "./RevealOnScroll";
 import { trackCtaClick, trackOutboundLink } from "@/lib/analytics";
@@ -45,11 +46,27 @@ const agenda = [
   },
 ];
 
+function buildXShareUrl(event: LumaEvent): string {
+  const text = `Join us at Columbia Bitcoin — free monthly Bitcoin meetup in West Columbia, SC! 🟠`;
+  return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(event.url)}`;
+}
+
 export default function EventSection({ event }: { event: LumaEvent }) {
+  const [copiedNostr, setCopiedNostr] = useState(false);
   const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(
     `${event.locationName}, ${event.address}`
   )}`;
   const gcalUrl = buildGCalUrl(event);
+  const xShareUrl = buildXShareUrl(event);
+
+  const handleNostrCopy = () => {
+    const text = `Join us at Columbia Bitcoin — free monthly Bitcoin meetup in West Columbia, SC! 🟠 ${event.url}`;
+    navigator.clipboard.writeText(text).then(() => {
+      trackCtaClick({ label: "Copy for Nostr", section: "event_section", url: event.url });
+      setCopiedNostr(true);
+      setTimeout(() => setCopiedNostr(false), 2000);
+    });
+  };
 
   return (
     <section id="event" className="py-12 sm:py-16 lg:py-24 bg-muted section-offscreen">
@@ -159,6 +176,35 @@ export default function EventSection({ event }: { event: LumaEvent }) {
                     <CalendarPlus className="w-4 h-4" />
                     Add to Calendar
                   </a>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <span className="text-xs text-muted-foreground font-medium flex items-center gap-1">
+                    <Share2 className="w-3.5 h-3.5" /> Share:
+                  </span>
+                  <a
+                    href={xShareUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackCtaClick({ label: "Share on X", section: "event_section", url: xShareUrl })}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted border border-border text-xs font-medium text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+                    </svg>
+                    Share on X
+                  </a>
+                  <button
+                    onClick={handleNostrCopy}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted border border-border text-xs font-medium text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
+                  >
+                    {copiedNostr ? (
+                      <CheckCheck className="w-3 h-3 text-primary" />
+                    ) : (
+                      <span className="text-violet-400 font-bold text-xs leading-none">N</span>
+                    )}
+                    {copiedNostr ? "Copied!" : "Copy for Nostr"}
+                  </button>
                 </div>
               </div>
             </div>

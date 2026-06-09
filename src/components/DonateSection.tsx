@@ -11,10 +11,10 @@ const LIGHTNING_URI = `lightning:${LIGHTNING_ADDRESS}`;
 const BIP47_CODE = "PM8TJhQi6gQs9xxqhs4LqrVH2StMX9M2sjck8Z5kndoKuocbncWstWn3xdGLega3W6EaW44sVXS5HxTuA4knepbKtbc2K1Uz1LBmDkUScjjpf7SNMVyX";
 
 const donationAmounts = [
-  { sats: 1000, label: "1,000 sats", desc: "Buy us a coffee ☕" },
-  { sats: 5000, label: "5,000 sats", desc: "Support a meetup 🎙" },
-  { sats: 21000, label: "21,000 sats", desc: "21 million reasons 🧡" },
-  { sats: null, label: "Custom", desc: "Any amount helps" },
+  { sats: 1000,  label: "1,000 sats",  desc: "Buy us a coffee ☕",    usd: "≈ $1"  },
+  { sats: 5000,  label: "5,000 sats",  desc: "Support a meetup 🎙",   usd: "≈ $5"  },
+  { sats: 21000, label: "21,000 sats", desc: "21 million reasons 🧡", usd: "≈ $21" },
+  { sats: null,  label: "Custom",      desc: "Any amount helps",       usd: null    },
 ];
 
 
@@ -113,6 +113,10 @@ export default function DonateSection() {
                 </p>
               )}
 
+              <p className="text-xs text-muted-foreground mb-3 text-center leading-relaxed">
+                Your sats keep the venue booked, the lights on, and the meetups free.
+              </p>
+
               {/* Open in wallet button */}
               <a
                 href={LIGHTNING_URI}
@@ -153,6 +157,9 @@ export default function DonateSection() {
                   <span className="text-xs text-muted-foreground mt-0.5">
                     {a.desc}
                   </span>
+                  {a.usd && (
+                    <span className="text-xs text-primary/60 font-medium mt-1">{a.usd}</span>
+                  )}
                 </a>
               ))}
             </div>
