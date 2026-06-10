@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import RelatedPages from "@/components/RelatedPages";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {

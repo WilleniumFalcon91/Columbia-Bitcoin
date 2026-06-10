@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import RelatedPages from "@/components/RelatedPages";
-import { ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Bitcoin Self-Custody Guide",
