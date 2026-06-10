@@ -44,7 +44,7 @@ export default function AboutSection() {
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
             About Us
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Bitcoin in Columbia, SC
           </h2>
           <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -59,7 +59,7 @@ export default function AboutSection() {
           {stats.map((stat, i) => (
             <div
               key={i}
-              className="bg-card border border-border rounded-xl p-5 text-center shadow-card"
+              className="bg-card border border-border rounded-xl p-5 text-center shadow-card hover:border-primary/25 hover:shadow-card-hover transition-all duration-200"
             >
               <p className="text-3xl font-bold text-primary mb-1">
                 {stat.value}
@@ -79,9 +79,9 @@ export default function AboutSection() {
               <RevealOnScroll key={i} delay={i * 120}>
                 <div className="bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/20 hover-lift group">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="w-6 h-6 text-primary" />
+                    <Icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-200" />
                   </div>
-                  <h3 className="font-bold text-foreground text-lg mb-2">
+                  <h3 className="font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors">
                     {v.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed text-sm">
@@ -95,7 +95,7 @@ export default function AboutSection() {
 
         {/* Origin story */}
         <RevealOnScroll>
-          <div className="bg-accent/30 border border-accent rounded-2xl p-8 lg:p-12">
+          <div className="bg-primary/[0.04] border border-primary/20 rounded-2xl p-8 lg:p-12">
             <div className="max-w-3xl mx-auto">
               <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
                 Our Story

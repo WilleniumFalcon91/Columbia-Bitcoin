@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Activity, Users, Lightbulb, ArrowUpRight, type LucideIcon } from "lucide-react";
+import { BookOpen, Activity, Users, Lightbulb, GraduationCap, ArrowUpRight, type LucideIcon } from "lucide-react";
 
 type GroupCard = {
   label: string;
@@ -85,7 +85,7 @@ export default function HomeResourcesSection() {
         <div className="mb-12">
           <Link
             href="/resources/start-here"
-            className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-primary/5 border border-primary/20 hover:border-primary/40 rounded-2xl px-6 py-5 hover-lift"
+            className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-primary/5 border border-primary/20 hover:border-primary/40 rounded-2xl px-6 py-5 hover-lift hover-glow"
           >
             <div>
               <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-1">New to Bitcoin?</p>
@@ -96,6 +96,31 @@ export default function HomeResourcesSection() {
             </div>
             <div className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-orange text-sm font-semibold">
               Start Here
+              <ArrowUpRight className="w-4 h-4" />
+            </div>
+          </Link>
+        </div>
+
+        {/* Presentations learning-path banner */}
+        <div className="mb-12">
+          <Link
+            href="/presentations"
+            className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-indigo-500/5 border border-indigo-500/20 hover:border-indigo-500/40 rounded-2xl px-6 py-5 hover-lift hover-glow"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-500/20 transition-colors">
+                <GraduationCap className="w-5 h-5 text-indigo-400" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-1">Meetup Presentations</p>
+                <p className="font-bold text-foreground text-lg leading-snug">Past meetup presentations — watch, read, and learn</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Bitcoin 101, Lightning Network, Sparrow Wallet, BlueWallet, and more from our monthly meetups.
+                </p>
+              </div>
+            </div>
+            <div className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-semibold group-hover:bg-indigo-500/20 transition-colors">
+              View All
               <ArrowUpRight className="w-4 h-4" />
             </div>
           </Link>
@@ -138,7 +163,7 @@ export default function HomeResourcesSection() {
 
                 <div className={`flex items-center gap-1.5 text-sm font-semibold ${card.ctaClass}`}>
                   Explore {card.label}
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-150" />
                 </div>
               </Link>
             );

@@ -32,6 +32,9 @@ export default function Hero({ event }: { event: LumaEvent }) {
         }}
       />
 
+      {/* Warm radial glow from top edge */}
+      <div className="absolute inset-0 pointer-events-none hero-glow" />
+
       {/* Matrix rain: falling cryptographic characters */}
       <MatrixRain />
 
@@ -47,15 +50,16 @@ export default function Hero({ event }: { event: LumaEvent }) {
 
         {/* Heading */}
         <h1
-          className="animate-fade-up text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight leading-none"
+          className="animate-fade-up text-4xl sm:text-5xl lg:text-7xl font-extrabold text-foreground mb-6 tracking-tight leading-none"
           style={{ animationDelay: "100ms" }}
         >
           Columbia, SC{" "}
-          <span className="text-primary relative">
+          <span className="text-gradient-primary relative">
             Bitcoin
             <svg
               className="absolute -bottom-2 left-0 w-full"
               viewBox="0 0 300 12"
+              overflow="visible"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -81,7 +85,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
 
         {/* Event card */}
         <div
-          className="animate-fade-up max-w-lg mx-auto bg-card border border-border rounded-2xl shadow-card p-6 mb-10 text-left"
+          className="animate-fade-up max-w-lg mx-auto bg-card/60 backdrop-blur-md border border-white/[0.07] rounded-2xl shadow-card p-6 mb-10 text-left"
           style={{ animationDelay: "300ms" }}
         >
           <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">
@@ -135,7 +139,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
                 .querySelector("#about")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="px-8 py-3.5 rounded-xl bg-card border border-border text-foreground font-semibold text-sm hover:bg-secondary transition-all duration-150 shadow-card"
+            className="px-8 py-3.5 rounded-xl btn-secondary font-semibold text-sm"
           >
             Learn More
           </a>

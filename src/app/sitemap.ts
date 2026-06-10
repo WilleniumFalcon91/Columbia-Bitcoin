@@ -154,6 +154,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.7,
     },
+    {
+      url: `${siteUrl}/resources/lightning`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
 
     // Data & tools group
     {

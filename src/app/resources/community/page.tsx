@@ -58,20 +58,21 @@ export default function CommunityPage() {
     <main>
       <Navbar />
       <ResourcesBreadcrumb />
+      <div className="pt-8 pb-10 bg-background">
+        <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-xs font-semibold text-amber-600 uppercase tracking-widest mb-3">
+            Community
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            Community
+          </h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Find your people. Connect with Bitcoiners across the Carolinas and enjoy culture curated by the community.
+          </p>
+        </div>
+      </div>
       <section className="py-12 sm:py-16 lg:py-24 bg-background">
         <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <p className="text-xs font-semibold text-amber-600 uppercase tracking-widest mb-3">
-              Community
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Community
-            </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Find your people. Connect with Bitcoiners across the Carolinas and enjoy culture curated by the community.
-            </p>
-          </div>
 
           <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
             {items.map((item) => {

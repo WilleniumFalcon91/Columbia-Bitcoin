@@ -94,8 +94,7 @@ export default function BitboPage() {
   return (
     <main>
       <Navbar />
-      <div className="pt-16">
-        <ResourcesBreadcrumb />
+      <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
           <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -237,7 +236,6 @@ export default function BitboPage() {
             </p>
           </div>
         </section>
-      </div>
 
       <RelatedPages current="/resources/bitbo" />
       <Footer />

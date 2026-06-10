@@ -21,6 +21,38 @@ export const metadata: Metadata = {
   },
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Do I need to own Bitcoin to attend?",
+      acceptedAnswer: { "@type": "Answer", text: "Not at all. Many regulars are still deciding. Come curious — leave informed. We won't pressure you to buy anything." },
+    },
+    {
+      "@type": "Question",
+      name: "Is this only for technical people?",
+      acceptedAnswer: { "@type": "Answer", text: "No. Every level is welcome. Most conversations are accessible to newcomers, and there's always someone willing to start from the basics." },
+    },
+    {
+      "@type": "Question",
+      name: "Is it really free?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes. No ticket, no donation required, no upsell. Buy a drink if you like — we meet at Savage Craft Ale Works — but attendance is completely free." },
+    },
+    {
+      "@type": "Question",
+      name: "How do I RSVP?",
+      acceptedAnswer: { "@type": "Answer", text: "Click the RSVP button on the event page. It takes 30 seconds on Luma. You'll get a reminder email — that's it." },
+    },
+    {
+      "@type": "Question",
+      name: "How do I join the Signal group?",
+      acceptedAnswer: { "@type": "Answer", text: "Ask anyone at the meetup for the invite link, or reach out through the Contact page." },
+    },
+  ],
+};
+
 export default async function EventPage() {
   const event = await fetchLumaEvent();
 
@@ -67,6 +99,10 @@ export default async function EventPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
       <div className="pt-16">

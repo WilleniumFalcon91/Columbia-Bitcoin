@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import RelatedPages from "@/components/RelatedPages";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 export const metadata: Metadata = {
   title: "Start Here — New to Bitcoin? | Columbia, SC Bitcoin",
@@ -111,30 +112,34 @@ export default function StartHerePage() {
   return (
     <main>
       <Navbar />
-      <div className="pt-16">
-        <ResourcesBreadcrumb />
+      <ResourcesBreadcrumb />
 
-        <section className="py-12 sm:py-16 lg:py-24 bg-background">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden py-12 sm:py-16 lg:py-24 bg-background">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+            <div className="absolute bottom-0 -left-32 w-72 h-72 rounded-full bg-primary/[0.03] blur-3xl" />
+          </div>
+          <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Header */}
-            <div className="mb-14">
+            <RevealOnScroll className="mb-14">
               <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary mb-4">
                 New to Bitcoin
               </span>
-              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-3">
                 Start Here
               </h1>
               <p className="text-muted-foreground leading-relaxed max-w-xl">
                 You found us — now here&apos;s the fastest path from &ldquo;what is Bitcoin?&rdquo; to holding your own keys.
                 Five steps, curated by the Columbia Bitcoin community.
               </p>
-            </div>
+            </RevealOnScroll>
 
             {/* Steps */}
             <div className="space-y-4 mb-16">
               {steps.map((step, idx) => (
-                <div key={step.number} className="relative">
+                <RevealOnScroll key={step.number} delay={idx * 80}>
+                <div className="relative">
                   {/* Connector line between steps */}
                   {idx < steps.length - 1 && (
                     <div className="absolute left-[1.375rem] top-full w-px h-4 bg-border z-10" />
@@ -174,10 +179,12 @@ export default function StartHerePage() {
                     </div>
                   </div>
                 </div>
+                </RevealOnScroll>
               ))}
             </div>
 
             {/* What's next callout */}
+            <RevealOnScroll delay={500}>
             <div className="bg-primary/5 border border-primary/20 rounded-2xl p-7 mb-16">
               <p className="text-lg font-bold text-foreground mb-2">After these five steps</p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -192,8 +199,10 @@ export default function StartHerePage() {
                 Browse all resources <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
+            </RevealOnScroll>
 
             {/* FAQs */}
+            <RevealOnScroll delay={600}>
             <section>
               <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">Questions</p>
               <h3 className="text-2xl font-bold text-foreground mb-6">Common questions from newcomers</h3>
@@ -206,10 +215,10 @@ export default function StartHerePage() {
                 ))}
               </div>
             </section>
+            </RevealOnScroll>
 
           </div>
         </section>
-      </div>
 
       <RelatedPages current="/resources/start-here" />
       <Footer />

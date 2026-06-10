@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import RelatedPages from "@/components/RelatedPages";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 export const metadata: Metadata = {
   title: "Carolinas Bitcoin Communities",
@@ -144,18 +145,21 @@ export default function RegionalPage() {
   return (
     <main>
       <Navbar />
-      <div className="pt-16">
-        <ResourcesBreadcrumb />
+      <ResourcesBreadcrumb />
 
-        <section className="py-12 sm:py-16 lg:py-24 bg-background">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden py-12 sm:py-16 lg:py-24 bg-background">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+            <div className="absolute top-1/2 -left-32 w-72 h-72 rounded-full bg-primary/[0.03] blur-3xl" />
+          </div>
+          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Header */}
-            <div className="text-center mb-16">
+            <RevealOnScroll className="text-center mb-16">
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Your Neighbors
               </p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Carolinas Bitcoin Communities
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -163,23 +167,28 @@ export default function RegionalPage() {
                 Whether you&apos;re traveling or looking for a second community,
                 these are the groups nearest to Columbia.
               </p>
-            </div>
+            </RevealOnScroll>
 
             {/* SC Groups */}
+            <RevealOnScroll delay={100}>
             <GroupSection
               state="South Carolina"
               stateCode="SC"
               groups={scGroups}
             />
+            </RevealOnScroll>
 
             {/* NC Groups */}
+            <RevealOnScroll delay={200}>
             <GroupSection
               state="North Carolina"
               stateCode="NC"
               groups={ncGroups}
             />
+            </RevealOnScroll>
 
             {/* Footer note */}
+            <RevealOnScroll delay={300}>
             <div className="mt-16 rounded-2xl border border-border bg-card p-6 text-center shadow-card">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <Users className="w-4 h-4 text-primary" />
@@ -199,10 +208,10 @@ export default function RegionalPage() {
                 and we&apos;ll add them.
               </p>
             </div>
+            </RevealOnScroll>
 
           </div>
         </section>
-      </div>
 
       <RelatedPages current="/resources/regional" />
       <Footer />

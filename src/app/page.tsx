@@ -6,6 +6,7 @@ import ContactSection from "@/components/ContactSection";
 import DonateSection from "@/components/DonateSection";
 import HomeResourcesSection from "@/components/HomeResourcesSection";
 import CommunityPathSection from "@/components/CommunityPathSection";
+import CircularEconomySection from "@/components/CircularEconomySection";
 import Footer from "@/components/Footer";
 import { fetchLumaEvent } from "@/lib/luma";
 
@@ -66,6 +67,7 @@ export default async function Home() {
       <AboutSection />
       <CommunityPathSection />
       <HomeResourcesSection />
+      <CircularEconomySection />
       <ContactSection />
       <DonateSection />
       <Footer />

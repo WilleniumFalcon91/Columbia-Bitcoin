@@ -229,19 +229,11 @@ export default function DCAPage() {
   return (
     <main>
       <Navbar />
-      <div className="pt-16">
-        <ResourcesBreadcrumb />
+      <ResourcesBreadcrumb />
 
         <section className="py-12 sm:py-16 lg:py-24 bg-background">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
-            <Link
-              href="/resources/learn"
-              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
-            >
-              <ChevronLeft className="w-3.5 h-3.5" />
-              All Learn Topics
-            </Link>
 
             {/* Header */}
             <div className="text-center">
@@ -513,7 +505,6 @@ export default function DCAPage() {
 
           </div>
         </section>
-      </div>
 
       <RelatedPages current="/resources/dca" />
       <Footer />

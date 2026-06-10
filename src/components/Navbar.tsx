@@ -9,6 +9,7 @@ import {
   TrendingUp, TrendingDown, ChevronDown, Search, ArrowUpRight,
 } from "lucide-react";
 import SearchModal from "@/components/SearchModal";
+import { RESOURCES_GROUPS } from "@/lib/resources";
 
 const COINGECKO_URL =
   "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true";
@@ -38,59 +39,11 @@ function useBitcoinPrice() {
 }
 
 const navLinks: { label: string; href: string; sectionId?: string }[] = [
-  { label: "Event",         href: "/event",         sectionId: "event"     },
-  { label: "About",         href: "/about",         sectionId: "about"     },
-  { label: "Presentations", href: "/presentations"                         },
-  { label: "Resources",     href: "/resources",     sectionId: "resources" },
-  { label: "Contact",       href: "/contact",       sectionId: "contact"   },
-];
-
-const RESOURCES_GROUPS = [
-  {
-    label: "Learn",
-    items: [
-      { label: "Glossary",     href: "/resources/glossary"     },
-      { label: "Education",    href: "/resources/education"    },
-      { label: "Self-Custody", href: "/resources/self-custody" },
-      { label: "DCA",          href: "/resources/dca"          },
-      { label: "Mining",       href: "/resources/mining"       },
-      { label: "Run a Node", href: "/resources/node"      },
-      { label: "Privacy",    href: "/resources/privacy"   },
-      { label: "Businesses", href: "/resources/business"  },
-    ],
-  },
-  {
-    label: "Data & Tools",
-    items: [
-      { label: "Debt Clock",    href: "/resources/debt-clock"   },
-      { label: "Timechain",     href: "/resources/timechain"    },
-      { label: "Mempool",       href: "/resources/mempool"      },
-      { label: "BTC Charts",    href: "/resources/bitbo"        },
-      { label: "BTC Map",       href: "/resources/map"          },
-      { label: "Meetup Finder", href: "/resources/meetupfinder" },
-    ],
-  },
-  {
-    label: "Community",
-    items: [
-      { label: "Carolinas", href: "/resources/regional" },
-      { label: "Vibes",     href: "/resources/vibes"    },
-    ],
-  },
-  {
-    label: "Philosophy",
-    items: [
-      { label: "Hard Money",            href: "/resources/philosophy/hard-money"         },
-      { label: "Freedom Tech",          href: "/resources/philosophy/freedom-tech"       },
-      { label: "Circular Economy",      href: "/resources/philosophy/circular-economy"   },
-      { label: "Bitcoin Fixes This",    href: "/resources/philosophy/bitcoin-fixes-this" },
-      { label: "The Sovereign Individual", href: "/resources/philosophy/sovereign-individual" },
-      { label: "Cryptosovereignty",     href: "/resources/philosophy/cryptosovereignty"  },
-      { label: "Bitcoin Whitepaper",    href: "/resources/philosophy/bitcoin-whitepaper" },
-      { label: "Decentralization",      href: "/resources/philosophy/decentralization"   },
-      { label: "Game Theory",           href: "/resources/philosophy/game-theory"         },
-    ],
-  },
+  { label: "Event",     href: "/event",      sectionId: "event"     },
+  { label: "About",     href: "/about",      sectionId: "about"     },
+  { label: "Resources", href: "/resources",  sectionId: "resources" },
+  { label: "Merchants", href: "/#merchants", sectionId: "merchants" },
+  { label: "Contact",   href: "/contact",    sectionId: "contact"   },
 ];
 
 export default function Navbar() {
@@ -106,7 +59,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isPositive = change24h !== null && change24h >= 0;
-  const isResourcesActive = pathname.startsWith("/resources");
+  const isResourcesActive = pathname.startsWith("/resources") || pathname.startsWith("/presentations");
 
   const onScroll = useCallback(() => setScrolled(window.scrollY > 20), []);
 
@@ -259,7 +212,7 @@ export default function Navbar() {
                   {/* Dropdown panel */}
                   <div className="absolute top-full right-0 z-50 dropdown-panel" data-open={resourcesDropdownOpen ? "true" : "false"}>
                     <div className="pt-2">
-                      <div className="bg-card border border-border rounded-xl shadow-card-hover w-[480px] max-w-[calc(100vw-2rem)]">
+                      <div className="bg-card border border-border rounded-xl shadow-card-hover w-[580px] max-w-[calc(100vw-2rem)]">
                         {/* Overview row */}
                         <div className="px-4 py-2.5 border-b border-border flex items-center justify-between gap-3">
                           <Link
@@ -279,9 +232,9 @@ export default function Navbar() {
                             New? Start Here <ArrowUpRight className="w-3 h-3 inline-block" />
                           </Link>
                         </div>
-                        {/* Three-column grouped layout — Community + Philosophy share column 3 */}
-                        <div className="grid grid-cols-3 gap-0 p-3">
-                          {RESOURCES_GROUPS.slice(0, 2).map((group) => (
+                        {/* Four-column layout — Learn, Data & Tools, Presentations get own cols; Community + Philosophy share col 4 */}
+                        <div className="grid grid-cols-4 gap-0 p-3">
+                          {RESOURCES_GROUPS.slice(0, 3).map((group) => (
                             <div key={group.label} className="px-1">
                               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 pt-1 pb-2">
                                 {group.label}
@@ -302,7 +255,7 @@ export default function Navbar() {
                             </div>
                           ))}
                           <div className="px-1">
-                            {RESOURCES_GROUPS.slice(2).map((group, i) => (
+                            {RESOURCES_GROUPS.slice(3).map((group, i) => (
                               <div key={group.label} className={i > 0 ? "mt-2 pt-2 border-t border-border" : ""}>
                                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 pt-1 pb-2">
                                   {group.label}

@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, ArrowRight, Calendar } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import Footer from "@/components/Footer";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 export const metadata: Metadata = {
   title: "Meetup Presentations | Columbia, SC Bitcoin",
@@ -18,12 +20,24 @@ export const metadata: Metadata = {
   },
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Presentations", item: `${siteUrl}/presentations` },
+  ],
+};
+
 type Presentation = {
   slug: string;
   title: string;
   date: string;
   topic: string;
   topicColor: string;
+  accentBorder: string;
   description: string;
   sections: string[];
 };
@@ -35,6 +49,7 @@ const presentations: Presentation[] = [
     date: "Monthly Meetup",
     topic: "Fundamentals",
     topicColor: "bg-primary/10 text-primary",
+    accentBorder: "border-l-primary/50",
     description:
       "A foundational introduction to Bitcoin: what it is, why it matters, its key properties, and how transactions work under the hood. Perfect for newcomers.",
     sections: ["What is Bitcoin?", "Properties of Bitcoin", "Why Bitcoin?", "How Transactions Work", "Bitcoin Wallets"],
@@ -45,6 +60,7 @@ const presentations: Presentation[] = [
     date: "Monthly Meetup",
     topic: "Lightning",
     topicColor: "bg-yellow-500/10 text-yellow-600",
+    accentBorder: "border-l-yellow-500/50",
     description:
       "A hands-on workshop covering how the Lightning Network works, wallet options for every experience level, channel management, liquidity, and privacy tradeoffs.",
     sections: ["Why Lightning?", "Wallet Options", "Channels & Nodes", "Liquidity", "Privacy", "Real-World Uses"],
@@ -55,6 +71,7 @@ const presentations: Presentation[] = [
     date: "Monthly Meetup",
     topic: "Wallets",
     topicColor: "bg-emerald-500/10 text-emerald-600",
+    accentBorder: "border-l-emerald-500/50",
     description:
       "A deep dive into Sparrow Wallet — hardware wallet setup, node connection, UTXO coin control, watch-only wallets, and advanced Bitcoin self-custody features.",
     sections: ["Why Sparrow?", "Core Features", "Hardware Setup", "Node Connection", "Coin Control", "Security"],
@@ -65,6 +82,7 @@ const presentations: Presentation[] = [
     date: "Monthly Meetup",
     topic: "Wallets",
     topicColor: "bg-cyan-400/10 text-cyan-400",
+    accentBorder: "border-l-cyan-400/50",
     description:
       "A beginner-friendly guide to BlueWallet for iPhone and Android — creating your first wallet, securing your seed phrase, sending and receiving bitcoin, and advanced features.",
     sections: ["Create Wallet", "Seed Backup", "Send & Receive", "Security", "Advanced Features"],
@@ -75,32 +93,40 @@ const presentations: Presentation[] = [
 export default function PresentationsPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar />
-      <div className="pt-16">
-        <section className="py-12 sm:py-16 lg:py-24 bg-background">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ResourcesBreadcrumb />
+      <section className="relative overflow-hidden py-12 sm:py-16 lg:py-24 bg-background">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+            <div className="absolute bottom-0 -left-32 w-72 h-72 rounded-full bg-primary/[0.03] blur-3xl" />
+          </div>
+          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Header */}
-            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Learn
               </p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Meetup Presentations
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Educational content from our monthly meetups. Each presentation covers a core Bitcoin
                 topic in an accessible, discussion-friendly format.
               </p>
-            </div>
+            </RevealOnScroll>
 
             {/* Cards */}
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {presentations.map((p) => (
+              {presentations.map((p, idx) => (
+                <RevealOnScroll key={p.slug} delay={idx * 100}>
                 <Link
-                  key={p.slug}
                   href={`/presentations/${p.slug}`}
-                  className="group flex flex-col bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/30 hover-lift"
+                  className={`group flex flex-col bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/30 hover-lift border-l-[3px] ${p.accentBorder}`}
                 >
                   <div className="flex items-start justify-between gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -133,10 +159,12 @@ export default function PresentationsPage() {
                     </span>
                   </div>
                 </Link>
+                </RevealOnScroll>
               ))}
             </div>
 
             {/* CTA */}
+            <RevealOnScroll delay={300}>
             <div className="mt-16 rounded-2xl border border-border bg-card p-8 text-center shadow-card">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="w-5 h-5 text-primary" />
@@ -152,10 +180,10 @@ export default function PresentationsPage() {
                 Propose a Talk <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
+            </RevealOnScroll>
 
           </div>
         </section>
-      </div>
       <Footer />
     </main>
   );

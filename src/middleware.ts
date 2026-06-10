@@ -18,7 +18,7 @@ const BLOCKED_UA_PATTERNS = [
 
 // Allowlist of valid /api/* paths — any other /api/* request is rejected at the edge.
 // This kills probes for CMS/framework backdoors (wp-admin, .env, phpunit, etc.)
-const VALID_API_PATHS = new Set(["/api/og", "/api/btcmap", "/api/meetup-map"]);
+const VALID_API_PATHS = new Set(["/api/og", "/api/btcmap", "/api/meetup-map", "/api/bitcoin-price"]);
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

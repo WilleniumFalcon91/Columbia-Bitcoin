@@ -69,7 +69,7 @@ export default function CommunityPathSection() {
               <Link
                 key={card.title}
                 href={card.href}
-                className={`group flex flex-col bg-card border border-border rounded-2xl p-7 shadow-card hover:shadow-card-hover ${card.borderHover} hover-lift`}
+                className={`group flex flex-col bg-card border border-border rounded-2xl p-7 shadow-card hover:shadow-card-hover ${card.borderHover} hover-lift hover-glow`}
               >
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-colors ${card.iconClass}`}>
                   <Icon className="w-5 h-5" />
@@ -85,7 +85,7 @@ export default function CommunityPathSection() {
 
                 <div className={`flex items-center gap-1.5 text-sm font-semibold ${card.ctaClass}`}>
                   {card.cta}
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-150" />
                 </div>
               </Link>
             );

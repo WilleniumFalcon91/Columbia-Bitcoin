@@ -9,12 +9,30 @@ export const metadata: Metadata = {
   description:
     "A foundational introduction to Bitcoin: what it is, why it matters, its key properties, and how transactions work under the hood.",
   alternates: { canonical: "/presentations/bitcoin-101" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bitcoin 101 | Columbia, SC Bitcoin",
+    description:
+      "A foundational introduction to Bitcoin: what it is, why it matters, its key properties, and how transactions work under the hood.",
+  },
   openGraph: {
     title: "Bitcoin 101 | Columbia, SC Bitcoin",
     description: "A foundational introduction to Bitcoin from our monthly meetup.",
     url: "/presentations/bitcoin-101",
     images: [{ url: `/api/og?title=${encodeURIComponent("Bitcoin 101 | Columbia, SC Bitcoin")}`, width: 1200, height: 630, alt: "Bitcoin 101 | Columbia, SC Bitcoin" }],
   },
+};
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://columbiabitcoin.org";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Presentations", item: `${siteUrl}/presentations` },
+    { "@type": "ListItem", position: 3, name: "Bitcoin 101", item: `${siteUrl}/presentations/bitcoin-101` },
+  ],
 };
 
 const properties = [
@@ -115,6 +133,10 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 export default function Bitcoin101Page() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar />
       <div className="pt-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

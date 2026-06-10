@@ -6,9 +6,10 @@ import RelatedPages from "@/components/RelatedPages";
 import {
   BookOpen, BookMarked, TrendingDown, TrendingUp, CalendarDays, Activity, MapPin,
   Music, Users, ArrowUpRight, Network, ShieldCheck, Cpu, Server, Store,
-  Lightbulb, Coins, Lock, RefreshCw, Wrench, Crown, KeyRound, ScrollText,
+  Lightbulb, Coins, Lock, RefreshCw, Wrench, Crown, KeyRound, ScrollText, Zap,
   type LucideIcon,
 } from "lucide-react";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 export const metadata: Metadata = {
   title: "Bitcoin Resources",
@@ -63,6 +64,14 @@ const groups: { label: string; icon: LucideIcon; gridCols: string; items: Sectio
         description: "Not your keys, not your coins. Learn why self-custody matters, hot vs. cold storage, and how to protect your Bitcoin with a hardware wallet.",
         tag: "Sovereignty",
         tagColor: "bg-cyan-500/10 text-cyan-600",
+      },
+      {
+        href: "/resources/lightning",
+        icon: Zap,
+        label: "Lightning Network",
+        description: "Instant, near-free Bitcoin payments via the Lightning Network. Wallet options for every level, how channels work, and custodial vs. self-custodial tradeoffs.",
+        tag: "Payments",
+        tagColor: "bg-yellow-500/10 text-yellow-600",
       },
       {
         href: "/resources/dca",
@@ -278,7 +287,7 @@ function ResourceCard({ s }: { s: Section }) {
       </p>
       <div className="flex items-center gap-1 mt-5 text-xs font-semibold text-primary">
         Explore
-        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
+        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-150" />
       </div>
     </Link>
   );
@@ -290,20 +299,24 @@ export default function ResourcesPage() {
       <Navbar />
       <div className="pt-16">
 
-        <section className="py-12 sm:py-16 lg:py-24 bg-background">
-          <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden py-12 sm:py-16 lg:py-24 bg-background">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+            <div className="absolute top-1/2 -left-32 w-72 h-72 rounded-full bg-primary/[0.03] blur-3xl" />
+          </div>
+          <div className="relative max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div className="text-center mb-16">
+            <RevealOnScroll className="text-center mb-16">
               <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
                 Level Up
               </p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Resources
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Curated Bitcoin education, live network data, and community picks — organized by what you&apos;re looking for.
               </p>
-            </div>
+            </RevealOnScroll>
 
             {/* Start Here banner for newcomers */}
             <div className="mb-12">
@@ -326,17 +339,18 @@ export default function ResourcesPage() {
             </div>
 
             <div className="space-y-14">
-              {groups.map((group) => {
+              {groups.map((group, idx) => {
                 const GroupIcon = group.icon;
                 const sectionId = group.label.toLowerCase().replace(/\s+&\s+/, "-").replace(/\s+/g, "-");
                 return (
-                  <div key={group.label} id={sectionId} className="scroll-mt-24">
+                  <RevealOnScroll key={group.label} delay={idx * 80}>
+                  <div id={sectionId} className="scroll-mt-24">
                     <div className="flex items-center gap-3 mb-5">
                       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                         <GroupIcon className="w-4 h-4 text-primary" />
                       </div>
                       <h3 className="font-bold text-foreground">{group.label}</h3>
-                      <div className="flex-1 h-px bg-border" />
+                      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
                       <span className="text-xs text-muted-foreground flex-shrink-0">
                         {group.items.length} {group.items.length === 1 ? "section" : "sections"}
                       </span>
@@ -347,6 +361,7 @@ export default function ResourcesPage() {
                       ))}
                     </div>
                   </div>
+                  </RevealOnScroll>
                 );
               })}
             </div>

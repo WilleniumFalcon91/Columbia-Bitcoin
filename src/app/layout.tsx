@@ -105,6 +105,23 @@ const orgSchema = {
   },
 };
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Columbia, SC Bitcoin Meetup",
+  description:
+    "Free monthly Bitcoin meetup in Columbia, South Carolina. Join Bitcoiners in the Midlands to learn, discuss, and connect.",
+  url: siteUrl,
+  email: "columbiabitcoin@proton.me",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "West Columbia",
+    addressRegion: "SC",
+    addressCountry: "US",
+  },
+  sameAs: ["https://x.com/ColumbiaBitcoin"],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -120,6 +137,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <PageTransition>{children}</PageTransition>
         <AnalyticsProvider />

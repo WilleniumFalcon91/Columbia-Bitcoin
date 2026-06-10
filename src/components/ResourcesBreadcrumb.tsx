@@ -3,75 +3,26 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronRight } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { RESOURCES_GROUPS } from "@/lib/resources";
 
-const SUBNAV_GROUPS = [
-  {
-    label: "Learn",
-    items: [
-      { label: "Glossary",     href: "/resources/glossary"     },
-      { label: "Education",    href: "/resources/education"    },
-      { label: "Self-Custody", href: "/resources/self-custody" },
-      { label: "DCA",          href: "/resources/dca"          },
-      { label: "Mining",       href: "/resources/mining"       },
-      { label: "Run a Node",   href: "/resources/node"         },
-      { label: "Privacy",      href: "/resources/privacy"      },
-      { label: "Businesses",   href: "/resources/business"     },
-    ],
-  },
-  {
-    label: "Data & Tools",
-    items: [
-      { label: "Debt Clock",    href: "/resources/debt-clock"   },
-      { label: "Timechain",     href: "/resources/timechain"    },
-      { label: "Mempool",       href: "/resources/mempool"      },
-      { label: "BTC Charts",    href: "/resources/bitbo"        },
-      { label: "BTC Map",       href: "/resources/map"          },
-      { label: "Meetup Finder", href: "/resources/meetupfinder" },
-    ],
-  },
-  {
-    label: "Community",
-    items: [
-      { label: "Carolinas", href: "/resources/regional" },
-      { label: "Vibes",     href: "/resources/vibes"    },
-    ],
-  },
-  {
-    label: "Philosophy",
-    items: [
-      { label: "Bitcoin Whitepaper",    href: "/resources/philosophy/bitcoin-whitepaper"  },
-      { label: "Decentralization",      href: "/resources/philosophy/decentralization"    },
-      { label: "Hard Money",            href: "/resources/philosophy/hard-money"          },
-      { label: "Freedom Tech",          href: "/resources/philosophy/freedom-tech"        },
-      { label: "Circular Economy",      href: "/resources/philosophy/circular-economy"    },
-      { label: "Bitcoin Fixes This",    href: "/resources/philosophy/bitcoin-fixes-this"  },
-      { label: "The Sovereign Individual", href: "/resources/philosophy/sovereign-individual" },
-      { label: "Cryptosovereignty",     href: "/resources/philosophy/cryptosovereignty"   },
-    ],
-  },
-];
+const SUBNAV_GROUPS = RESOURCES_GROUPS;
 
 const ALL_ITEMS = SUBNAV_GROUPS.flatMap((g) => g.items);
 
-const GROUP_INDEX_LABELS: Record<string, string> = {
-  "/resources/learn":      "Learn",
-  "/resources/data-tools": "Data & Tools",
-  "/resources/community":  "Community",
-  "/resources/philosophy": "Philosophy",
-};
+const GROUP_INDEX_LABELS: Record<string, string> = Object.fromEntries(
+  RESOURCES_GROUPS.map((g) => [g.href, g.label])
+);
 
-const GROUP_LABEL_TO_HREF: Record<string, string> = {
-  "Learn":        "/resources/learn",
-  "Data & Tools": "/resources/data-tools",
-  "Community":    "/resources/community",
-  "Philosophy":   "/resources/philosophy",
-};
+const GROUP_LABEL_TO_HREF: Record<string, string> = Object.fromEntries(
+  RESOURCES_GROUPS.map((g) => [g.label, g.href])
+);
 
 function getGroupForPath(pathname: string) {
   const byExact = SUBNAV_GROUPS.find((g) => g.items.some((item) => item.href === pathname))?.label;
   if (byExact) return byExact;
   if (pathname in GROUP_INDEX_LABELS) return GROUP_INDEX_LABELS[pathname];
+  if (pathname.startsWith("/presentations")) return "Presentations";
   if (pathname.startsWith("/resources/philosophy/")) return "Philosophy";
   return SUBNAV_GROUPS[0].label;
 }
@@ -83,6 +34,17 @@ export default function ResourcesBreadcrumb() {
   const [activeTab, setActiveTab] = useState(() => getGroupForPath(pathname));
   const activeTabRef = useRef<HTMLButtonElement>(null);
   const activePillRef = useRef<HTMLAnchorElement>(null);
+  const fixedRef = useRef<HTMLDivElement>(null);
+  const [spacerHeight, setSpacerHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    const update = () => {
+      if (fixedRef.current) setSpacerHeight(fixedRef.current.offsetHeight);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   useEffect(() => {
     const group = SUBNAV_GROUPS.find((g) => g.items.some((item) => item.href === pathname));
@@ -104,7 +66,9 @@ export default function ResourcesBreadcrumb() {
   const activeGroup = SUBNAV_GROUPS.find((g) => g.label === activeTab) ?? SUBNAV_GROUPS[0];
 
   return (
-    <div className="mt-16 sticky top-16 z-40 border-b border-border bg-card/90 backdrop-blur-md">
+    <>
+    <div style={{ height: 64 + spacerHeight }} aria-hidden="true" />
+    <div ref={fixedRef} className="fixed top-16 left-0 right-0 z-40 border-b border-border bg-card/90 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb trail — 3 levels on topic pages, 2 on group index */}
@@ -179,5 +143,6 @@ export default function ResourcesBreadcrumb() {
 
       </div>
     </div>
+    </>
   );
 }

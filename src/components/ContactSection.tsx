@@ -117,7 +117,7 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left: contact channels */}
           <RevealOnScroll delay={100} className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground mb-6">
+            <h3 className="font-serif text-lg font-bold text-foreground mb-6">
               Find Us Online
             </h3>
             {contactChannels.map((ch, i) => {

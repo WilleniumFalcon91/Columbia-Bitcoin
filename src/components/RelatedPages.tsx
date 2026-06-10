@@ -75,9 +75,14 @@ const resourceRelated: Record<string, ResourceLink[]> = {
     { label: "Self-Custody", href: "/resources/self-custody", description: "How to hold your own keys and remove counterparty risk." },
     { label: "Sparrow Wallet", href: "/presentations/sparrow-wallet", description: "Deep dive into Sparrow Wallet's coin control and privacy features." },
   ],
+  "/resources/lightning": [
+    { label: "Self-Custody", href: "/resources/self-custody", description: "Not your keys, not your coins — take full ownership of your Bitcoin." },
+    { label: "Dollar Cost Average", href: "/resources/dca", description: "The low-stress strategy for building a Bitcoin position over time." },
+    { label: "Lightning Workshop", href: "/presentations/lightning-network", description: "Deeper dive into channels, node management, and Lightning privacy." },
+  ],
   "/resources/business": [
     { label: "Bitcoin Map", href: "/resources/map", description: "Find Bitcoin-accepting businesses in Columbia and the Midlands." },
-    { label: "Lightning Network", href: "/presentations/lightning-network", description: "How Lightning payments work and how to use them." },
+    { label: "Lightning Network", href: "/resources/lightning", description: "How Lightning payments work and the best wallets for every level." },
     { label: "Carolinas Communities", href: "/resources/regional", description: "Bitcoin meetup groups across South Carolina and North Carolina." },
   ],
   "/resources/map": [

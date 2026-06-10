@@ -70,7 +70,7 @@ export default function Error({
             </button>
             <Link
               href="/"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-card border border-border text-foreground font-semibold text-sm hover:bg-secondary transition-all duration-150 shadow-card"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl btn-secondary font-semibold text-sm"
             >
               <Home className="w-4 h-4" />
               Back to Genesis Block

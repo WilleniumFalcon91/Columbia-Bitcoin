@@ -40,19 +40,8 @@ export default function EducationPage() {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Navbar />
-      <div className="pt-16">
-        <ResourcesBreadcrumb />
-        <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-1">
-          <Link
-            href="/resources/learn"
-            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
-          >
-            <ChevronLeft className="w-3.5 h-3.5" />
-            All Learn Topics
-          </Link>
-        </div>
+      <ResourcesBreadcrumb />
         <ResourcesSection />
-      </div>
       <RelatedPages current="/resources/education" />
       <Footer />
     </main>

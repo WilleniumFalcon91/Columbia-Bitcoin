@@ -100,7 +100,7 @@ export default function DonateSection() {
                   aria-label="Copy Lightning address"
                 >
                   {copied ? (
-                    <CheckCheck className="w-4 h-4 text-primary" />
+                    <CheckCheck className="w-4 h-4 text-primary icon-pop" />
                   ) : (
                     <Copy className="w-4 h-4" />
                   )}
@@ -213,7 +213,7 @@ export default function DonateSection() {
                     aria-label="Copy BIP47 payment code"
                   >
                     {copiedBip47 ? (
-                      <CheckCheck className="w-4 h-4 text-primary" />
+                      <CheckCheck className="w-4 h-4 text-primary icon-pop" />
                     ) : (
                       <Copy className="w-4 h-4" />
                     )}

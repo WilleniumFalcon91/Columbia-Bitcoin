@@ -51,7 +51,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-card border-t border-primary/20">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-[2fr_3fr_1fr] gap-8">
 
@@ -117,9 +117,9 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Find us on Nostr"
                 onClick={() => trackOutboundLink({ url: `https://primal.net/p/${NOSTR_NPUB}`, label: "Nostr", section: "footer" })}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Image src={NOSTR_LOGO} alt="" width={16} height={16} className="opacity-70" />
+                <Image src={NOSTR_LOGO} alt="" width={16} height={16} className="opacity-70 group-hover:scale-110 transition-transform duration-150" />
                 <span>Nostr</span>
               </a>
               <a
@@ -128,9 +128,9 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Follow us on X (Twitter)"
                 onClick={() => trackOutboundLink({ url: TWITTER_URL, label: "Twitter", section: "footer" })}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 group-hover:scale-110 transition-transform duration-150" aria-hidden="true">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
                 </svg>
                 <span>Twitter / X</span>
@@ -141,18 +141,18 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Find us on Club Orange"
                 onClick={() => trackOutboundLink({ url: CLUB_ORANGE_URL, label: "Club Orange", section: "footer" })}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Citrus className="w-4 h-4" />
+                <Citrus className="w-4 h-4 group-hover:scale-110 transition-transform duration-150" />
                 <span>Club Orange</span>
               </a>
               <a
                 href="mailto:btcwrestle2001@protonmail.com"
                 aria-label="Email us"
                 onClick={() => trackOutboundLink({ url: "mailto:btcwrestle2001@protonmail.com", label: "Email", section: "footer" })}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-4 h-4 group-hover:scale-110 transition-transform duration-150" />
                 <span>Email</span>
               </a>
             </div>

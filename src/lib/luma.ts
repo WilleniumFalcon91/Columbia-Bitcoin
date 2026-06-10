@@ -48,10 +48,21 @@ function formatLumaTime(startIso: string, endIso: string): string {
   return `${start.replace(/ [A-Z]+$/, "")} – ${end}`;
 }
 
+function getStaleAwareFallback(): LumaEvent {
+  if (new Date(FALLBACK_EVENT.startDateISO) < new Date()) {
+    return {
+      ...FALLBACK_EVENT,
+      date: "Next event — check back soon",
+      time: "Check our Signal group for details",
+    };
+  }
+  return FALLBACK_EVENT;
+}
+
 export async function fetchLumaEvent(): Promise<LumaEvent> {
   const apiKey = process.env.LUMA_API_KEY;
   if (!apiKey) {
-    return FALLBACK_EVENT;
+    return getStaleAwareFallback();
   }
 
   try {
@@ -65,7 +76,7 @@ export async function fetchLumaEvent(): Promise<LumaEvent> {
 
     if (!res.ok) {
       console.warn(`[luma] API returned ${res.status} — using fallback`);
-      return FALLBACK_EVENT;
+      return getStaleAwareFallback();
     }
 
     type LumaGeoAddress = {
@@ -89,7 +100,7 @@ export async function fetchLumaEvent(): Promise<LumaEvent> {
     const json = await res.json() as LumaApiResponse;
     const ev = json?.event;
 
-    if (!ev) return FALLBACK_EVENT;
+    if (!ev) return getStaleAwareFallback();
 
     const geo = ev.geo_address_json ?? {};
     const addressParts = [
@@ -119,6 +130,6 @@ export async function fetchLumaEvent(): Promise<LumaEvent> {
     };
   } catch (err) {
     console.warn("[luma] fetch failed — using fallback:", err);
-    return FALLBACK_EVENT;
+    return getStaleAwareFallback();
   }
 }

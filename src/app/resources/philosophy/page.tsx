@@ -107,20 +107,21 @@ export default function PhilosophyIndexPage() {
     <main>
       <Navbar />
       <ResourcesBreadcrumb />
+      <div className="pt-8 pb-10 bg-background">
+        <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
+            Philosophy
+          </p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            The Ideas Behind Bitcoin
+          </h1>
+          <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">
+            Bitcoin is more than a technology — it&apos;s a set of ideas. These pages explore the philosophical pillars: hard money, cypherpunk freedom, circular commerce, and individual sovereignty.
+          </p>
+        </div>
+      </div>
       <section className="py-12 sm:py-16 lg:py-24 bg-background">
           <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
-                Philosophy
-              </p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                The Ideas Behind Bitcoin
-              </h1>
-              <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">
-                Bitcoin is more than a technology — it&apos;s a set of ideas. These pages explore the philosophical pillars: hard money, cypherpunk freedom, circular commerce, and individual sovereignty.
-              </p>
-            </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {topics.map((topic) => {
