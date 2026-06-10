@@ -3,9 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
 import RelatedPages from "@/components/RelatedPages";
-import Link from "next/link";
 import GlossaryContent from "@/components/GlossaryContent";
-import { ChevronLeft } from "lucide-react";
 import { TERMS } from "@/lib/glossaryTerms";
 
 export const metadata: Metadata = {

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import ResourcesSection from "@/components/ResourcesSection";
 import ResourcesBreadcrumb from "@/components/ResourcesBreadcrumb";
-import { ChevronLeft } from "lucide-react";
 import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
