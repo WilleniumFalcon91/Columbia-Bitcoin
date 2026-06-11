@@ -39,7 +39,7 @@ const PODCAST_MENTIONS: PodcastMention[] = [
       spotify: "https://open.spotify.com/episode/3Yxhv4vesW9GQ9xIMuFxRk?t=2377",
       fountain: "https://www.fountain.fm/episode/aelYU8CUjGDIItw7Ec20?t=2377",
     },
-    artwork: "https://image-cdn-ak.spotifycdn.com/image/ab67656300005f1fa4d8da2448877c26883166c7",
+    artwork: "/images/podcast/rabbit-hole-recap.jpg",
   },
   {
     id: "local-bitcoiners-015",
