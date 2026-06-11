@@ -34,6 +34,7 @@ Columbia Bitcoin is a grassroots community meetup held monthly at Savage Craft A
 - Lightning Network donation via Alby (QR code + copyable address)
 - BIP47 reusable payment code for on-chain donations
 - **Circular economy section** on home page — local Bitcoin-accepting merchants map (BTCMap) with Lightning POS onboarding CTA
+- **Podcast Mentions section** on home page — self-hosted MP3 clips (≤ 30 s) from episodes where Columbia Bitcoin was mentioned, with a custom HTML5 audio player (progress bar, seek, waveform animation, pulse ring), one-at-a-time playback, and deep-link buttons to each episode on Spotify / Fountain. Add clips by dropping MP3s into `public/audio/podcast-clips/` and extending the `PODCAST_MENTIONS` array in `src/components/PodcastMentionsSection.tsx`
 - **Find Your Community section** on home page — links to Carolinas regional directories and the presentations archive
 - Bitcoin meetup finder map for locating nearby communities
 - Carolinas regional Bitcoin community directory
@@ -152,6 +153,7 @@ src/
 │   ├── MatrixRain.tsx                     # Canvas-based Matrix rain animation
 │   ├── EventSection.tsx                   # Next meetup details + what to expect
 │   ├── AboutSection.tsx                   # Mission, values, and origin story
+│   ├── PodcastMentionsSection.tsx         # "As Heard On" section — self-hosted audio clips, custom HTML5 player, platform links
 │   ├── CommunityPathSection.tsx           # Find Your Community section linking to Carolinas directory and presentations
 │   ├── CircularEconomySection.tsx         # Merchants section — BTCMap + Lightning POS onboarding CTA
 │   ├── MerchantDirectory.tsx              # Local Bitcoin-accepting merchant directory component

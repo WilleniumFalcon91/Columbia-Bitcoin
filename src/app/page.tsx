@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import EventSection from "@/components/EventSection";
 import AboutSection from "@/components/AboutSection";
+import PodcastMentionsSection from "@/components/PodcastMentionsSection";
 import ContactSection from "@/components/ContactSection";
 import DonateSection from "@/components/DonateSection";
 import HomeResourcesSection from "@/components/HomeResourcesSection";
@@ -65,6 +66,7 @@ export default async function Home() {
       <Hero event={event} />
       <EventSection event={event} />
       <AboutSection />
+      <PodcastMentionsSection />
       <CommunityPathSection />
       <HomeResourcesSection />
       <CircularEconomySection />

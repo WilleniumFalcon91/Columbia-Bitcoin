@@ -254,6 +254,8 @@ body {
   .animate-bounce, .animate-pulse, .animate-breathe, .animate-spin { animation: none; }
   .btn-orange:active { transform: none; }
   .hover-lift:hover { transform: none; }
+  .waveform-bar { animation: none; transform: scaleY(0.5); }
+  .podcast-ring { animation: none; opacity: 0; }
   .page-transition { animation: none; }
   .modal-panel, .modal-overlay { animation: none; }
   .price-flash { animation: none; }
@@ -398,6 +400,26 @@ html.resources-dropdown-open .leaflet-container { visibility: hidden; }
 
 /* ---------- Modal scroll lock ---------- */
 .modal-open { overflow: hidden; }
+
+/* ---------- Podcast section — waveform bars & play-button pulse ring ---------- */
+@keyframes waveform-bar {
+  0%, 100% { transform: scaleY(0.22); }
+  50%       { transform: scaleY(1); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  100% { transform: scale(1.85); opacity: 0; }
+}
+
+.waveform-bar {
+  transform-origin: bottom;
+  animation: waveform-bar var(--bar-dur, 0.75s) ease-in-out var(--bar-delay, 0s) infinite;
+}
+
+.podcast-ring {
+  animation: pulse-ring 1.6s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
 
 /* ---------- Below-fold rendering optimization ---------- */
 .section-offscreen {
