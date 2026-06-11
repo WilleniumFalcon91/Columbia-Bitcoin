@@ -53,7 +53,7 @@ const PODCAST_MENTIONS: PodcastMention[] = [
     links: {
       fountain: "https://www.fountain.fm/episode/aelYU8CUjGDIItw7Ec20?t=641",
     },
-    artwork: "https://feeds.fountain.fm/uv4pyDVtNAiiCCx5emOU/files/COVER_ART---DEFAULT---24cefc88-4b95-4c28-af76-8477a47fac56.jpg",
+    artwork: "/images/podcast/local-bitcoiners.jpg",
   },
 ];
 
