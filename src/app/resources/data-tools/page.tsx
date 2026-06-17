@@ -98,7 +98,7 @@ export default function DataToolsPage() {
           <p className="text-xs font-semibold text-cyan-400 uppercase tracking-widest mb-3">
             Data &amp; Tools
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
             Bitcoin Data &amp; Tools
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">

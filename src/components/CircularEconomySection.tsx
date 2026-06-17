@@ -4,15 +4,15 @@ import MerchantDirectory from "@/components/MerchantDirectory";
 
 export default function CircularEconomySection() {
   return (
-    <section id="merchants" className="py-12 sm:py-16 lg:py-24 bg-card section-offscreen">
+    <section id="merchants" className="py-12 sm:py-16 lg:py-24 bg-card section-offscreen section-hairline">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+          <p className="kicker mb-4">
             Circular Economy
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
             Spend Your Sats Locally
           </h2>
           <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">

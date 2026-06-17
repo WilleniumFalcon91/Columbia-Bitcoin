@@ -114,14 +114,14 @@ export default function EventSection({ event }: { event: LumaEvent }) {
   };
 
   return (
-    <section id="event" className="py-12 sm:py-16 lg:py-24 bg-muted section-offscreen">
+    <section id="event" className="py-12 sm:py-16 lg:py-24 bg-muted section-offscreen section-hairline">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+          <p className="kicker mb-4">
             Upcoming Event
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
             Next Meetup Details
           </h2>
           <p className="text-muted-foreground lg:text-lg max-w-xl mx-auto">
@@ -135,7 +135,7 @@ export default function EventSection({ event }: { event: LumaEvent }) {
           {/* Left: event info card */}
           <RevealOnScroll delay={100}>
           <div className="bg-card border border-border rounded-2xl shadow-card overflow-hidden">
-            <div className="bg-primary px-6 py-5">
+            <div className="bg-gradient-to-br from-[#f9a234] via-primary to-[#df7b0e] px-6 py-5">
               <h3 className="text-primary-foreground font-bold text-xl">
                 {event.title}
               </h3>

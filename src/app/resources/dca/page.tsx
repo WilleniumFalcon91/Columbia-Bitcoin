@@ -235,10 +235,10 @@ export default function DCAPage() {
 
             {/* Header */}
             <div className="text-center">
-              <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+              <p className="kicker mb-4">
                 Investment Strategy
               </p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
                 Dollar Cost Averaging
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">

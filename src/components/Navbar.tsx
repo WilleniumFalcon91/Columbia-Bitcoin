@@ -98,9 +98,12 @@ export default function Navbar() {
   }, []);
 
   const handleScroll = useCallback((sectionId: string) => {
+    const wasOpen = menuOpen;
     setMenuOpen(false);
-    document.querySelector(`#${sectionId}`)?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+    setTimeout(() => {
+      document.querySelector(`#${sectionId}`)?.scrollIntoView({ behavior: "smooth" });
+    }, wasOpen ? 260 : 0);
+  }, [menuOpen]);
 
   const handleScrollTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -110,7 +113,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-card/90 backdrop-blur-md border-b border-primary/20 shadow-card"
+          ? "bg-background/75 backdrop-blur-xl backdrop-saturate-150 border-b border-white/[0.06] shadow-[0_8px_32px_-16px_rgba(0,0,0,0.6)]"
           : "bg-transparent"
       }`}
     >

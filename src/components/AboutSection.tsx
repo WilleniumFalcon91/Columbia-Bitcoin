@@ -41,10 +41,10 @@ export default function AboutSection() {
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+          <p className="kicker mb-4">
             About Us
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
             Bitcoin in Columbia, SC
           </h2>
           <p className="text-muted-foreground lg:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -61,7 +61,7 @@ export default function AboutSection() {
               key={i}
               className="bg-card border border-border rounded-xl p-5 text-center shadow-card hover:border-primary/25 hover:shadow-card-hover transition-all duration-200"
             >
-              <p className="text-3xl font-bold text-primary mb-1">
+              <p className="font-display text-3xl font-bold text-primary mb-1 tracking-tight">
                 {stat.value}
               </p>
               <p className="text-sm text-muted-foreground font-medium">

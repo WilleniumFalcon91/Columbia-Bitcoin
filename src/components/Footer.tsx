@@ -51,7 +51,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-card border-t border-primary/20">
+    <footer className="bg-card section-hairline">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-[2fr_3fr_1fr] gap-8">
 

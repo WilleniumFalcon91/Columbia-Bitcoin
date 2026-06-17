@@ -21,6 +21,9 @@ export default function Hero({ event }: { event: LumaEvent }) {
         </div>
       </div>
 
+      {/* Faint blueprint grid */}
+      <div className="absolute inset-0 pointer-events-none bg-grid-faint" />
+
       {/* SC flag background */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.06]"
@@ -50,7 +53,7 @@ export default function Hero({ event }: { event: LumaEvent }) {
 
         {/* Heading */}
         <h1
-          className="animate-fade-up text-4xl sm:text-5xl lg:text-7xl font-extrabold text-foreground mb-6 tracking-tight leading-none"
+          className="animate-fade-up font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-6 tracking-tighter leading-[0.95]"
           style={{ animationDelay: "100ms" }}
         >
           Columbia, SC{" "}
@@ -85,9 +88,11 @@ export default function Hero({ event }: { event: LumaEvent }) {
 
         {/* Event card */}
         <div
-          className="animate-fade-up max-w-lg mx-auto bg-card/60 backdrop-blur-md border border-white/[0.07] rounded-2xl shadow-card p-6 mb-10 text-left"
+          className="animate-fade-up relative overflow-hidden max-w-lg mx-auto bg-card/50 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_60px_-20px_rgba(0,0,0,0.65)] p-6 mb-10 text-left"
           style={{ animationDelay: "300ms" }}
         >
+          {/* Orange top hairline */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" aria-hidden="true" />
           <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">
             Next Meetup
           </p>

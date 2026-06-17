@@ -39,7 +39,7 @@ export default function Error({
             500
           </p>
 
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight tracking-tight">
             Transaction Failed to Broadcast
           </h1>
 

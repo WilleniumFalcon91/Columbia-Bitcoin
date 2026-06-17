@@ -3,34 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --card: #1f2b3e;
+  --card: #18233a;
   --ring: #f7931a;
-  --input: #232f45;
-  --muted: #19202d;
-  --accent: #0e1f3a;
-  --border: #2e3c54;
+  --input: #1c2740;
+  --muted: #111929;
+  --accent: #0e2140;
+  --border: #2a3852;
   --radius: 0.75rem;
-  --popover: #1e2840;
+  --popover: #182440;
   --primary: #f7931a;
   --font-mono: 'JetBrains Mono', monospace;
   --font-sans: 'Inter', sans-serif;
-  --secondary: #232e44;
-  --background: #131820;
+  --secondary: #1e2a42;
+  --background: #0c111c;
   --font-serif: 'Source Serif 4', serif;
-  --foreground: #efefef;
+  --foreground: #f2f4f8;
   --destructive: #ef4444;
   --shadow-blur: 3px;
   --shadow-color: hsl(0 0% 0%);
   --shadow-spread: 0px;
   --shadow-opacity: 0.1;
-  --card-foreground: #efefef;
+  --card-foreground: #f2f4f8;
   --shadow-offset-x: 0px;
   --shadow-offset-y: 1px;
-  --muted-foreground: #98a6be;
+  --muted-foreground: #9babc4;
   --accent-foreground: #bfdbfe;
-  --popover-foreground: #e5e5e5;
+  --popover-foreground: #e8ebf0;
   --primary-foreground: #ffffff;
-  --secondary-foreground: #e5e5e5;
+  --secondary-foreground: #e8ebf0;
   --destructive-foreground: #ffffff;
 }
 
@@ -59,6 +59,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@layer base {
+  /* Display face for all headings; utility classes (font-serif, vibes-title) still override */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), var(--font-sans);
+    letter-spacing: -0.02em;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -68,6 +76,9 @@ body {
   }
   .font-serif {
     font-family: var(--font-serif);
+  }
+  .font-display {
+    font-family: var(--font-display), var(--font-sans);
   }
 }
 
@@ -274,7 +285,59 @@ body {
 
 /* ---------- Hero section radial glow ---------- */
 .hero-glow {
-  background: radial-gradient(ellipse 90% 50% at 50% -5%, rgba(247, 147, 26, 0.09), transparent 70%);
+  background: radial-gradient(ellipse 90% 50% at 50% -5%, rgba(247, 147, 26, 0.13), transparent 70%);
+}
+
+/* ---------- Section kicker (eyebrow label with hairlines) ---------- */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.kicker::before,
+.kicker::after {
+  content: "";
+  height: 1px;
+  width: 2.5rem;
+  flex-shrink: 0;
+}
+.kicker::before {
+  background: linear-gradient(90deg, transparent, rgba(247, 147, 26, 0.6));
+}
+.kicker::after {
+  background: linear-gradient(90deg, rgba(247, 147, 26, 0.6), transparent);
+}
+/* Left-aligned variant — single trailing hairline */
+.kicker-left::before { display: none; }
+
+/* ---------- Faint blueprint grid (hero backdrop) ---------- */
+.bg-grid-faint {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 38%, black 25%, transparent 72%);
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 38%, black 25%, transparent 72%);
+}
+
+/* ---------- Section top hairline (orange gradient divider) ---------- */
+.section-hairline {
+  position: relative;
+}
+.section-hairline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(247, 147, 26, 0.25), transparent);
+  pointer-events: none;
 }
 
 /* ---------- Gradient primary button ---------- */
@@ -298,7 +361,7 @@ body {
 
 /* ---------- Secondary / ghost button ---------- */
 .btn-secondary {
-  background: rgba(31, 43, 62, 0.5);
+  background: rgba(24, 35, 58, 0.55);
   border: 1px solid var(--border);
   color: var(--foreground);
   transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
@@ -421,8 +484,6 @@ html.resources-dropdown-open .leaflet-container { visibility: hidden; }
   animation: pulse-ring 1.6s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
 
-/* ---------- Below-fold rendering optimization ---------- */
-.section-offscreen {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
-}
+/* .section-offscreen was removed — content-visibility: auto caused anchor
+   navigation to land short because off-screen sections used 600px placeholder
+   heights instead of their real heights, shifting the target on scroll. */

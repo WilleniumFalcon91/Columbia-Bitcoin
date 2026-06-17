@@ -156,10 +156,10 @@ export default function RegionalPage() {
 
             {/* Header */}
             <RevealOnScroll className="text-center mb-16">
-              <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+              <p className="kicker mb-4">
                 Your Neighbors
               </p>
-              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
                 Carolinas Bitcoin Communities
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">

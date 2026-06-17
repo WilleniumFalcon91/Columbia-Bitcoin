@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, JetBrains_Mono, Source_Serif_4, Monoton } from "next/font/google";
+import { Inter, JetBrains_Mono, Source_Serif_4, Monoton, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import PageTransition from "@/components/PageTransition";
@@ -31,6 +31,13 @@ const monoton = Monoton({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-groovy",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -128,7 +135,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${sourceSerif4.variable} ${monoton.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${sourceSerif4.variable} ${monoton.variable} ${spaceGrotesk.variable}`}>
       <head>
         <link rel="dns-prefetch" href="https://img.youtube.com" />
         <link rel="preconnect" href="https://img.youtube.com" crossOrigin="" />

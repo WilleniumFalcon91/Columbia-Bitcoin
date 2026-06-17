@@ -29,7 +29,7 @@ export default function GlossaryContent() {
 
         {/* Header */}
         <div className="text-center">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Start Here</p>
+          <p className="kicker mb-4">Start Here</p>
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">Bitcoin Glossary</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             New to Bitcoin? Start with the explainer below, then use the glossary to look up any term you hear.

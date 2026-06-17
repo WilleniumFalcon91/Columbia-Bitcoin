@@ -98,14 +98,14 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-24 bg-muted section-offscreen">
+    <section id="contact" className="py-12 sm:py-16 lg:py-24 bg-muted section-offscreen section-hairline">
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+          <p className="kicker mb-4">
             Get in Touch
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
             Connect With Us
           </h2>
           <p className="text-muted-foreground lg:text-lg max-w-xl mx-auto">
@@ -117,7 +117,7 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left: contact channels */}
           <RevealOnScroll delay={100} className="space-y-4">
-            <h3 className="font-serif text-lg font-bold text-foreground mb-6">
+            <h3 className="text-lg font-bold text-foreground mb-6">
               Find Us Online
             </h3>
             {contactChannels.map((ch, i) => {

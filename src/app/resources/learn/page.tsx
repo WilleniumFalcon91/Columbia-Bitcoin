@@ -114,7 +114,7 @@ export default function LearnPage() {
           <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
             Learn
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
             Learn Bitcoin
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">

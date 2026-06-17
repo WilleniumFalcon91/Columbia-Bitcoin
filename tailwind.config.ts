@@ -48,10 +48,11 @@ const config: Config = {
         sans: ["Inter", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
         serif: ["Source Serif 4", "serif"],
+        display: ["var(--font-display)", "Inter", "sans-serif"],
       },
       boxShadow: {
-        card: "inset 0 1px 0 rgba(255,255,255,0.07), 0px 1px 3px rgba(0,0,0,0.10)",
-        "card-hover": "inset 0 1px 0 rgba(255,255,255,0.07), 0px 4px 16px rgba(0,0,0,0.18)",
+        card: "inset 0 1px 0 rgba(255,255,255,0.06), 0 1px 2px rgba(0,0,0,0.30), 0 8px 24px -12px rgba(0,0,0,0.50)",
+        "card-hover": "inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 4px rgba(0,0,0,0.30), 0 16px 40px -12px rgba(0,0,0,0.60)",
       },
       keyframes: {
         breathe: {

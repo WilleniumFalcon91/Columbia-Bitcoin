@@ -108,10 +108,10 @@ export default function PresentationsPage() {
 
             {/* Header */}
             <RevealOnScroll className="text-center mb-8 sm:mb-12 lg:mb-16">
-              <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+              <p className="kicker mb-4">
                 Learn
               </p>
-              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
                 Meetup Presentations
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">

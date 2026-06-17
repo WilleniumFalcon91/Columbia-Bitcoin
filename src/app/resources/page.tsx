@@ -307,10 +307,10 @@ export default function ResourcesPage() {
           <div className="relative max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <RevealOnScroll className="text-center mb-16">
-              <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+              <p className="kicker mb-4">
                 Level Up
               </p>
-              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
                 Resources
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
