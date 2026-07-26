@@ -12,17 +12,17 @@ export type LumaEvent = {
 // Real event details — used as fallback when API key is absent or fetch fails
 export const FALLBACK_EVENT: LumaEvent = {
   title: "Columbia, SC Bitcoin Meetup",
-  date: "Saturday, July 25, 2026",
-  startDateISO: "2026-07-25T15:00:00-04:00",
+  date: "Saturday, August 22, 2026",
+  startDateISO: "2026-08-22T15:00:00-04:00",
   time: "3:00 PM – 5:00 PM EDT",
   locationName: "Savage Craft Ale Works",
   address: "430 Center St, West Columbia, SC 29169",
   description:
     "A casual monthly meetup focused on Bitcoin as a store of value, medium of exchange, and the separation of money and state. We meet on the rooftop. Come build community, grow a circular economy, and make safe peer-to-peer trades.",
-  url: "https://luma.com/mlx2ra1a",
+  url: "https://luma.com/zmjuv5s4",
 };
 
-const LUMA_EVENT_SLUG = "mlx2ra1a";
+const LUMA_EVENT_SLUG = "zmjuv5s4";
 
 function formatLumaDate(isoString: string): string {
   const date = new Date(isoString);
